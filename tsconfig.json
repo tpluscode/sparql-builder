@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2019",
+    "declaration": false,
+    "lib": [
+      "es6",
+      "esnext"
+    ],
+    "strictNullChecks": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "files": [
+    "src/index.ts"
+  ],
+  "include": ["tests"]
+}

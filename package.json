@@ -1,0 +1,66 @@
+{
+  "name": "ts-template",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/node/index.js",
+  "module": "lib/es/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "prepack": "npm run build",
+    "build": "npm run build:node & npm run build:web & npm run build:types",
+    "build:node": "tsc -p tsconfig.node.json",
+    "build:web": "tsc -p tsconfig.es.json",
+    "build:types": "tsc -p tsconfig.json --declaration --outDir . --emitDeclarationOnly --declarationMap"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@tpluscode/eslint-config": "0.0.4",
+    "@types/jest": "^25.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint-plugin-jest": "^23.1.1",
+    "husky": "^3.1.0",
+    "jest": "^25.1.0",
+    "lint-staged": "^9.5.0",
+    "standard": "^14.3.1",
+    "typescript": "^3.7.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tpluscode/ts-template.git"
+  },
+  "author": "Tomasz Pluskiewicz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tpluscode/ts-template/issues"
+  },
+  "homepage": "https://github.com/tpluscode/ts-template#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged && tsc --noEmit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>"
+    ],
+    "testRegex": "tests/.+\\.ts$"
+  }
+}
