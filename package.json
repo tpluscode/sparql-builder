@@ -14,7 +14,9 @@
     "build:types": "tsc -p tsconfig.json --declaration --outDir . --emitDeclarationOnly --declarationMap"
   },
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.1.1"
+  },
+  "peerDependencies": {
     "sparql-http-client": "^1.2.0"
   },
   "devDependencies": {
