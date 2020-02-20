@@ -21,7 +21,7 @@ export class AskBuilder extends Builder<boolean> {
 
   protected _buildQueryInternal() {
     return `ASK {
-      ${this.__patterns.join('\n')}
-    }`
+  ${this.__patterns.join('\n  ')}
+}`
   }
 }

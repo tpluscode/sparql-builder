@@ -33,11 +33,6 @@ export class DeleteInsertBuilder extends Builder<void> {
   }
 
   protected _buildQueryInternal() {
-    let where = this.__patterns
-    if (where.length === 0) {
-      where = this.__deleteGraph
-    }
-
     const deleteClause = `DELETE {
       ${this.__deleteGraph.join('\n')}
     }`
@@ -50,7 +45,7 @@ export class DeleteInsertBuilder extends Builder<void> {
       ${this.__deleteGraph.length > 0 ? deleteClause : ''}
       ${this.__insertGraph.length > 0 ? insertClause : ''}
       WHERE {
-        ${where.join('\n')}
+        ${this.__patterns.join('\n')}
       }
     `
   }

@@ -31,5 +31,5 @@ export function deleteInsert(...deletePatterns: string[]) {
 }
 
 export function describe(idOrVariable: string, ...idOrVariables: string[]) {
-  return new DescribeBuilder(idOrVariable, idOrVariables, settings)
+  return new DescribeBuilder(settings).variables(idOrVariable, ...idOrVariables)
 }

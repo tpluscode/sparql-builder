@@ -42,11 +42,12 @@ export abstract class Builder<T> {
   }
 
   public build() {
-    return `
-      BASE <${this.__baseUri}>
-      ${buildPrefixes(this.__prefixes)}
+    const base = this.__baseUri ? `BASE <${this.__baseUri}>` : ''
 
-      ${this._buildQueryInternal()}`
+    return `${base}
+${buildPrefixes(this.__prefixes)}
+
+${this._buildQueryInternal()}`
   }
 
   public execute(client: SparqlHttp): Promise<T> {
@@ -74,7 +75,7 @@ export abstract class Builder<T> {
   protected abstract _buildQueryInternal(): string
 
   private __checkResponse(query: string) {
-    return function assertSuccessfulResponse(response: Response) {
+    return function assertSuccessfulResponse(response: Response): Response {
       if (response.ok) {
         return response
       }

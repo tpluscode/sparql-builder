@@ -4,11 +4,10 @@ import { Stream } from 'rdf-js'
 
 export class DescribeBuilder extends Builder<Stream> {
   private __patterns: string[] = []
-  private __variables: string[]
+  private __variables: string[] = []
 
-  public constructor(idOrVariable: string, additionalVariables: string[], options: SparqlBuilderInit = {}) {
+  public constructor(options: SparqlBuilderInit = {}) {
     super(options)
-    this.__variables = [idOrVariable, ...additionalVariables]
   }
 
   public _executeInternal(client: SparqlHttp, query: string, options: QueryRequestInit) {
@@ -17,6 +16,10 @@ export class DescribeBuilder extends Builder<Stream> {
 
   protected _getResult(response: any) {
     return response.quadStream()
+  }
+
+  public variables(...variables: string[]) {
+    this.__variables = [...this.__variables, ...variables]
   }
 
   public where(...patterns: string[]) {
