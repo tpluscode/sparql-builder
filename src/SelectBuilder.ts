@@ -1,38 +1,34 @@
-import { Term } from 'rdf-js'
-import SparqlHttp, { QueryRequestInit } from 'sparql-http-client'
-import { Builder } from './Builder'
+import { DefaultGraph, NamedNode, Term, Variable } from 'rdf-js'
+import { defaultGraph } from '@rdfjs/data-model'
+import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
+import { select } from './execute'
+import { SparqlQueryBuilder } from './index'
+import WHERE, { WhereBuilder } from './partials/WHERE'
 
-export class SelectBuilder extends Builder<readonly Record<string, Term>[]> {
-  private __variables: string[] = ['*']
-  private __patterns: string[] = []
-
-  public variables(...variables: string[]) {
-    this.__variables = variables
-    return this
-  }
-
-  protected _executeInternal(client: SparqlHttp, query: string, options: QueryRequestInit) {
-    return client.selectQuery(query, options)
-  }
-
-  protected async _getResult(response: SparqlHttp.SelectResponse & Response) {
-    const json = await response.json()
-    return json.results.bindings
-  }
-
-  public where(...patterns: string[]) {
-    this.__patterns = [...this.__patterns, ...patterns]
-
-    return this
-  }
-
-  protected _buildQueryInternal(): string {
-    const variables = this.__variables.map(v => v.replace(/^\??/, '?')).join(' ')
-
-    return `SELECT ${variables}
-      ${this.__defaultGraph ? `FROM <${this.__defaultGraph}>` : ''}
-      WHERE {
-        ${this.__patterns.join('\n')}
-      }`
-  }
+type SelectQuery = SparqlQueryBuilder<readonly Record<string, Term>[]> & WhereBuilder<SelectQuery> & {
+  readonly variables: SparqlTemplateResult
+  readonly defaultGraph: NamedNode | DefaultGraph
+  FROM(defaultGraph: NamedNode | DefaultGraph): SelectQuery
 }
+
+export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+  ...select,
+  ...WHERE<SelectQuery>({
+    required: true,
+  }),
+  defaultGraph: defaultGraph(),
+  variables: sparql(strings, ...values),
+  FROM(graph): SelectQuery {
+    return {
+      ...this,
+      defaultGraph: graph,
+    }
+  },
+  build(): string {
+    const from = defaultGraph().equals(this.defaultGraph) ? null : sparql`FROM ${this.defaultGraph}`
+
+    return sparql`SELECT ${this.variables}
+${from}
+${this.whereClause()}`.toString()
+  },
+})

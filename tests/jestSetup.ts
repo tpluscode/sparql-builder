@@ -14,8 +14,28 @@ declare global {
 
 expect.extend({
   toMatchQuery(received: string, expected: string) {
-    const expectedQuery = sparqlParser.parse(expected)
-    const actualQuery = sparqlParser.parse(received)
+    let expectedQuery: any
+    try {
+      expectedQuery = sparqlParser.parse(expected)
+    } catch (e) {
+      return {
+        pass: false,
+        message: () => `Failed to parse expected query:\n ${expected}`,
+      }
+    }
+    let actualQuery: any
+    try {
+      actualQuery = sparqlParser.parse(received)
+    } catch (e) {
+      return {
+        pass: false,
+        message: () => `Failed to parse actual query. 
+ ${e.message}.
+ 
+ Query was:
+ ${received.toString()}`,
+      }
+    }
 
     expect(actualQuery).toMatchObject(expectedQuery)
 

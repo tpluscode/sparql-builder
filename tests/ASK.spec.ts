@@ -1,8 +1,8 @@
-import { AskBuilder } from '../src/AskBuilder'
 import { sparqlClient } from './_mocks'
+import { ASK } from '../src'
 
-describe('AskBuilder', () => {
-  it('concatenates patterns in a single ASK query form', () => {
+describe('ASK', () => {
+  it('creates expected query', () => {
     // given
     const expected = `ASK {
       ?s ?p ?o .
@@ -10,21 +10,18 @@ describe('AskBuilder', () => {
     }`
 
     // when
-    const query = new AskBuilder()
-      .where('?s ?p ?o .')
-      .where('?x ?y ?z .')
-      .build()
+    const query = ASK`?s ?p ?o . ?x ?y ?z .`.build()
 
     // then
     expect(query).toMatchQuery(expected)
   })
 
-  it('executes as select', () => {
+  it('executes as select', async () => {
     // given
     const client = sparqlClient()
 
     // when
-    new AskBuilder().execute(client)
+    await ASK``.execute(client)
 
     // then
     expect(client.selectQuery).toHaveBeenCalled()
