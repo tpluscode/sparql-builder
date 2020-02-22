@@ -1,4 +1,6 @@
 node_modules/
 *.d.ts
+*.d.ts.map
 /lib/
 coverage/
+dist/

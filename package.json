@@ -8,11 +8,17 @@
   "scripts": {
     "test": "jest --coverage",
     "prepack": "npm run build",
-    "build": "npm run build:node & npm run build:web & npm run build:types",
+    "build": "npm run build:node & npm run build:web",
     "build:node": "tsc -p tsconfig.node.json",
-    "build:web": "tsc -p tsconfig.es.json",
-    "build:types": "tsc -p tsconfig.json --declaration --outDir . --emitDeclarationOnly --declarationMap"
+    "build:web": "tsc -p tsconfig.es.json"
   },
+  "files": [
+    "dist",
+    "lib",
+    "partials",
+    "*.d.ts",
+    "*.d.ts.map"
+  ],
   "dependencies": {
     "@rdfjs/data-model": "^1.1.2",
     "@tpluscode/rdf-string": "^0.0.5",
