@@ -37,7 +37,7 @@ expect.extend({
       }
     }
 
-    expect(actualQuery).toMatchObject(expectedQuery)
+    expect(actualQuery).toEqual(expectedQuery)
 
     return {
       pass: true,
