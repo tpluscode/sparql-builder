@@ -1,1 +1,6 @@
-export default 'foo'
+export { DELETE } from './lib/DeleteBuilder'
+export { INSERT } from './lib/InsertBuilder'
+export { ASK } from './lib/AskBuilder'
+export { DESCRIBE } from './lib/DescribeBuilder'
+export { CONSTRUCT } from './lib/ConstructBuilder'
+export { SELECT } from './lib/SelectBuilder'

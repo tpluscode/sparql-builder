@@ -1,0 +1,31 @@
+import { DELETE } from '../src'
+import { prefixes } from '@zazuko/rdf-vocabularies'
+import namespace from '@rdfjs/namespace'
+import { sparqlClient } from './_mocks'
+
+const owl = namespace(prefixes.owl)
+
+describe('DELETE DATA', () => {
+  it('builds correct query', () => {
+    // given
+    const expected = `PREFIX owl: <http://www.w3.org/2002/07/owl#>
+DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
+
+    // when
+    const actual = DELETE.DATA`<http://example.com> ${owl.sameAs} <http://example.org>`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('executes as update', async () => {
+    // given
+    const client = sparqlClient()
+
+    // when
+    await DELETE.DATA`<http://example.com> owl:sameAs <http://example.org>`.execute(client)
+
+    // then
+    expect(client.updateQuery).toHaveBeenCalled()
+  })
+})
