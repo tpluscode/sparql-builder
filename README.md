@@ -5,9 +5,10 @@ Simple library to create SPARQL queries with tagged ES Template Strings
 ## How is it different from simply string concatenation/plain templates?
 
 1. Focuses on graph patterns. No need to remember exact syntax
-2. Still looks like SPARQL having little additional code
-3. Ensures correct formatting of terms (URI nodes, literals variables)
-4. Automatically shortens URIs with `@zazuko/rdf-vocabularies`
+1. Still looks like SPARQL, having a familiar structure and little glue code
+1. Has the IDE provide syntactic hints of valid SPARQL keywords
+1. Ensures correct formatting of terms (URI nodes, literals variables) via [@tpluscode/rdf-string](https://github.com/tpluscode/rdf-string)
+1. Automatically shortens URIs with [`@zazuko/rdf-vocabularies`](http://npm.im/@zazuko/rdf-vocabularies)
 
 ## Installation
 
