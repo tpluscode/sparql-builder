@@ -1,7 +1,7 @@
 {
-  "name": "ts-template",
+  "name": "@tpluscode/sparql-builder",
   "version": "0.0.0",
-  "description": "",
+  "description": "Simple JS library to build SPARQL queries",
   "main": "lib/node/index.js",
   "module": "lib/es/index.js",
   "types": "index.d.ts",
@@ -65,6 +65,9 @@
     "url": "https://github.com/tpluscode/ts-template/issues"
   },
   "homepage": "https://github.com/tpluscode/ts-template#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
