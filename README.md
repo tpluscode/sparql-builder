@@ -39,7 +39,7 @@ const foaf = namespace(prefixes.foaf)
 /*
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-    SELECT ?person
+    SELECT ?person ?name
     FROM <http://example.com/People>
     WHERE 
     {
