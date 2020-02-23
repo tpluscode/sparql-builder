@@ -1,9 +1,6 @@
 import { DELETE } from '../src'
-import { prefixes } from '@zazuko/rdf-vocabularies'
-import namespace from '@rdfjs/namespace'
+import { owl } from '@tpluscode/rdf-ns-builders'
 import { sparqlClient } from './_mocks'
-
-const owl = namespace(prefixes.owl)
 
 describe('DELETE DATA', () => {
   it('builds correct query', () => {

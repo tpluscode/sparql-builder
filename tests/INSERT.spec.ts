@@ -1,10 +1,6 @@
-import namespace from '@rdfjs/namespace'
-import { prefixes } from '@zazuko/rdf-vocabularies'
+import { owl, schema } from '@tpluscode/rdf-ns-builders'
 import { sparqlClient } from './_mocks'
 import { INSERT } from '../src'
-
-const owl = namespace(prefixes.owl)
-const schema = namespace(prefixes.schema)
 
 describe('INSERT', () => {
   it('adds an empty WHERE if no pattern provided', () => {
