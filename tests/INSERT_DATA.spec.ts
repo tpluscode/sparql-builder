@@ -28,4 +28,22 @@ INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     // then
     expect(client.updateQuery).toHaveBeenCalled()
   })
+
+  it('can chain multiple quad data calls', () => {
+    // given
+    const expected = `PREFIX owl: <http://www.w3.org/2002/07/owl#>
+INSERT DATA { 
+    <http://example.com/bar> owl:sameAs <http://example.org/bar> .
+    <http://example.com/foo> owl:sameAs <http://example.org/foo> .
+}`
+
+    // when
+    const actual = INSERT
+      .DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+      .DATA`<http://example.com/foo> ${owl.sameAs} <http://example.org/foo> .`
+      .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
 })
