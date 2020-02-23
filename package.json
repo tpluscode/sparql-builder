@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@rdfjs/data-model": "^1.1.2",
-    "@tpluscode/rdf-string": "^0.0.5",
+    "@tpluscode/rdf-string": "^0.0.8",
     "debug": "^4.1.1"
   },
   "peerDependencies": {
