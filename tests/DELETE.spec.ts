@@ -3,6 +3,7 @@ import { prefixes } from '@zazuko/rdf-vocabularies'
 import { sparqlClient } from './_mocks'
 import { DELETE } from '../src'
 
+const owl = namespace(prefixes.owl)
 const schema = namespace(prefixes.schema)
 
 describe('DELETE', () => {
@@ -14,6 +15,24 @@ describe('DELETE', () => {
 
     // when
     const query = DELETE`?s ?p ?o .`.build()
+
+    // then
+    expect(query).toMatchQuery(expected)
+  })
+
+  it('combines multiple DELETE calls', () => {
+    // given
+    const expected = `PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+    DELETE {
+      <http://example.com/bar> owl:sameAs <http://example.org/bar> .
+      <http://example.com/foo> owl:sameAs <http://example.org/foo> .
+    } WHERE {}`
+
+    // when
+    const query = DELETE`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+      .DELETE`<http://example.com/foo> ${owl.sameAs} <http://example.org/foo> .`
+      .build()
 
     // then
     expect(query).toMatchQuery(expected)

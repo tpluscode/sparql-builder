@@ -5,14 +5,15 @@ import { update } from './execute'
 import { SparqlQueryBuilder } from './index'
 import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
+import INSERT, { InsertBuilder } from './partials/INSERT'
+import { concat } from './TemplateResult'
 
-type DeleteInsertQuery = WhereBuilder<DeleteInsertQuery> & SparqlQueryBuilder<void> & {
+type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery> & WhereBuilder<DeleteInsertQuery> & SparqlQueryBuilder<void> & {
   readonly deletePatterns: SparqlTemplateResult
-  readonly insertPatterns?: SparqlTemplateResult
   readonly with?: NamedNode
   readonly using?: NamedNode[]
   readonly usingNamed?: NamedNode[]
-  INSERT(strings: TemplateStringsArray, ...values: any[]): Omit<DeleteInsertQuery, 'INSERT'>
+  DELETE(strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteInsertQuery
 }
 
 type DeleteData = SparqlQueryBuilder<void> & QuadDataBuilder<DeleteData, NamedNode | Literal>
@@ -22,15 +23,16 @@ export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]):
   ...WHERE({
     required: true,
   }),
+  ...INSERT(),
   deletePatterns: sparql(strings, ...values),
-  build() {
-    return sparql`DELETE { ${this.deletePatterns} } INSERT { ${this.insertPatterns} } ${this.whereClause()}`.toString()
-  },
-  INSERT(strings: TemplateStringsArray, ...values: SparqlValue[]) {
+  DELETE(strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteInsertQuery {
     return {
       ...this,
-      insertPatterns: sparql(strings, ...values),
+      deletePatterns: concat(this.deletePatterns, strings, values),
     }
+  },
+  build() {
+    return sparql`DELETE { ${this.deletePatterns} } ${this.insertClause()} ${this.whereClause()}`.toString()
   },
 })
 
