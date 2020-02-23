@@ -1,7 +1,11 @@
+import namespace from '@rdfjs/namespace'
+import { prefixes } from '@zazuko/rdf-vocabularies'
 import { sparqlClient } from './_mocks'
 import { DELETE } from '../src'
 
-describe('DeleteInsertBuilder', () => {
+const schema = namespace(prefixes.schema)
+
+describe('DELETE', () => {
   it('adds an empty WHERE if no pattern provided', () => {
     // given
     const expected = `DELETE {
@@ -10,6 +14,25 @@ describe('DeleteInsertBuilder', () => {
 
     // when
     const query = DELETE`?s ?p ?o .`.build()
+
+    // then
+    expect(query).toMatchQuery(expected)
+  })
+
+  it('has a WHERE method', () => {
+    // given
+    const expected = `PREFIX schema: <http://schema.org/> 
+    
+    DELETE {
+      ?s ?p ?o .
+    } WHERE {
+      ?s a schema:Person ; ?p ?o
+    }`
+
+    // when
+    const query = DELETE`?s ?p ?o .`
+      .WHERE`?s a ${schema.Person} ; ?p ?o`
+      .build()
 
     // then
     expect(query).toMatchQuery(expected)
