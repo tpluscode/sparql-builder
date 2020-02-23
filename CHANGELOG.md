@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/tpluscode/ts-template/compare/v0.0.1...v0.0.2) (2020-02-23)
+
+
+### Features
+
+* **delete:** chain multiple INSERT and DELETE calls ([d5659dc](https://github.com/tpluscode/ts-template/commit/d5659dc26829eb03b60928c872ee12b54f593abb))
+* **delete:** chaining multiple DATA calls ([c1d3c4c](https://github.com/tpluscode/ts-template/commit/c1d3c4cd9c507d56438f23175a05c2184140886d))
+* **delete:** support DELETE..WHERE updates ([6d8dc1f](https://github.com/tpluscode/ts-template/commit/6d8dc1f17a04940ae9a7eca2b5c15c1c53e902d0))
+* **insert:** chain multiple INSERT calls ([cc79fed](https://github.com/tpluscode/ts-template/commit/cc79fedf063615dbd0e1da1bd12e7186ac835913))
+* **insert:** chaining multiple DATA calls ([60d2b50](https://github.com/tpluscode/ts-template/commit/60d2b50d612a5827bafb0e05bad5c4b3660adc47))
+* **insert:** support INSERT..WHERE updates ([e8d254b](https://github.com/tpluscode/ts-template/commit/e8d254b17442aa689dbccd99e3c98adbb44f38de))
+* **where:** chaining multiple WHERE calls ([ca88d77](https://github.com/tpluscode/ts-template/commit/ca88d77b2aefcd9fcdc7761a03f29290d19b5678))
+
 ### 0.0.1 (2020-02-22)
 
 
