@@ -1,9 +1,6 @@
-import namespace from '@rdfjs/namespace'
-import { prefixes } from '@zazuko/rdf-vocabularies'
+import { schema } from '@tpluscode/rdf-ns-builders'
 import { CONSTRUCT } from '../src'
 import { sparqlClient } from './_mocks'
-
-const schema = namespace(prefixes.schema)
 
 describe('CONSTRUCT', () => {
   it('executes as construct', () => {

@@ -25,6 +25,20 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('combines multiple WHERE clauses', () => {
+    // given
+    const expected = 'SELECT * WHERE { ?s ?p ?o. ?a ?b ?c }'
+
+    // when
+    const actual = SELECT`*`
+      .WHERE`?s ?p ?o .`
+      .WHERE`?a ?b ?c .`
+      .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('adds FROM when default graph set', () => {
     // given
     const expected = 'SELECT * FROM <urn:foo:bar> WHERE { ?s ?p ?o }'
