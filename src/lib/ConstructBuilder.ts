@@ -5,7 +5,7 @@ import { graph } from './execute'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 
 type ConstructQuery = SparqlQueryBuilder<Stream> & WhereBuilder<ConstructQuery> & {
-  readonly graphTemplate: SparqlTemplateResult
+  readonly constructTemplate: SparqlTemplateResult
 }
 
 export const CONSTRUCT = (strings: TemplateStringsArray, ...values: SparqlValue[]): ConstructQuery => ({
@@ -13,8 +13,8 @@ export const CONSTRUCT = (strings: TemplateStringsArray, ...values: SparqlValue[
   ...WHERE<ConstructQuery>({
     required: true,
   }),
-  graphTemplate: sparql(strings, ...values),
+  constructTemplate: sparql(strings, ...values),
   build(): string {
-    return sparql`CONSTRUCT { ${this.graphTemplate} } ${this.whereClause()}`.toString()
+    return sparql`CONSTRUCT { ${this.constructTemplate} } ${this.whereClause()}`.toString()
   },
 })
