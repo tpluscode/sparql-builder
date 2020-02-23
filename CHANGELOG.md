@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/tpluscode/ts-template/compare/v0.0.6...v0.0.7) (2020-02-23)
+
+
+### Bug Fixes
+
+* missing question marks when interpolating variables ([94e590d](https://github.com/tpluscode/ts-template/commit/94e590daf205af3c01aa7a8e8c9ca430758181e2))
+
 ### [0.0.6](https://github.com/tpluscode/ts-template/compare/v0.0.5...v0.0.6) (2020-02-23)
 
 ### [0.0.5](https://github.com/tpluscode/ts-template/compare/v0.0.4...v0.0.5) (2020-02-23)
