@@ -1,6 +1,6 @@
 {
   "name": "@tpluscode/sparql-builder",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple JS library to build SPARQL queries",
   "main": "dist/node/index.js",
   "module": "dist/es/index.js",
@@ -45,6 +45,7 @@
     "@types/sparqljs": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
+    "@vanillawc/wc-monaco-editor": "^1.4.3",
     "@zazuko/rdf-vocabularies": "^2020.2.11",
     "cz-conventional-changelog": "^3.0.2",
     "eslint-plugin-jest": "^23.1.1",
