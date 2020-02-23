@@ -2,11 +2,14 @@
 
 customElements.define('run-kit', class extends HTMLElement {
   connectedCallback() {
-    const code = this.querySelector('pre')
-
-    RunKit.createNotebook({
-      element: this,
-      source: code.textContent.trim(),
-    })
+    fetch(this.getAttribute('src'))
+      .then(res => res.text())
+      .then(source => {
+        this.runKit = RunKit.createNotebook({
+          element: this,
+          source,
+          evaluateOnLoad: true,
+        })
+      })
   }
 })
