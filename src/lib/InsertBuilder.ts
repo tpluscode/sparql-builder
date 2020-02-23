@@ -1,12 +1,12 @@
 import { BlankNode, Literal, NamedNode } from 'rdf-js'
-import { sparql, SparqlValue, SparqlTemplateResult } from '@tpluscode/rdf-string'
+import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlQueryBuilder } from './index'
 import { update } from './execute'
 import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
+import InsertBuilderPartial, { InsertBuilder } from './partials/INSERT'
 
-type InsertQuery = SparqlQueryBuilder<void> & WhereBuilder<InsertQuery> & {
-  readonly insertPatterns: SparqlTemplateResult
+type InsertQuery = SparqlQueryBuilder<void> & InsertBuilder<InsertQuery> & WhereBuilder<InsertQuery> & {
   readonly with?: NamedNode
   readonly using?: NamedNode[]
   readonly usingNamed?: NamedNode[]
@@ -19,9 +19,9 @@ export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]):
   ...WHERE<InsertQuery>({
     required: true,
   }),
-  insertPatterns: sparql(strings, ...values),
+  ...InsertBuilderPartial(sparql(strings, ...values)),
   build(): string {
-    return sparql`INSERT { ${this.insertPatterns} } ${this.whereClause()}`.toString()
+    return sparql`${this.insertClause()} ${this.whereClause()}`.toString()
   },
 })
 
