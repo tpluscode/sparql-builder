@@ -15,7 +15,6 @@
   "files": [
     "dist",
     "lib",
-    "partials",
     "*.d.ts",
     "*.d.ts.map"
   ],
