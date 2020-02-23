@@ -1,5 +1,6 @@
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlQueryBuilder } from '../index'
+import { concat } from '../TemplateResult'
 
 export interface WhereBuilder<T> {
   readonly patterns: SparqlTemplateResult | null
@@ -25,7 +26,7 @@ ${this.patterns}
   WHERE(strings: TemplateStringsArray, ...values: SparqlValue[]): T {
     return {
       ...this,
-      patterns: sparql(strings, ...values),
+      patterns: concat(this.patterns, strings, values),
     } as T
   },
 })
