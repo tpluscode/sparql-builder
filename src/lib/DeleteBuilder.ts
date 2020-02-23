@@ -3,6 +3,7 @@ import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
 import { update } from './execute'
 import { SparqlQueryBuilder } from './index'
+import DATA, { QuadDataBuilder } from './partials/DATA'
 
 interface DeleteInsertQuery extends SparqlQueryBuilder<void> {
   readonly deletePatterns: SparqlTemplateResult
@@ -14,9 +15,7 @@ interface DeleteInsertQuery extends SparqlQueryBuilder<void> {
   INSERT(strings: TemplateStringsArray, ...values: any[]): Omit<DeleteInsertQuery, 'INSERT'>
 }
 
-interface DeleteData extends SparqlQueryBuilder<void> {
-  readonly quadData: SparqlTemplateResult
-}
+type DeleteData = SparqlQueryBuilder<void> & QuadDataBuilder<DeleteData, NamedNode | Literal>
 
 export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteInsertQuery => ({
   ...update,
@@ -34,7 +33,7 @@ export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]):
 
 DELETE.DATA = (strings: TemplateStringsArray, ...values: (NamedNode | Literal)[]): DeleteData => ({
   ...update,
-  quadData: sparql(strings, ...values),
+  ...DATA<DeleteData, NamedNode | Literal>(strings, values),
   build(): string {
     return sparql`DELETE DATA {
   ${this.quadData}

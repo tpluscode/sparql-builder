@@ -2,7 +2,7 @@ import { BlankNode, Literal, NamedNode } from 'rdf-js'
 import { sparql, SparqlValue, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import { SparqlQueryBuilder } from './index'
 import { update } from './execute'
-import { concat } from './TemplateResult'
+import DATA, { QuadDataBuilder } from './partials/DATA'
 
 interface InsertQuery extends SparqlQueryBuilder<void> {
   readonly insertPatterns: SparqlTemplateResult
@@ -12,10 +12,7 @@ interface InsertQuery extends SparqlQueryBuilder<void> {
   readonly usingNamed?: NamedNode[]
 }
 
-interface InsertData extends SparqlQueryBuilder<void> {
-  readonly quadData: SparqlTemplateResult
-  DATA(strings: TemplateStringsArray, ...values: SparqlValue<NamedNode | Literal | BlankNode>[]): InsertData
-}
+type InsertData = SparqlQueryBuilder<void> & QuadDataBuilder<InsertData, NamedNode | Literal | BlankNode>
 
 export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]): InsertQuery => ({
   ...update,
@@ -27,13 +24,7 @@ export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]):
 
 INSERT.DATA = (strings: TemplateStringsArray, ...values: SparqlValue<NamedNode | Literal | BlankNode>[]): InsertData => ({
   ...update,
-  quadData: sparql(strings, ...values),
-  DATA(strings: TemplateStringsArray, ...values): InsertData {
-    return {
-      ...this,
-      quadData: concat(this.quadData, strings, values),
-    }
-  },
+  ...DATA<InsertData, NamedNode | Literal | BlankNode>(strings, values),
   build(): string {
     return sparql`INSERT DATA {
   ${this.quadData}
