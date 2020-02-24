@@ -1,6 +1,6 @@
 * Getting started
   * [About](/)
-  * [How it works](overview.mdw)
+  * [How it works](overview.md)
 * Examples
   * SPARQL Query
     * [SELECT](SELECT.md)
