@@ -60,4 +60,30 @@ describe('SELECT', () => {
     // then
     expect(actual).toMatchQuery(expected)
   })
+
+  describe('DISTINCT', () => {
+    it('creates correct SPARQL', () => {
+      // given
+      const expected = 'SELECT DISTINCT * WHERE { ?s ?p ?o }'
+
+      // when
+      const actual = SELECT.DISTINCT`*`.WHERE`?s ?p ?o`.build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+  })
+
+  describe('REDUCED', () => {
+    it('creates correct SPARQL', () => {
+      // given
+      const expected = 'SELECT REDUCED * WHERE { ?s ?p ?o }'
+
+      // when
+      const actual = SELECT.REDUCED`*`.WHERE`?s ?p ?o`.build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+  })
 })

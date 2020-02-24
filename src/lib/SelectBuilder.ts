@@ -6,6 +6,8 @@ import { SparqlQueryBuilder } from './index'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 
 type SelectQuery = SparqlQueryBuilder<readonly Record<string, Term>[]> & WhereBuilder<SelectQuery> & {
+  readonly distinct: boolean
+  readonly reduced: boolean
   readonly variables: SparqlTemplateResult
   readonly defaultGraph: NamedNode | DefaultGraph
   FROM(defaultGraph: NamedNode | DefaultGraph): SelectQuery
@@ -16,6 +18,8 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   ...WHERE<SelectQuery>({
     required: true,
   }),
+  distinct: false,
+  reduced: false,
   defaultGraph: defaultGraph(),
   variables: sparql(strings, ...values),
   FROM(graph): SelectQuery {
@@ -26,9 +30,20 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   },
   build(): string {
     const from = defaultGraph().equals(this.defaultGraph) ? null : sparql`FROM ${this.defaultGraph}`
+    const modifier = this.distinct ? 'DISTINCT ' : this.reduced ? 'REDUCED ' : ''
 
-    return sparql`SELECT ${this.variables}
+    return sparql`SELECT ${modifier}${this.variables}
 ${from}
 ${this.whereClause()}`.toString()
   },
+})
+
+SELECT.DISTINCT = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+  ...SELECT(strings, ...values),
+  distinct: true,
+})
+
+SELECT.REDUCED = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+  ...SELECT(strings, ...values),
+  reduced: true,
 })
