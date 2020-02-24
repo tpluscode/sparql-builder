@@ -1,4 +1,4 @@
-> # @tpluscode/sparql-builder
+> # @tpluscode/sparql-builder ![Test](https://github.com/tpluscode/sparql-builder/workflows/Test/badge.svg)
 
 Simple library to create SPARQL queries with tagged ES Template Strings
 
