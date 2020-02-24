@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/tpluscode/ts-template/compare/v0.0.7...v0.0.8) (2020-02-24)
+
+
+### Features
+
+* support LIMIT/OFFSET in SPARQL Queries ([a52cc02](https://github.com/tpluscode/ts-template/commit/a52cc0275d8b9ac175e13216926f1a563e69a2fc))
+* **select:** support REDUCED and DISTINCT ([e3987e8](https://github.com/tpluscode/ts-template/commit/e3987e82d5e633db919e842149f06e690ebb67bd))
+
 ### [0.0.7](https://github.com/tpluscode/ts-template/compare/v0.0.6...v0.0.7) (2020-02-23)
 
 
