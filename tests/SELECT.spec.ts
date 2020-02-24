@@ -1,5 +1,5 @@
 import namespace from '@rdfjs/namespace'
-import { defaultGraph, namedNode } from '@rdfjs/data-model'
+import { defaultGraph, namedNode, variable } from '@rdfjs/data-model'
 import { SELECT } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -92,6 +92,21 @@ describe('SELECT', () => {
       .build({
         base: 'http://example.com/',
       })
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('can be ordered by variable', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY ?s'
+
+    // when
+    const s = variable('s')
+    const actual = SELECT`${s} ?p ?o`
+      .WHERE`${s} ?p ?o`
+      .ORDER().BY(s)
+      .build()
 
     // then
     expect(actual).toMatchQuery(expected)
