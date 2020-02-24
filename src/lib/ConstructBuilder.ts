@@ -1,11 +1,10 @@
-import { Stream } from 'rdf-js'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import Builder, { SparqlQuery } from './index'
 import { graph } from './execute'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 
-type ConstructQuery = SparqlQuery<Stream> & WhereBuilder<ConstructQuery> & LimitOffsetBuilder<ConstructQuery> & {
+type ConstructQuery = SparqlQuery<Response> & WhereBuilder<ConstructQuery> & LimitOffsetBuilder<ConstructQuery> & {
   readonly constructTemplate: SparqlTemplateResult
 }
 
