@@ -1,4 +1,4 @@
-import { Term, Stream } from 'rdf-js'
+import { Term } from 'rdf-js'
 import { SparqlHttpClient } from 'sparql-http-client'
 import { ask, graph, select, update } from '../src/lib/execute'
 import { sparqlClient } from './_mocks'
@@ -39,7 +39,7 @@ describe('execute', () => {
     })
   })
   describe('graph', () => {
-    let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<Stream>
+    let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<Response>
 
     beforeEach(() => {
       execute = graph.execute.bind(builder)
