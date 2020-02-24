@@ -1,6 +1,6 @@
 import { SparqlHttpClient } from 'sparql-http-client'
 import debug from 'debug'
-import { Stream, Term } from 'rdf-js'
+import { Term } from 'rdf-js'
 import { SparqlQueryBuilder, SparqlQueryExecutable } from './index'
 
 const logQuery = debug('SPARQL')
@@ -39,9 +39,8 @@ export const select: SparqlQueryExecutable<readonly Record<string, Term>[]> = {
   },
 }
 
-export const graph: SparqlQueryExecutable<Stream> = {
-  async execute(this: SparqlQueryBuilder, client: SparqlHttpClient<Response>, requestInit: RequestInit): Promise<Stream> {
-    const response = await client.constructQuery(this.build(), requestInit).then(checkResponse(this.build())) as any
-    return response.quadStream()
+export const graph: SparqlQueryExecutable<Response> = {
+  async execute(this: SparqlQueryBuilder, client: SparqlHttpClient<Response>, requestInit: RequestInit): Promise<Response> {
+    return client.constructQuery(this.build(), requestInit).then(checkResponse(this.build()))
   },
 }

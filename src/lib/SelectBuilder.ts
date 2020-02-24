@@ -5,10 +5,12 @@ import { select } from './execute'
 import Builder, { SparqlQuery } from './index'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
+import ORDER, { OrderBuilder } from './partials/ORDER'
 
 type SelectQuery = SparqlQuery<readonly Record<string, Term>[]>
 & WhereBuilder<SelectQuery>
 & LimitOffsetBuilder<SelectQuery>
+& OrderBuilder<SelectQuery>
 & {
   readonly distinct: boolean
   readonly reduced: boolean
@@ -24,6 +26,7 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
     required: true,
   }),
   ...LIMIT(),
+  ...ORDER(),
   distinct: false,
   reduced: false,
   defaultGraph: defaultGraph(),
@@ -41,7 +44,8 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
     return sparql`SELECT ${modifier}${this.variables}
 ${from}
 ${this.whereClause()}
-${this.limitOffsetClause()}`
+${this.limitOffsetClause()}
+${this.orderClause()}`
   },
 })
 
