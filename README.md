@@ -1,4 +1,4 @@
-> # @tpluscode/sparql-builder ![Test](https://github.com/tpluscode/sparql-builder/workflows/Test/badge.svg) [![codecov](https://codecov.io/gh/tpluscode/rdf-string/branch/master/graph/badge.svg)](https://codecov.io/gh/tpluscode/rdf-string) [![npm version](https://badge.fury.io/js/%40tpluscode%2Fsparql-builder.svg)](https://badge.fury.io/js/%40tpluscode%2Fsparql-builder)
+> # @tpluscode/sparql-builder ![Test](https://github.com/tpluscode/sparql-builder/workflows/Test/badge.svg) [![codecov](https://codecov.io/gh/tpluscode/sparql-builder/branch/master/graph/badge.svg)](https://codecov.io/gh/tpluscode/sparql-builder) [![npm version](https://badge.fury.io/js/%40tpluscode%2Fsparql-builder.svg)](https://badge.fury.io/js/%40tpluscode%2Fsparql-builder)
 
 Simple library to create SPARQL queries with tagged ES Template Strings
 
