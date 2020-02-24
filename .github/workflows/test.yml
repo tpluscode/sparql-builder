@@ -18,3 +18,5 @@ jobs:
       - run: npm test
       - name: Codecov
         uses: codecov/codecov-action@v1.0.5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
