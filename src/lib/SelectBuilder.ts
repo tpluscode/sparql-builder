@@ -4,8 +4,12 @@ import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string
 import { select } from './execute'
 import { SparqlQueryBuilder } from './index'
 import WHERE, { WhereBuilder } from './partials/WHERE'
+import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 
-type SelectQuery = SparqlQueryBuilder<readonly Record<string, Term>[]> & WhereBuilder<SelectQuery> & {
+type SelectQuery = SparqlQueryBuilder<readonly Record<string, Term>[]>
+& WhereBuilder<SelectQuery>
+& LimitOffsetBuilder<SelectQuery>
+& {
   readonly distinct: boolean
   readonly reduced: boolean
   readonly variables: SparqlTemplateResult
@@ -18,6 +22,7 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   ...WHERE<SelectQuery>({
     required: true,
   }),
+  ...LIMIT(),
   distinct: false,
   reduced: false,
   defaultGraph: defaultGraph(),
@@ -34,7 +39,8 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
 
     return sparql`SELECT ${modifier}${this.variables}
 ${from}
-${this.whereClause()}`.toString()
+${this.whereClause()}
+${this.limitOffsetClause()}`.toString()
   },
 })
 

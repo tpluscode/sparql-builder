@@ -61,6 +61,17 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('supports LIMIT/OFFSET', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 15 OFFSET 40'
+
+    // when
+    const actual = SELECT`?s ?p ?o`.WHERE`?s ?p ?o`.LIMIT(15).OFFSET(40).build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   describe('DISTINCT', () => {
     it('creates correct SPARQL', () => {
       // given

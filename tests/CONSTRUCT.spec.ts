@@ -25,4 +25,17 @@ describe('CONSTRUCT', () => {
     // then
     expect(actual).toMatchQuery(expected)
   })
+
+  it('supports LIMIT/OFFSET', () => {
+    // given
+    const expected = `PREFIX schema: <http://schema.org/>
+    CONSTRUCT { <http://example.com/me> a schema:Person } WHERE {}
+    LIMIT 5 OFFSET 305`
+
+    // when
+    const actual = CONSTRUCT`<http://example.com/me> a ${schema.Person}`.LIMIT(5).OFFSET(305).build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
 })
