@@ -1,13 +1,15 @@
 * Getting started
   * [About](/)
-  * [Installation](installation.md)
-* SPARQL Query
-  * SELECT
-  * [ASK](ASK.md)
-  * DESCRIBE
-  * CONSTRUCT
-* SPARQL Update
-  * INSERT
-  * DELETE
-  * INSERT DATA
-  * DELETE DATA
+  * [How it works](overview.mdw)
+* Examples
+  * SPARQL Query
+    * [SELECT](SELECT.md)
+    * [ASK](ASK.md)
+    * [DESCRIBE](DESCRIBE.md)
+    * [CONSTRUCT](CONSTRUCT.md)
+    * [Solution Modifiers](modifiers.md)
+  * SPARQL Update
+    * [INSERT](INSERT.md)
+    * [DELETE](DELETE.md)
+    * [INSERT DATA](INSERT-DATA.md)
+    * [DELETE DATA](DELETE-DATA.md)
