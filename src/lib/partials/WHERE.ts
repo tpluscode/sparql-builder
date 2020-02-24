@@ -8,7 +8,7 @@ export interface WhereBuilder<T> {
   WHERE(strings: TemplateStringsArray, ...values: SparqlValue[]): T
 }
 
-export default <T extends SparqlQueryBuilder<any> & WhereBuilder<T>>({ required }: { required: boolean }): WhereBuilder<T> => ({
+export default <T extends SparqlQueryBuilder & WhereBuilder<T>>({ required }: { required: boolean }): WhereBuilder<T> => ({
   patterns: null,
   whereClause() {
     if (this.patterns) {

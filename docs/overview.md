@@ -40,7 +40,9 @@ SELECT.DISTINCT`${person} ${name}`
     ${person} a ${foaf.Person} .
     ${person} ${schema.name} ${name} .
 `
-.LIMIT(10).OFFSET(130)
+.LIMIT(10).OFFSET(130).build({
+  base
+})
 ```
 
 </run-kit>

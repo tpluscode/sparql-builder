@@ -9,7 +9,7 @@ export interface InsertBuilder<T> {
   INSERT(strings: TemplateStringsArray, ...values: SparqlValue[]): T
 }
 
-export default <T extends SparqlQueryBuilder<any> & InsertBuilder<T>>(insertPatterns: SparqlTemplateResult | null = null): InsertBuilder<T> => ({
+export default <T extends SparqlQueryBuilder & InsertBuilder<T>>(insertPatterns: SparqlTemplateResult | null = null): InsertBuilder<T> => ({
   insertPatterns,
   insertClause(): SparqlTemplateResult {
     return sparql`INSERT{

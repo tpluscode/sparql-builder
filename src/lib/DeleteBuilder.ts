@@ -2,13 +2,13 @@ import { Literal, NamedNode } from 'rdf-js'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
 import { update } from './execute'
-import { SparqlQueryBuilder } from './index'
+import Builder, { SparqlQuery } from './index'
 import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import INSERT, { InsertBuilder } from './partials/INSERT'
 import { concat } from './TemplateResult'
 
-type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery> & WhereBuilder<DeleteInsertQuery> & SparqlQueryBuilder<void> & {
+type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery> & WhereBuilder<DeleteInsertQuery> & SparqlQuery<void> & {
   readonly deletePatterns: SparqlTemplateResult
   readonly with?: NamedNode
   readonly using?: NamedNode[]
@@ -16,9 +16,10 @@ type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery> & WhereBuilder<DeleteI
   DELETE(strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteInsertQuery
 }
 
-type DeleteData = SparqlQueryBuilder<void> & QuadDataBuilder<DeleteData, NamedNode | Literal>
+type DeleteData = SparqlQuery<void> & QuadDataBuilder<DeleteData, NamedNode | Literal>
 
 export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteInsertQuery => ({
+  ...Builder(),
   ...update,
   ...WHERE({
     required: true,
@@ -31,17 +32,18 @@ export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]):
       deletePatterns: concat(this.deletePatterns, strings, values),
     }
   },
-  build() {
-    return sparql`DELETE { ${this.deletePatterns} } ${this.insertClause()} ${this.whereClause()}`.toString()
+  _getTemplateResult() {
+    return sparql`DELETE { ${this.deletePatterns} } ${this.insertClause()} ${this.whereClause()}`
   },
 })
 
 DELETE.DATA = (strings: TemplateStringsArray, ...values: (NamedNode | Literal)[]): DeleteData => ({
+  ...Builder(),
   ...update,
   ...DATA<DeleteData, NamedNode | Literal>(strings, values),
-  build(): string {
+  _getTemplateResult() {
     return sparql`DELETE DATA {
   ${this.quadData}
-}`.toString()
+}`
   },
 })

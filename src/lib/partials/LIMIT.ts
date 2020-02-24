@@ -8,7 +8,7 @@ export interface LimitOffsetBuilder<T> {
   limitOffsetClause(): string
 }
 
-export default <T extends SparqlQueryBuilder<any> & LimitOffsetBuilder<T>>(): LimitOffsetBuilder<T> => ({
+export default <T extends SparqlQueryBuilder & LimitOffsetBuilder<T>>(): LimitOffsetBuilder<T> => ({
   limit: null,
   offset: null,
   limitOffsetClause() {

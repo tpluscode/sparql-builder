@@ -1,3 +1,4 @@
+import namespace from '@rdfjs/namespace'
 import { sparqlClient } from './_mocks'
 import { ASK } from '../src'
 
@@ -35,6 +36,24 @@ describe('ASK', () => {
 
     // when
     const query = ASK`?s ?p ?o .`.LIMIT(10).OFFSET(20).build()
+
+    // then
+    expect(query).toMatchQuery(expected)
+  })
+
+  it('can be constructed with a base', () => {
+    // given
+    const ns = namespace('http://example.com/')
+    const expected = `BASE <http://example.com/>
+
+    ASK {
+      <person> a <Person>
+    }`
+
+    // when
+    const query = ASK`${ns.person} a ${ns.Person} .`.build({
+      base: 'http://example.com/',
+    })
 
     // then
     expect(query).toMatchQuery(expected)

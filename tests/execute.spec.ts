@@ -2,15 +2,13 @@ import { Term, Stream } from 'rdf-js'
 import { SparqlHttpClient } from 'sparql-http-client'
 import { ask, graph, select, update } from '../src/lib/execute'
 import { sparqlClient } from './_mocks'
-import { SparqlQueryBuilder } from '../src/lib'
+import { SparqlQuery } from '../src/lib'
 
-const builer: SparqlQueryBuilder<any> = {
+const builder: Omit<SparqlQuery<any>, '_getTemplateResult'> = {
   build(): string {
     return ''
   },
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  async execute(): Promise<any> {
-  },
+  execute: jest.fn(),
 }
 
 describe('execute', () => {
@@ -18,7 +16,7 @@ describe('execute', () => {
     let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<readonly Record<string, Term>[]>
 
     beforeEach(() => {
-      execute = select.execute.bind(builer)
+      execute = select.execute.bind(builder)
     })
 
     it('passes request init to sparql client', () => {
@@ -44,7 +42,7 @@ describe('execute', () => {
     let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<Stream>
 
     beforeEach(() => {
-      execute = graph.execute.bind(builer)
+      execute = graph.execute.bind(builder)
     })
 
     it('passes request init to sparql client', () => {
@@ -70,7 +68,7 @@ describe('execute', () => {
     let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<void>
 
     beforeEach(() => {
-      execute = update.execute.bind(builer)
+      execute = update.execute.bind(builder)
     })
 
     it('passes request init to sparql client', () => {
@@ -97,7 +95,7 @@ describe('execute', () => {
     let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<boolean>
 
     beforeEach(() => {
-      execute = ask.execute.bind(builer)
+      execute = ask.execute.bind(builder)
     })
 
     it('passes request init to sparql client', () => {

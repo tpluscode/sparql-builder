@@ -1,3 +1,4 @@
+import namespace from '@rdfjs/namespace'
 import { schema } from '@tpluscode/rdf-ns-builders'
 import { CONSTRUCT } from '../src'
 import { sparqlClient } from './_mocks'
@@ -34,6 +35,24 @@ describe('CONSTRUCT', () => {
 
     // when
     const actual = CONSTRUCT`<http://example.com/me> a ${schema.Person}`.LIMIT(5).OFFSET(305).build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('can be constructed with a base', () => {
+    // given
+    const ns = namespace('http://example.com/')
+    const expected = `BASE <http://example.com/>
+
+    CONSTRUCT {
+      <person> a <Person>
+    } WHERE {}`
+
+    // when
+    const actual = CONSTRUCT`${ns.person} a ${ns.Person}`.build({
+      base: 'http://example.com/',
+    })
 
     // then
     expect(actual).toMatchQuery(expected)

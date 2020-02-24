@@ -8,7 +8,7 @@ export interface QuadDataBuilder<T, TTerm extends Term = Term> {
   DATA(strings: TemplateStringsArray, ...values: SparqlValue<TTerm>[]): T
 }
 
-export default <T extends SparqlQueryBuilder<any> & QuadDataBuilder<T, TTerm>, TTerm extends Term = Term>(strings: TemplateStringsArray, values: SparqlValue<TTerm>[]): QuadDataBuilder<T, TTerm> => ({
+export default <T extends SparqlQueryBuilder & QuadDataBuilder<T, TTerm>, TTerm extends Term = Term>(strings: TemplateStringsArray, values: SparqlValue<TTerm>[]): QuadDataBuilder<T, TTerm> => ({
   quadData: sparql(strings, ...values),
   DATA(strings: TemplateStringsArray, ...values): T {
     return {

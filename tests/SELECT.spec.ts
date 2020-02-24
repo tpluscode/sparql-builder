@@ -1,3 +1,4 @@
+import namespace from '@rdfjs/namespace'
 import { defaultGraph, namedNode } from '@rdfjs/data-model'
 import { SELECT } from '../src'
 import { sparqlClient } from './_mocks'
@@ -67,6 +68,30 @@ describe('SELECT', () => {
 
     // when
     const actual = SELECT`?s ?p ?o`.WHERE`?s ?p ?o`.LIMIT(15).OFFSET(40).build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('can be constructed with a base', () => {
+    // given
+    const ns = namespace('http://example.com/')
+    const expected = `
+     BASE <http://example.com/>
+     
+     SELECT *
+     FROM <graph>
+     WHERE {
+      <person> a <Person> 
+     }`
+
+    // when
+    const actual = SELECT`*`
+      .FROM(ns.graph)
+      .WHERE`${ns.person} a ${ns.Person}`
+      .build({
+        base: 'http://example.com/',
+      })
 
     // then
     expect(actual).toMatchQuery(expected)

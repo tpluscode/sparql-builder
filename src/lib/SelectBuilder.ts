@@ -2,11 +2,11 @@ import { DefaultGraph, NamedNode, Term, Variable } from 'rdf-js'
 import { defaultGraph } from '@rdfjs/data-model'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import { select } from './execute'
-import { SparqlQueryBuilder } from './index'
+import Builder, { SparqlQuery } from './index'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 
-type SelectQuery = SparqlQueryBuilder<readonly Record<string, Term>[]>
+type SelectQuery = SparqlQuery<readonly Record<string, Term>[]>
 & WhereBuilder<SelectQuery>
 & LimitOffsetBuilder<SelectQuery>
 & {
@@ -18,6 +18,7 @@ type SelectQuery = SparqlQueryBuilder<readonly Record<string, Term>[]>
 }
 
 export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+  ...Builder(),
   ...select,
   ...WHERE<SelectQuery>({
     required: true,
@@ -27,20 +28,20 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   reduced: false,
   defaultGraph: defaultGraph(),
   variables: sparql(strings, ...values),
-  FROM(graph): SelectQuery {
+  FROM(graph: NamedNode | DefaultGraph): SelectQuery {
     return {
       ...this,
       defaultGraph: graph,
     }
   },
-  build(): string {
+  _getTemplateResult() {
     const from = defaultGraph().equals(this.defaultGraph) ? null : sparql`FROM ${this.defaultGraph}`
     const modifier = this.distinct ? 'DISTINCT ' : this.reduced ? 'REDUCED ' : ''
 
     return sparql`SELECT ${modifier}${this.variables}
 ${from}
 ${this.whereClause()}
-${this.limitOffsetClause()}`.toString()
+${this.limitOffsetClause()}`
   },
 })
 
