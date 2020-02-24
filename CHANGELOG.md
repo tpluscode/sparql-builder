@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/tpluscode/ts-template/compare/v0.0.10...v0.1.0) (2020-02-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* CONSTRUCT/DESCRIBE now return Response and not a Stream
+
+### Features
+
+* **select:** support for ORDER BY ([6841709](https://github.com/tpluscode/ts-template/commit/68417094b7f9d4b9686efb553d6738958bb491cb))
+
+
+* change the graph query API ([ccfe4d6](https://github.com/tpluscode/ts-template/commit/ccfe4d62e71b2141a4f7432c1e5ebd18fec06bde))
+
 ### [0.0.10](https://github.com/tpluscode/ts-template/compare/v0.0.9...v0.0.10) (2020-02-24)
 
 
