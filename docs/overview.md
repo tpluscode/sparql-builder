@@ -41,7 +41,7 @@ SELECT.DISTINCT`${person} ${name}`
     ${person} ${schema.name} ${name} .
 `
 .LIMIT(10).OFFSET(130).build({
-  base
+  base: 'http://example.com/',
 })
 ```
 
