@@ -10,7 +10,8 @@
     "prepack": "npm run build",
     "build": "npm run build:node; npm run build:web",
     "build:node": "tsc -p tsconfig.node.json",
-    "build:web": "tsc -p tsconfig.es.json"
+    "build:web": "tsc -p tsconfig.es.json",
+    "docs": "docsify serve docs"
   },
   "files": [
     "dist",
@@ -46,6 +47,7 @@
     "@typescript-eslint/parser": "^2.19.0",
     "@zazuko/rdf-vocabularies": "^2020.2.11",
     "cz-conventional-changelog": "^3.0.2",
+    "docsify-cli": "^4.4.0",
     "eslint-plugin-jest": "^23.1.1",
     "husky": "^3.1.0",
     "isomorphic-fetch": "^2.2.1",

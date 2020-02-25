@@ -13,3 +13,4 @@
     * [DELETE](DELETE.md)
     * [INSERT DATA](INSERT-DATA.md)
     * [DELETE DATA](DELETE-DATA.md)
+  * [Executing a query](execute.md)

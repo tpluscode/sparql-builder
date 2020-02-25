@@ -12,8 +12,8 @@ npm i -S @tpluscode/sparql-builder
 ## What it can do?
 
 * Provides an API which looks like SPARQL
-* Uses [@tpluscode/rdf-string](https://github.com/tpluscode/rdf-string) to correctly
-* Shortens URIs from common vocabularies and introduces `PREFIX` statements
+* Uses [@tpluscode/rdf-string](https://github.com/tpluscode/rdf-string) to correctly format interpolated RDF/JS terms
+* Shortens URIs from [common vocabularies](https://github.com/zazuko/rdf-vocabularies/tree/master/ontologies) and introduces `PREFIX` statements
 * Execute queries against remote SPARQL endpoint
 
 ## What it does not do?
