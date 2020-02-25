@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/tpluscode/ts-template/compare/v0.1.0...v0.1.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* **sparql:** the ORDER BY clause must come before LIMIT/OFFSET ([80f77c6](https://github.com/tpluscode/ts-template/commit/80f77c648821876281665cd59aa8fcb18471f3d5))
+
 ## [0.1.0](https://github.com/tpluscode/ts-template/compare/v0.0.10...v0.1.0) (2020-02-24)
 
 
