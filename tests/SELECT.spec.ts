@@ -112,6 +112,22 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('can be ordered and limited, when calls are reversed', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY ?s LIMIT 20'
+
+    // when
+    const s = variable('s')
+    const actual = SELECT`${s} ?p ?o`
+      .WHERE`${s} ?p ?o`
+      .LIMIT(20)
+      .ORDER().BY(s)
+      .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   describe('DISTINCT', () => {
     it('creates correct SPARQL', () => {
       // given

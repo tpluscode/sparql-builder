@@ -44,8 +44,8 @@ export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Var
     return sparql`SELECT ${modifier}${this.variables}
 ${from}
 ${this.whereClause()}
-${this.limitOffsetClause()}
-${this.orderClause()}`
+${this.orderClause()}
+${this.limitOffsetClause()}`
   },
 })
 
