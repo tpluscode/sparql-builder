@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest --coverage",
     "prepack": "npm run build",
-    "build": "npm run build:node & npm run build:web",
+    "build": "npm run build:node; npm run build:web",
     "build:node": "tsc -p tsconfig.node.json",
     "build:web": "tsc -p tsconfig.es.json"
   },
