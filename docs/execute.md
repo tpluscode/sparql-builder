@@ -83,9 +83,9 @@ web applications.
 
 ```js
 const SparqlHttp = require('sparql-http-client')
-const { DESCRIBE } = require('@tpluscode/sparql-builder')
+const { CONSTRUCT, SELECT } = require('@tpluscode/sparql-builder')
 const { variable } = require('@rdfjs/data-model')
-const { dbo } = require('@tpluscode/rdf-ns-builders') 
+const { dbo, foaf } = require('@tpluscode/rdf-ns-builders') 
 const { turtle } = require('@tpluscode/rdf-string')
 const fetch = require('@rdfjs/fetch')
 
@@ -95,12 +95,19 @@ const client = new SparqlHttp({
 })
 
 const person = variable('person')
+const peopleBornInBerlin = SELECT`${person}`
+    .WHERE` ${person} ${dbo.birthPlace} <http://dbpedia.org/resource/Berlin>`
+    .LIMIT(100)
 
-const dataset = await DESCRIBE`${person}`
+const dataset = await CONSTRUCT`${person} ?p ?o`
     .WHERE`
-        ${person} ${dbo.birthPlace} <http://dbpedia.org/resource/Berlin> .
+        VALUES ?p { ${dbo.birthDate} ${dbo.deathDate} ${foaf.name} }
+        ${person} ?p ?o .
+        
+        {
+          ${peopleBornInBerlin} 
+        }
     `
-    .LIMIT(1)
     .execute(client)
     .then(results => results.dataset())
 
