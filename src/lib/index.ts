@@ -16,12 +16,17 @@ export interface SparqlQueryExecutable<TResult> {
 
 export type SparqlQuery<T> = SparqlQueryBuilder & SparqlQueryExecutable<T>
 
-export default function Builder<T extends SparqlQueryBuilder>(): Pick<SparqlQueryBuilder, 'build'> {
+type Builder = Pick<SparqlQueryBuilder, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
+
+export default function Builder<T extends SparqlQueryBuilder>(): Builder {
   return {
     build(this: SparqlQueryBuilder, { base }: SparqlBuildOptions = {}): string {
       return this._getTemplateResult().toString({
         base,
       })
+    },
+    _toPartialString(this: SparqlQueryBuilder, options: any) {
+      return this._getTemplateResult()._toPartialString(options)
     },
   }
 }
