@@ -66,12 +66,14 @@ import namespace from '@rdfjs/namespace'
 import { prefixes } from '@zazuko/rdf-vocabularies'
 import SparqlHttp from 'sparql-http-client'
 import { ASK } from '@tpluscode/sparql-builder'
+import fetch from 'isomorphic-fetch'
 
 const dbo = namespace(prefixes.dbo)
 const dbr = namespace('http://dbpedia.org/resource/')
 
 const client = new SparqlHttp({
-  endpoint: 'http://dbpedia.org/sparql',
+  endpointUrl: 'http://dbpedia.org/sparql',
+  fetch,
 })
 
 const scoobyDoo = dbr('Scooby-Doo')
@@ -86,6 +88,7 @@ const scoobyDoo = dbr('Scooby-Doo')
 ASK`${scoobyDoo} a ${dbo.Person}`
   .execute(client)
   .then(isScoobyAPerson => {
-    // Fun fact: DBpedia seems to claim that Scooby-Doo is indeed a Person...    
+    // Fun fact: DBpedia seems to claim that Scooby-Doo is indeed a Person...
+    return isScoobyAPerson
   })
 ```
