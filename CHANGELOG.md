@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/tpluscode/ts-template/compare/v0.1.1...v0.1.2) (2020-02-28)
+
+
+### Bug Fixes
+
+* it was impossible to interpolate another (sub-)query ([a060113](https://github.com/tpluscode/ts-template/commit/a060113c5969c2b63aed716dd4ac0eff4b61af4a))
+
 ### [0.1.1](https://github.com/tpluscode/ts-template/compare/v0.1.0...v0.1.1) (2020-02-25)
 
 
