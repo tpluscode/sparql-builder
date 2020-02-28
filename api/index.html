@@ -127,12 +127,14 @@
 <span class="hljs-keyword">import</span> { prefixes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@zazuko/rdf-vocabularies'</span>
 <span class="hljs-keyword">import</span> SparqlHttp <span class="hljs-keyword">from</span> <span class="hljs-string">'sparql-http-client'</span>
 <span class="hljs-keyword">import</span> { ASK } <span class="hljs-keyword">from</span> <span class="hljs-string">'@tpluscode/sparql-builder'</span>
+<span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>
 
 <span class="hljs-keyword">const</span> dbo = namespace(prefixes.dbo)
 <span class="hljs-keyword">const</span> dbr = namespace(<span class="hljs-string">'http://dbpedia.org/resource/'</span>)
 
 <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> SparqlHttp({
-  <span class="hljs-attr">endpoint</span>: <span class="hljs-string">'http://dbpedia.org/sparql'</span>,
+  <span class="hljs-attr">endpointUrl</span>: <span class="hljs-string">'http://dbpedia.org/sparql'</span>,
+  fetch,
 })
 
 <span class="hljs-keyword">const</span> scoobyDoo = dbr(<span class="hljs-string">'Scooby-Doo'</span>)
@@ -147,7 +149,8 @@
 ASK<span class="hljs-string">`<span class="hljs-subst">${scoobyDoo}</span> a <span class="hljs-subst">${dbo.Person}</span>`</span>
   .execute(client)
   .then(<span class="hljs-function"><span class="hljs-params">isScoobyAPerson</span> =&gt;</span> {
-    <span class="hljs-comment">// Fun fact: DBpedia seems to claim that Scooby-Doo is indeed a Person...    </span>
+    <span class="hljs-comment">// Fun fact: DBpedia seems to claim that Scooby-Doo is indeed a Person...</span>
+    <span class="hljs-keyword">return</span> isScoobyAPerson
   })</code></pre>
 			</div>
 		</div>
