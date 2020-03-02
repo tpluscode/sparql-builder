@@ -73,16 +73,18 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_lib_index_.sparqlaskexecutable.html" class="tsd-kind-icon">Sparql<wbr>Ask<wbr>Executable</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported"><a href="../interfaces/_lib_index_.sparqlbuildoptions.html" class="tsd-kind-icon">Sparql<wbr>Build<wbr>Options</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_lib_index_.sparqlquerybuilder.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Builder</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/_lib_index_.sparqlqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Executable</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_lib_index_.sparqlgraphqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Graph<wbr>Query<wbr>Executable</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-kind-icon">Sparql<wbr>Query</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_lib_index_.sparqlqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Executable</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_lib_index_.sparqlupdateexecutable.html" class="tsd-kind-icon">Sparql<wbr>Update<wbr>Executable</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_lib_index_.html#builder" class="tsd-kind-icon">Builder</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_lib_index_.html#sparqlquery" class="tsd-kind-icon">Sparql<wbr>Query</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -94,33 +96,17 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="builder" class="tsd-anchor"></a>
 					<h3>Builder</h3>
-					<div class="tsd-signature tsd-kind-icon">Builder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_lib_index_.sparqlquerybuilder.html" class="tsd-signature-type">SparqlQueryBuilder</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"build"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SparqlTemplateResult</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"_toPartialString"</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">Builder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"build"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SparqlTemplateResult</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"_toPartialString"</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/37ee53f/src/lib/index.ts#L19">lib/index.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/928cdbe/src/lib/index.ts#L30">lib/index.ts:30</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-					<a name="sparqlquery" class="tsd-anchor"></a>
-					<h3>Sparql<wbr>Query</h3>
-					<div class="tsd-signature tsd-kind-icon">Sparql<wbr>Query&lt;T&gt;<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_index_.sparqlquerybuilder.html" class="tsd-signature-type">SparqlQueryBuilder</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_lib_index_.sparqlqueryexecutable.html" class="tsd-signature-type">SparqlQueryExecutable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/37ee53f/src/lib/index.ts#L17">lib/index.ts:17</a></li>
-						</ul>
-					</aside>
-					<h4 class="tsd-type-parameters-title">Type parameters</h4>
-					<ul class="tsd-type-parameters">
-						<li>
-							<h4>T</h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -135,13 +121,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/37ee53f/src/lib/index.ts#L21">lib/index.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/928cdbe/src/lib/index.ts#L32">lib/index.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>T<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquerybuilder.html" class="tsd-signature-type">SparqlQueryBuilder</a></h4>
+									<h4>T<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a></h4>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type">Builder</a></h4>
@@ -205,20 +191,26 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_lib_index_.sparqlaskexecutable.html" class="tsd-kind-icon">Sparql<wbr>Ask<wbr>Executable</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../interfaces/_lib_index_.sparqlbuildoptions.html" class="tsd-kind-icon">Sparql<wbr>Build<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_lib_index_.sparqlquerybuilder.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Builder</a>
+						<a href="../interfaces/_lib_index_.sparqlgraphqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Graph<wbr>Query<wbr>Executable</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-kind-icon">Sparql<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_lib_index_.sparqlqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Executable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_lib_index_.sparqlupdateexecutable.html" class="tsd-kind-icon">Sparql<wbr>Update<wbr>Executable</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_lib_index_.html#builder" class="tsd-kind-icon">Builder</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_lib_index_.html#sparqlquery" class="tsd-kind-icon">Sparql<wbr>Query</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_lib_index_.html#builder-1" class="tsd-kind-icon">Builder</a>

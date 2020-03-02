@@ -62,21 +62,13 @@
 					<a href="_lib_index_.sparqlqueryexecutable.html">SparqlQueryExecutable</a>
 				</li>
 			</ul>
-			<h1>Interface SparqlQueryExecutable&lt;TResult&gt;</h1>
+			<h1>Interface SparqlQueryExecutable</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>TResult</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -104,13 +96,13 @@
 					<a name="execute" class="tsd-anchor"></a>
 					<h3>execute</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SparqlHttpClient</span>, requestInit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TResult</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SparqlHttpClient</span>, requestInit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Term</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/37ee53f/src/lib/index.ts#L14">lib/index.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/928cdbe/src/lib/index.ts#L15">lib/index.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -122,7 +114,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> requestInit: <span class="tsd-signature-type">RequestInit</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Term</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -183,15 +175,21 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_lib_index_.sparqlaskexecutable.html" class="tsd-kind-icon">Sparql<wbr>Ask<wbr>Executable</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_lib_index_.sparqlbuildoptions.html" class="tsd-kind-icon">Sparql<wbr>Build<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_lib_index_.sparqlquerybuilder.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Builder</a>
+						<a href="_lib_index_.sparqlgraphqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Graph<wbr>Query<wbr>Executable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_lib_index_.sparqlquery.html" class="tsd-kind-icon">Sparql<wbr>Query</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_lib_index_.sparqlqueryexecutable.html" class="tsd-kind-icon">Sparql<wbr>Query<wbr>Executable</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
@@ -201,11 +199,11 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_lib_index_.sparqlupdateexecutable.html" class="tsd-kind-icon">Sparql<wbr>Update<wbr>Executable</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_lib_index_.html#builder" class="tsd-kind-icon">Builder</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_lib_index_.html#sparqlquery" class="tsd-kind-icon">Sparql<wbr>Query</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../modules/_lib_index_.html#builder-1" class="tsd-kind-icon">Builder</a>
