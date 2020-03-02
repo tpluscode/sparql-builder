@@ -4,11 +4,10 @@ import { ask, graph, select, update } from '../src/lib/execute'
 import { sparqlClient } from './_mocks'
 import { SparqlQuery } from '../src/lib'
 
-const builder: Omit<SparqlQuery<any>, '_getTemplateResult'> = {
+const builder: Omit<SparqlQuery, '_getTemplateResult'> = {
   build(): string {
     return ''
   },
-  execute: jest.fn(),
 }
 
 describe('execute', () => {

@@ -1,9 +1,10 @@
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
-import Builder, { SparqlQuery } from './index'
+import Builder, { SparqlQuery, SparqlAskExecutable } from './index'
 import { ask } from './execute'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 
-type AskQuery = SparqlQuery<boolean>
+type AskQuery = SparqlQuery
+& SparqlAskExecutable
 & LimitOffsetBuilder<AskQuery> & {
   readonly patterns: SparqlTemplateResult
 }

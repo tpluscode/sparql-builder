@@ -1,31 +1,42 @@
 import { SparqlHttpClient } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
+import { Term } from 'rdf-js'
 
 interface SparqlBuildOptions {
   base?: string
 }
 
-export interface SparqlQueryBuilder {
+export interface SparqlQuery {
   build(options?: SparqlBuildOptions): string
   _getTemplateResult(): SparqlTemplateResult
 }
 
-export interface SparqlQueryExecutable<TResult> {
-  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<TResult>
+export interface SparqlQueryExecutable {
+  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<readonly Record<string, Term>[]>
 }
 
-export type SparqlQuery<T> = SparqlQueryBuilder & SparqlQueryExecutable<T>
+export interface SparqlGraphQueryExecutable {
+  execute<TResponse extends Response>(client: SparqlHttpClient<TResponse>, requestInit?: RequestInit): Promise<TResponse>
+}
 
-type Builder = Pick<SparqlQueryBuilder, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
+export interface SparqlUpdateExecutable {
+  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<void>
+}
 
-export default function Builder<T extends SparqlQueryBuilder>(): Builder {
+export interface SparqlAskExecutable {
+  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<boolean>
+}
+
+type Builder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
+
+export default function Builder<T extends SparqlQuery>(): Builder {
   return {
-    build(this: SparqlQueryBuilder, { base }: SparqlBuildOptions = {}): string {
+    build(this: SparqlQuery, { base }: SparqlBuildOptions = {}): string {
       return this._getTemplateResult().toString({
         base,
       })
     },
-    _toPartialString(this: SparqlQueryBuilder, options: any) {
+    _toPartialString(this: SparqlQuery, options: any) {
       return this._getTemplateResult()._toPartialString(options)
     },
   }

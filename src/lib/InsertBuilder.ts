@@ -1,18 +1,21 @@
 import { BlankNode, Literal, NamedNode } from 'rdf-js'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
-import Builder, { SparqlQuery } from './index'
+import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 import { update } from './execute'
 import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import InsertBuilderPartial, { InsertBuilder } from './partials/INSERT'
 
-type InsertQuery = SparqlQuery<void> & InsertBuilder<InsertQuery> & WhereBuilder<InsertQuery> & {
+type InsertQuery = SparqlQuery
+& SparqlUpdateExecutable
+& InsertBuilder<InsertQuery>
+& WhereBuilder<InsertQuery> & {
   readonly with?: NamedNode
   readonly using?: NamedNode[]
   readonly usingNamed?: NamedNode[]
 }
 
-type InsertData = SparqlQuery<void> & QuadDataBuilder<InsertData, NamedNode | Literal | BlankNode>
+type InsertData = SparqlQuery & SparqlUpdateExecutable & QuadDataBuilder<InsertData, NamedNode | Literal | BlankNode>
 
 export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]): InsertQuery => ({
   ...Builder(),
