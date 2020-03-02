@@ -2,7 +2,7 @@ import { SparqlHttpClient } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
 import { Term } from 'rdf-js'
 
-interface SparqlBuildOptions {
+export interface SparqlBuildOptions {
   base?: string
 }
 

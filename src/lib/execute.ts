@@ -3,6 +3,7 @@ import debug from 'debug'
 import { Term } from 'rdf-js'
 import {
   SparqlAskExecutable,
+  SparqlBuildOptions,
   SparqlGraphQueryExecutable,
   SparqlQuery,
   SparqlQueryExecutable,
@@ -11,6 +12,8 @@ import {
 
 const logQuery = debug('SPARQL')
 const logQueryError = logQuery.extend('error')
+
+type SparqlExecuteOptions = RequestInit & SparqlBuildOptions
 
 function checkResponse<T extends Response>(query: string) {
   return function assertSuccessfulResponse(response: T): T {
@@ -24,29 +27,29 @@ function checkResponse<T extends Response>(query: string) {
 }
 
 export const update: SparqlUpdateExecutable = {
-  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: RequestInit): Promise<void> {
-    await client.updateQuery(this.build(), requestInit).then(checkResponse(this.build()))
+  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<void> {
+    await client.updateQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
   },
 }
 
 export const ask: SparqlAskExecutable = {
-  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: RequestInit): Promise<boolean> {
-    const response = await client.selectQuery(this.build(), requestInit).then(checkResponse(this.build()))
+  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<boolean> {
+    const response = await client.selectQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
     const json = await response.json()
     return json.boolean
   },
 }
 
 export const select: SparqlQueryExecutable = {
-  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: RequestInit): Promise<readonly Record<string, Term>[]> {
-    const response = await client.selectQuery(this.build(), requestInit).then(checkResponse(this.build()))
+  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<readonly Record<string, Term>[]> {
+    const response = await client.selectQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
     const json = await response.json()
     return json.results.bindings
   },
 }
 
 export const graph: SparqlGraphQueryExecutable = {
-  async execute<T extends Response>(this: SparqlQuery, client: SparqlHttpClient<T>, requestInit: RequestInit): Promise<T> {
-    return client.constructQuery(this.build(), requestInit).then(checkResponse(this.build()))
+  async execute<T extends Response>(this: SparqlQuery, client: SparqlHttpClient<T>, requestInit: SparqlExecuteOptions): Promise<T> {
+    return client.constructQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
   },
 }
