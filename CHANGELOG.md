@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/tpluscode/ts-template/compare/v0.2.1...v0.2.2) (2020-03-02)
+
+
+### Bug Fixes
+
+* **execute:** incomplete export prevented the BASE from being applied ([7f301a5](https://github.com/tpluscode/ts-template/commit/7f301a51fc23999701abd4fa6e136b473f82911c))
+* **execute:** the build was not actually called when executing ([437a749](https://github.com/tpluscode/ts-template/commit/437a749580f4154c37768dd203402d9ceadb223b))
+
 ### [0.2.1](https://github.com/tpluscode/ts-template/compare/v0.2.0...v0.2.1) (2020-03-02)
 
 
