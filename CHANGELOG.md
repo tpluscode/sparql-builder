@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/tpluscode/ts-template/compare/v0.1.2...v0.2.0) (2020-03-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* will potentially break if `SparqlQuery<>` was imported and not only inferred
+
+### Bug Fixes
+
+* refactor execute to return the correct Response type ([928cdbe](https://github.com/tpluscode/ts-template/commit/928cdbe9c3e841b5546e128706df5f708a3d16e6))
+
 ### [0.1.2](https://github.com/tpluscode/ts-template/compare/v0.1.1...v0.1.2) (2020-02-28)
 
 
