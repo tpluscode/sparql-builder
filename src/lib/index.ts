@@ -2,9 +2,11 @@ import { SparqlHttpClient } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
 import { Term } from 'rdf-js'
 
-export interface SparqlBuildOptions {
+interface SparqlBuildOptions {
   base?: string
 }
+
+export type SparqlExecuteOptions = RequestInit & SparqlBuildOptions
 
 export interface SparqlQuery {
   build(options?: SparqlBuildOptions): string
@@ -12,19 +14,19 @@ export interface SparqlQuery {
 }
 
 export interface SparqlQueryExecutable {
-  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<readonly Record<string, Term>[]>
+  execute(client: SparqlHttpClient, options?: SparqlExecuteOptions): Promise<readonly Record<string, Term>[]>
 }
 
 export interface SparqlGraphQueryExecutable {
-  execute<TResponse extends Response>(client: SparqlHttpClient<TResponse>, requestInit?: RequestInit): Promise<TResponse>
+  execute<TResponse extends Response>(client: SparqlHttpClient<TResponse>, options?: SparqlExecuteOptions): Promise<TResponse>
 }
 
 export interface SparqlUpdateExecutable {
-  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<void>
+  execute(client: SparqlHttpClient, options?: SparqlExecuteOptions): Promise<void>
 }
 
 export interface SparqlAskExecutable {
-  execute(client: SparqlHttpClient, requestInit?: RequestInit): Promise<boolean>
+  execute(client: SparqlHttpClient, options?: SparqlExecuteOptions): Promise<boolean>
 }
 
 type Builder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>

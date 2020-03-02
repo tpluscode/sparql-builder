@@ -3,7 +3,7 @@ import debug from 'debug'
 import { Term } from 'rdf-js'
 import {
   SparqlAskExecutable,
-  SparqlBuildOptions,
+  SparqlExecuteOptions,
   SparqlGraphQueryExecutable,
   SparqlQuery,
   SparqlQueryExecutable,
@@ -12,8 +12,6 @@ import {
 
 const logQuery = debug('SPARQL')
 const logQueryError = logQuery.extend('error')
-
-type SparqlExecuteOptions = RequestInit & SparqlBuildOptions
 
 function checkResponse<T extends Response>(query: string) {
   return function assertSuccessfulResponse(response: T): T {
