@@ -1,4 +1,4 @@
-import { SparqlHttpClient } from 'sparql-http-client'
+import { QueryRequestInit, SparqlHttpClient } from 'sparql-http-client'
 import debug from 'debug'
 import { Term } from 'rdf-js'
 import {
@@ -24,15 +24,22 @@ function checkResponse<T extends Response>(query: string) {
   }
 }
 
+function buildAndRun<T extends Response>(builder: SparqlQuery, clientExecute: (query: string, options?: QueryRequestInit) => Promise<T>, requestInit: SparqlExecuteOptions): Promise<T> {
+  const query = builder.build(requestInit)
+  logQuery(query)
+
+  return clientExecute(query, requestInit).then(checkResponse(query))
+}
+
 export const update: SparqlUpdateExecutable = {
   async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<void> {
-    await client.updateQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
+    await buildAndRun(this, client.updateQuery, requestInit)
   },
 }
 
 export const ask: SparqlAskExecutable = {
   async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<boolean> {
-    const response = await client.selectQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
+    const response = await buildAndRun(this, client.selectQuery, requestInit)
     const json = await response.json()
     return json.boolean
   },
@@ -40,7 +47,7 @@ export const ask: SparqlAskExecutable = {
 
 export const select: SparqlQueryExecutable = {
   async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<readonly Record<string, Term>[]> {
-    const response = await client.selectQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
+    const response = await buildAndRun(this, client.selectQuery, requestInit)
     const json = await response.json()
     return json.results.bindings
   },
@@ -48,6 +55,6 @@ export const select: SparqlQueryExecutable = {
 
 export const graph: SparqlGraphQueryExecutable = {
   async execute<T extends Response>(this: SparqlQuery, client: SparqlHttpClient<T>, requestInit: SparqlExecuteOptions): Promise<T> {
-    return client.constructQuery(this.build(), requestInit).then(checkResponse(this.build(requestInit)))
+    return buildAndRun(this, client.constructQuery, requestInit)
   },
 }
