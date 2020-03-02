@@ -1,11 +1,14 @@
 import { NamedNode, Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
-import Builder, { SparqlQuery } from './index'
+import Builder, { SparqlGraphQueryExecutable, SparqlQuery } from './index'
 import { graph } from './execute'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 
-type DescribeQuery = SparqlQuery<Response> & WhereBuilder<DescribeQuery> & LimitOffsetBuilder<DescribeQuery> & {
+type DescribeQuery = SparqlQuery
+& SparqlGraphQueryExecutable
+& WhereBuilder<DescribeQuery>
+& LimitOffsetBuilder<DescribeQuery> & {
   readonly described: SparqlTemplateResult
 }
 

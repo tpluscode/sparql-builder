@@ -1,13 +1,14 @@
-import { DefaultGraph, NamedNode, Term, Variable } from 'rdf-js'
+import { DefaultGraph, NamedNode, Variable } from 'rdf-js'
 import { defaultGraph } from '@rdfjs/data-model'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import { select } from './execute'
-import Builder, { SparqlQuery } from './index'
+import Builder, { SparqlQuery, SparqlQueryExecutable } from './index'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 import ORDER, { OrderBuilder } from './partials/ORDER'
 
-type SelectQuery = SparqlQuery<readonly Record<string, Term>[]>
+type SelectQuery = SparqlQuery
+& SparqlQueryExecutable
 & WhereBuilder<SelectQuery>
 & LimitOffsetBuilder<SelectQuery>
 & OrderBuilder<SelectQuery>

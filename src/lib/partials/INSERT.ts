@@ -1,6 +1,6 @@
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
-import { SparqlQueryBuilder } from '../index'
+import { SparqlQuery } from '../index'
 import { concat } from '../TemplateResult'
 
 export interface InsertBuilder<T> {
@@ -9,7 +9,7 @@ export interface InsertBuilder<T> {
   INSERT(strings: TemplateStringsArray, ...values: SparqlValue[]): T
 }
 
-export default <T extends SparqlQueryBuilder & InsertBuilder<T>>(insertPatterns: SparqlTemplateResult | null = null): InsertBuilder<T> => ({
+export default <T extends SparqlQuery & InsertBuilder<T>>(insertPatterns: SparqlTemplateResult | null = null): InsertBuilder<T> => ({
   insertPatterns,
   insertClause(): SparqlTemplateResult {
     return sparql`INSERT{

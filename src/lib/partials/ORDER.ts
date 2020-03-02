@@ -1,4 +1,4 @@
-import { SparqlQueryBuilder } from '../index'
+import { SparqlQuery } from '../index'
 import { Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 
@@ -17,7 +17,7 @@ export interface OrderBuilder<T> {
   ORDER(): OrderByBuilder<T>
 }
 
-export default <T extends SparqlQueryBuilder & OrderBuilder<T>>(): OrderBuilder<T> => ({
+export default <T extends SparqlQuery & OrderBuilder<T>>(): OrderBuilder<T> => ({
   orderConditions: [],
   ORDER(): OrderByBuilder<T> {
     return {
