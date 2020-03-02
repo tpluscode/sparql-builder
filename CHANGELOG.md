@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/tpluscode/ts-template/compare/v0.2.0...v0.2.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* it's impossible to use BASE with execute ([2c43d2b](https://github.com/tpluscode/ts-template/commit/2c43d2bb110fb5c171c2497af11ba1108453559b))
+
 ## [0.2.0](https://github.com/tpluscode/ts-template/compare/v0.1.2...v0.2.0) (2020-03-02)
 
 
