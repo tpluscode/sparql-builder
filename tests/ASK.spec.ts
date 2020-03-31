@@ -17,7 +17,7 @@ describe('ASK', () => {
     expect(query).toMatchQuery(expected)
   })
 
-  it('executes as select', async () => {
+  it('executes as ask', async () => {
     // given
     const client = sparqlClient()
 
@@ -25,7 +25,7 @@ describe('ASK', () => {
     await ASK``.execute(client)
 
     // then
-    expect(client.selectQuery).toHaveBeenCalled()
+    expect(client.ask).toHaveBeenCalled()
   })
 
   it('supports LIMIT/OFFSET', () => {

@@ -1,6 +1,6 @@
-import { QueryRequestInit, SparqlHttpClient } from 'sparql-http-client'
+import { QueryOptions, ConstructQuery, SelectQuery, UpdateQuery, AskQuery } from 'sparql-http-client'
 import debug from 'debug'
-import { Term } from 'rdf-js'
+import { BaseQuad, Quad } from 'rdf-js'
 import {
   SparqlAskExecutable,
   SparqlExecuteOptions,
@@ -13,48 +13,38 @@ import {
 const logQuery = debug('SPARQL')
 const logQueryError = logQuery.extend('error')
 
-function checkResponse<T extends Response>(query: string) {
-  return function assertSuccessfulResponse(response: T): T {
-    if (response.ok) {
-      return response
-    }
-
-    logQueryError('Failed query %s', query)
-    throw new Error(response.statusText)
-  }
-}
-
-function buildAndRun<T extends Response>(builder: SparqlQuery, clientExecute: (query: string, options?: QueryRequestInit) => Promise<T>, requestInit: SparqlExecuteOptions): Promise<T> {
+function buildAndRun<TResult>(builder: SparqlQuery, clientExecute: (query: string, options?: QueryOptions) => TResult, requestInit: SparqlExecuteOptions): TResult {
   const query = builder.build(requestInit)
   logQuery(query)
 
-  return clientExecute(query, requestInit).then(checkResponse(query))
+  try {
+    return clientExecute(query, requestInit)
+  } catch (e) {
+    logQueryError('Failed query %s', query)
+    throw e
+  }
 }
 
 export const update: SparqlUpdateExecutable = {
-  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<void> {
-    await buildAndRun(this, client.updateQuery, requestInit)
+  async execute<TUpdate, TQuery extends UpdateQuery<TUpdate>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TUpdate> {
+    return buildAndRun(this, client.update.bind(client), requestInit)
   },
 }
 
 export const ask: SparqlAskExecutable = {
-  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<boolean> {
-    const response = await buildAndRun(this, client.selectQuery, requestInit)
-    const json = await response.json()
-    return json.boolean
+  execute<TAsk, TQuery extends AskQuery<TAsk>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TAsk> {
+    return buildAndRun(this, client.ask.bind(client), requestInit)
   },
 }
 
 export const select: SparqlQueryExecutable = {
-  async execute(this: SparqlQuery, client: SparqlHttpClient, requestInit: SparqlExecuteOptions): Promise<readonly Record<string, Term>[]> {
-    const response = await buildAndRun(this, client.selectQuery, requestInit)
-    const json = await response.json()
-    return json.results.bindings
+  execute<TSelect, TQuery extends SelectQuery<TSelect>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TSelect> {
+    return buildAndRun(this, client.select.bind(client), requestInit)
   },
 }
 
 export const graph: SparqlGraphQueryExecutable = {
-  async execute<T extends Response>(this: SparqlQuery, client: SparqlHttpClient<T>, requestInit: SparqlExecuteOptions): Promise<T> {
-    return buildAndRun(this, client.constructQuery, requestInit)
+  execute<TConstruct, TQuery extends ConstructQuery<TConstruct>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TConstruct> {
+    return buildAndRun(this, client.construct.bind(client), requestInit)
   },
 }

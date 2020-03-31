@@ -25,14 +25,11 @@ const defaultDefaults: SparqlClientDefaults = {
   },
 }
 
-class ConstructResponse extends Response {
-  quadStream = jest.fn()
-}
-
 export function sparqlClient(mockDefaults: SparqlClientDefaults = defaultDefaults) {
   return {
-    updateQuery: jest.fn().mockResolvedValue(new Response(mockDefaults?.update?.body, mockDefaults?.update?.response)),
-    selectQuery: jest.fn().mockResolvedValue(new Response(mockDefaults?.select?.body, mockDefaults?.select?.response)),
-    constructQuery: jest.fn().mockResolvedValue(new ConstructResponse(mockDefaults?.construct?.body, mockDefaults?.construct?.response)),
+    ask: jest.fn(),
+    select: jest.fn(),
+    construct: jest.fn(),
+    update: jest.fn(),
   }
 }

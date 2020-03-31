@@ -13,7 +13,7 @@ describe('CONSTRUCT', () => {
     CONSTRUCT``.execute(client)
 
     // then
-    expect(client.constructQuery).toHaveBeenCalled()
+    expect(client.construct).toHaveBeenCalled()
   })
 
   it('generates empty WHERE clause by default', () => {

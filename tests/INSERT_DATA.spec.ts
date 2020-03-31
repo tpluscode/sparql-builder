@@ -23,7 +23,7 @@ INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     await INSERT.DATA`<http://example.com> owl:sameAs <http://example.org>`.execute(client)
 
     // then
-    expect(client.updateQuery).toHaveBeenCalled()
+    expect(client.update).toHaveBeenCalled()
   })
 
   it('can chain multiple quad data calls', () => {

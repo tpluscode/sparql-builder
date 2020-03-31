@@ -12,7 +12,7 @@ describe('DESCRIBE', () => {
     await DESCRIBE``.execute(client)
 
     // then
-    expect(client.constructQuery).toHaveBeenCalled()
+    expect(client.construct).toHaveBeenCalled()
   })
 
   it('builds a DESCRIBE without WHERE', () => {

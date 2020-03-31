@@ -14,7 +14,9 @@ npm i -S sparql-http-client
 The query is executed by invoking an `execute` method of a query builder instance. It takes a `SparqlHttpClient` as first, required parameter and an optional second which is defined as:
 
 ```typescript
-type SparqlExecuteOptions = RequestInit & {
+import { QueryOptions } from 'sparql-http-client'
+
+type SparqlExecuteOptions = QueryOptions & {
     base?: string
 }
 ```
@@ -36,43 +38,7 @@ or similar can be used.
 
 <run-kit>
 
-```js
-const SparqlHttp = require('sparql-http-client')
-const { SELECT } = require('@tpluscode/sparql-builder')
-const { variable } = require('@rdfjs/data-model')
-const { dbo, foaf } = require('@tpluscode/rdf-ns-builders') 
-const fetch = require('isomorphic-fetch')
-
-const client = new SparqlHttp({
-  endpointUrl: 'http://dbpedia.org/sparql',
-  fetch,
-})
-
-const name = variable('name')
-const birth = variable('birth')
-const death = variable('death')
-const person = variable('person')
-const maxBirth = new Date(1900, 1, 1)
-
-const results = await SELECT`${name} ${birth} ${death} ${person}`
-    .WHERE`
-        ${person} ${dbo.birthPlace} <http://dbpedia.org/resource/Berlin> .
-        ${person} ${dbo.birthDate} ${birth} .
-        ${person} ${foaf.name} ${name} .
-        ${person} ${dbo.deathDate} ${death} .
-    `
-    .LIMIT(20)
-    // .FILTER`${birth} < ${maxBirth}`
-    .ORDER().BY(name)
-    .execute(client)
-
-results.map(r => ({
-    person: r.person.value,
-    name: r.name.value,
-    birth: r.birth.value,
-    death: r.death.value,
-}))
-```
+[select](examples/execute-select.js ':include')
 
 </run-kit>
 
@@ -93,37 +59,6 @@ web applications.
 
 <run-kit>
 
-```js
-const SparqlHttp = require('sparql-http-client')
-const { CONSTRUCT, SELECT } = require('@tpluscode/sparql-builder')
-const { variable } = require('@rdfjs/data-model')
-const { dbo, foaf } = require('@tpluscode/rdf-ns-builders') 
-const { turtle } = require('@tpluscode/rdf-string')
-const fetch = require('@rdfjs/fetch')
-
-const client = new SparqlHttp({
-  endpointUrl: 'http://dbpedia.org/sparql',
-  fetch,
-})
-
-const person = variable('person')
-const peopleBornInBerlin = SELECT`${person}`
-    .WHERE` ${person} ${dbo.birthPlace} <http://dbpedia.org/resource/Berlin>`
-    .LIMIT(100)
-
-const dataset = await CONSTRUCT`${person} ?p ?o`
-    .WHERE`
-        VALUES ?p { ${dbo.birthDate} ${dbo.deathDate} ${foaf.name} }
-        ${person} ?p ?o .
-        
-        {
-          ${peopleBornInBerlin} 
-        }
-    `
-    .execute(client)
-    .then(results => results.dataset())
-
-turtle`${dataset}`.toString()
-```
+[select](examples/execute-construct.js ':include')
 
 </run-kit>
