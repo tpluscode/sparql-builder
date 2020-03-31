@@ -1,12 +1,12 @@
-import { SparqlHttpClient } from 'sparql-http-client'
+import { AskQuery, ConstructQuery, QueryOptions, SelectQuery, UpdateQuery } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
-import { Term } from 'rdf-js'
+import { BaseQuad, Quad } from 'rdf-js'
 
 interface SparqlBuildOptions {
   base?: string
 }
 
-export type SparqlExecuteOptions = RequestInit & SparqlBuildOptions
+export type SparqlExecuteOptions = QueryOptions & SparqlBuildOptions
 
 export interface SparqlQuery {
   build(options?: SparqlBuildOptions): string
@@ -14,19 +14,19 @@ export interface SparqlQuery {
 }
 
 export interface SparqlQueryExecutable {
-  execute(client: SparqlHttpClient, options?: SparqlExecuteOptions): Promise<readonly Record<string, Term>[]>
+  execute<TSelect, TQuery extends SelectQuery<TSelect>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TSelect>
 }
 
 export interface SparqlGraphQueryExecutable {
-  execute<TResponse extends Response>(client: SparqlHttpClient<TResponse>, options?: SparqlExecuteOptions): Promise<TResponse>
+  execute<TConstruct, TQuery extends ConstructQuery<TConstruct>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TConstruct>
 }
 
 export interface SparqlUpdateExecutable {
-  execute(client: SparqlHttpClient, options?: SparqlExecuteOptions): Promise<void>
+  execute<TUpdate, TQuery extends UpdateQuery<TUpdate>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TUpdate>
 }
 
 export interface SparqlAskExecutable {
-  execute(client: SparqlHttpClient, options?: SparqlExecuteOptions): Promise<boolean>
+  execute<TAsk, TQuery extends AskQuery<TAsk>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TAsk>
 }
 
 type Builder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>

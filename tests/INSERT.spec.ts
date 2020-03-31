@@ -61,6 +61,6 @@ describe('INSERT', () => {
     await INSERT``.execute(client)
 
     // then
-    expect(client.updateQuery).toHaveBeenCalled()
+    expect(client.update).toHaveBeenCalled()
   })
 })

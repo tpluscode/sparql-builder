@@ -12,7 +12,7 @@ describe('SELECT', () => {
     SELECT``.execute(client)
 
     // then
-    expect(client.selectQuery).toHaveBeenCalled()
+    expect(client.select).toHaveBeenCalled()
   })
 
   it('creates a simple select/where', () => {

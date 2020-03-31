@@ -1,5 +1,5 @@
 import { Term } from 'rdf-js'
-import { SparqlHttpClient } from 'sparql-http-client'
+import { SelectQuery, AskQuery, ConstructQuery, UpdateQuery } from 'sparql-http-client'
 import { ask, graph, select, update } from '../src/lib/execute'
 import { sparqlClient } from './_mocks'
 import { SparqlQuery } from '../src/lib'
@@ -12,7 +12,7 @@ const builder: Omit<SparqlQuery, '_getTemplateResult'> = {
 
 describe('execute', () => {
   describe('select', () => {
-    let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<readonly Record<string, Term>[]>
+    let execute: (client: SelectQuery<any>, requestInit: RequestInit) => Promise<readonly Record<string, Term>[]>
 
     beforeEach(() => {
       execute = select.execute.bind(builder)
@@ -30,7 +30,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.selectQuery).toHaveBeenCalledWith('', {
+      expect(client.select).toHaveBeenCalledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -38,7 +38,7 @@ describe('execute', () => {
     })
   })
   describe('graph', () => {
-    let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<Response>
+    let execute: (client: ConstructQuery<any>, requestInit: RequestInit) => Promise<Response>
 
     beforeEach(() => {
       execute = graph.execute.bind(builder)
@@ -56,7 +56,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.constructQuery).toHaveBeenCalledWith('', {
+      expect(client.construct).toHaveBeenCalledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -64,7 +64,7 @@ describe('execute', () => {
     })
   })
   describe('update', () => {
-    let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<void>
+    let execute: (client: UpdateQuery<any>, requestInit: RequestInit) => Promise<void>
 
     beforeEach(() => {
       execute = update.execute.bind(builder)
@@ -82,7 +82,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.updateQuery).toHaveBeenCalledWith('', {
+      expect(client.update).toHaveBeenCalledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -91,7 +91,7 @@ describe('execute', () => {
   })
 
   describe('ask', () => {
-    let execute: (client: SparqlHttpClient, requestInit: RequestInit) => Promise<boolean>
+    let execute: (client: AskQuery<any>, requestInit: RequestInit) => Promise<boolean>
 
     beforeEach(() => {
       execute = ask.execute.bind(builder)
@@ -109,7 +109,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.selectQuery).toHaveBeenCalledWith('', {
+      expect(client.ask).toHaveBeenCalledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },

@@ -92,3 +92,14 @@ ASK`${scoobyDoo} a ${dbo.Person}`
     return isScoobyAPerson
   })
 ```
+
+## Running examples
+
+The example in [`docs/examples`](docs/examples) can be executed locally. To do so, first replace the package import to point to the repository root.
+
+```diff
+-const { /* */ } = require('@tpluscode/sparql-builder')
++const { /* */ } = require('../..')
+```
+
+Then simply `npm run example`.

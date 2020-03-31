@@ -61,6 +61,6 @@ describe('DELETE', () => {
     await DELETE``.execute(client)
 
     // then
-    expect(client.updateQuery).toHaveBeenCalled()
+    expect(client.update).toHaveBeenCalled()
   })
 })
