@@ -1,5 +1,5 @@
 const ParsingClient = require('sparql-http-client/ParsingClient')
-const { SELECT } = require('@tpluscode/sparql-query')
+const { SELECT } = require('@tpluscode/sparql-builder')
 const { variable } = require('@rdfjs/data-model')
 const { dbo, foaf } = require('@tpluscode/rdf-ns-builders')
 
