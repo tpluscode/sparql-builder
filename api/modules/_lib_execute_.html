@@ -103,7 +103,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Debugger</span><span class="tsd-signature-symbol"> = debug(&#x27;SPARQL&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L13">lib/execute.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L12">lib/execute.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -113,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<wbr>Query<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Debugger</span><span class="tsd-signature-symbol"> = logQuery.extend(&#x27;error&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L14">lib/execute.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L13">lib/execute.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -130,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L16">lib/execute.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L15">lib/execute.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -185,32 +185,26 @@
 					<div class="tsd-signature tsd-kind-icon">ask<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L34">lib/execute.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L33">lib/execute.ts:33</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
 						<a name="ask.execute" class="tsd-anchor"></a>
 						<h3>execute</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
-							<li class="tsd-signature tsd-kind-icon">execute&lt;TAsk, TQuery, Q&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAsk</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">execute&lt;TQuery&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"ask"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L35">lib/execute.ts:35</a></li>
+										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L34">lib/execute.ts:34</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-type-parameters-title">Type parameters</h4>
 								<ul class="tsd-type-parameters">
 									<li>
-										<h4>TAsk</h4>
-									</li>
-									<li>
-										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AskQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAsk</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-									<li>
-										<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BaseQuad</span></h4>
+										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AskQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 									</li>
 								</ul>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -225,7 +219,7 @@
 										<h5>requestInit: <a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a></h5>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAsk</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"ask"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							</li>
 						</ul>
 					</section>
@@ -236,32 +230,26 @@
 					<div class="tsd-signature tsd-kind-icon">graph<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L46">lib/execute.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L45">lib/execute.ts:45</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
 						<a name="graph.execute-1" class="tsd-anchor"></a>
 						<h3>execute</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
-							<li class="tsd-signature tsd-kind-icon">execute&lt;TConstruct, TQuery, Q&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TConstruct</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">execute&lt;TQuery&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"construct"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L47">lib/execute.ts:47</a></li>
+										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L46">lib/execute.ts:46</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-type-parameters-title">Type parameters</h4>
 								<ul class="tsd-type-parameters">
 									<li>
-										<h4>TConstruct</h4>
-									</li>
-									<li>
-										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConstructQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TConstruct</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-									<li>
-										<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BaseQuad</span></h4>
+										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConstructQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 									</li>
 								</ul>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -276,7 +264,7 @@
 										<h5>requestInit: <a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a></h5>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TConstruct</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"construct"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							</li>
 						</ul>
 					</section>
@@ -287,32 +275,26 @@
 					<div class="tsd-signature tsd-kind-icon">select<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L40">lib/execute.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L39">lib/execute.ts:39</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
 						<a name="select.execute-2" class="tsd-anchor"></a>
 						<h3>execute</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
-							<li class="tsd-signature tsd-kind-icon">execute&lt;TSelect, TQuery, Q&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TSelect</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">execute&lt;TQuery&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"select"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L41">lib/execute.ts:41</a></li>
+										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L40">lib/execute.ts:40</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-type-parameters-title">Type parameters</h4>
 								<ul class="tsd-type-parameters">
 									<li>
-										<h4>TSelect</h4>
-									</li>
-									<li>
-										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SelectQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TSelect</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-									<li>
-										<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BaseQuad</span></h4>
+										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SelectQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 									</li>
 								</ul>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -327,7 +309,7 @@
 										<h5>requestInit: <a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a></h5>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TSelect</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"select"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							</li>
 						</ul>
 					</section>
@@ -338,32 +320,26 @@
 					<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L28">lib/execute.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L27">lib/execute.ts:27</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
 						<a name="update.execute-3" class="tsd-anchor"></a>
 						<h3>execute</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal tsd-has-type-parameter">
-							<li class="tsd-signature tsd-kind-icon">execute&lt;TUpdate, TQuery, Q&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TUpdate</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">execute&lt;TQuery&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a>, client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TQuery</span>, requestInit<span class="tsd-signature-symbol">: </span><a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"update"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/1464e7a/src/lib/execute.ts#L29">lib/execute.ts:29</a></li>
+										<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/592e648/src/lib/execute.ts#L28">lib/execute.ts:28</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-type-parameters-title">Type parameters</h4>
 								<ul class="tsd-type-parameters">
 									<li>
-										<h4>TUpdate</h4>
-									</li>
-									<li>
-										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UpdateQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TUpdate</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-									<li>
-										<h4>Q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BaseQuad</span></h4>
+										<h4>TQuery<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UpdateQuery</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 									</li>
 								</ul>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -378,7 +354,7 @@
 										<h5>requestInit: <a href="_lib_index_.html#sparqlexecuteoptions" class="tsd-signature-type">SparqlExecuteOptions</a></h5>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TUpdate</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TQuery</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"update"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							</li>
 						</ul>
 					</section>
