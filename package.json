@@ -59,7 +59,8 @@
     "sparql-http-client": "^2.2.0",
     "sparqljs": "^3.0.1",
     "standard": "^14.3.1",
-    "typescript": "^3.7.5"
+    "typedoc": "^0.17.3",
+    "typescript": "^3.8.3"
   },
   "repository": {
     "type": "git",
