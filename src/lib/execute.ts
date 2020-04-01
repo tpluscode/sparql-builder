@@ -1,6 +1,5 @@
 import { QueryOptions, ConstructQuery, SelectQuery, UpdateQuery, AskQuery } from 'sparql-http-client'
 import debug from 'debug'
-import { BaseQuad, Quad } from 'rdf-js'
 import {
   SparqlAskExecutable,
   SparqlExecuteOptions,
@@ -26,25 +25,25 @@ function buildAndRun<TResult>(builder: SparqlQuery, clientExecute: (query: strin
 }
 
 export const update: SparqlUpdateExecutable = {
-  async execute<TUpdate, TQuery extends UpdateQuery<TUpdate>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TUpdate> {
-    return buildAndRun(this, client.update.bind(client), requestInit)
+  execute<TQuery extends UpdateQuery<any>>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): ReturnType<TQuery['update']> {
+    return buildAndRun(this, client.update.bind(client) as any, requestInit)
   },
 }
 
 export const ask: SparqlAskExecutable = {
-  execute<TAsk, TQuery extends AskQuery<TAsk>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TAsk> {
-    return buildAndRun(this, client.ask.bind(client), requestInit)
+  execute<TQuery extends AskQuery<any>>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): ReturnType<TQuery['ask']> {
+    return buildAndRun(this, client.ask.bind(client) as any, requestInit)
   },
 }
 
 export const select: SparqlQueryExecutable = {
-  execute<TSelect, TQuery extends SelectQuery<TSelect>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TSelect> {
-    return buildAndRun(this, client.select.bind(client), requestInit)
+  execute<TQuery extends SelectQuery<any>>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): ReturnType<TQuery['select']> {
+    return buildAndRun(this, client.select.bind(client) as any, requestInit)
   },
 }
 
 export const graph: SparqlGraphQueryExecutable = {
-  execute<TConstruct, TQuery extends ConstructQuery<TConstruct>, Q extends BaseQuad = Quad>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): Promise<TConstruct> {
-    return buildAndRun(this, client.construct.bind(client), requestInit)
+  execute<TQuery extends ConstructQuery<any>>(this: SparqlQuery, client: TQuery, requestInit: SparqlExecuteOptions): ReturnType<TQuery['construct']> {
+    return buildAndRun(this, client.construct.bind(client) as any, requestInit)
   },
 }

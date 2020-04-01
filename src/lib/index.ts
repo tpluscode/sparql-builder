@@ -1,6 +1,5 @@
 import { AskQuery, ConstructQuery, QueryOptions, SelectQuery, UpdateQuery } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
-import { BaseQuad, Quad } from 'rdf-js'
 
 interface SparqlBuildOptions {
   base?: string
@@ -14,19 +13,19 @@ export interface SparqlQuery {
 }
 
 export interface SparqlQueryExecutable {
-  execute<TSelect, TQuery extends SelectQuery<TSelect>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TSelect>
+  execute<TQuery extends SelectQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['select']>
 }
 
 export interface SparqlGraphQueryExecutable {
-  execute<TConstruct, TQuery extends ConstructQuery<TConstruct>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TConstruct>
+  execute<TQuery extends ConstructQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['construct']>
 }
 
 export interface SparqlUpdateExecutable {
-  execute<TUpdate, TQuery extends UpdateQuery<TUpdate>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TUpdate>
+  execute<TQuery extends UpdateQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['update']>
 }
 
 export interface SparqlAskExecutable {
-  execute<TAsk, TQuery extends AskQuery<TAsk>, Q extends BaseQuad = Quad>(client: TQuery, requestInit?: SparqlExecuteOptions): Promise<TAsk>
+  execute<TQuery extends AskQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['ask']>
 }
 
 type Builder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
