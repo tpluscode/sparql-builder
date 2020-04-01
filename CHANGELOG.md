@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/tpluscode/ts-template/compare/v0.3.0...v0.3.1) (2020-04-01)
+
+
+### Bug Fixes
+
+* parameters of execute were not correctly inferred ([87ed666](https://github.com/tpluscode/ts-template/commit/87ed666a853a46adc08eba33ee8eaf9dddc38080))
+
 ## [0.3.0](https://github.com/tpluscode/ts-template/compare/v0.2.2...v0.3.0) (2020-04-01)
 
 
