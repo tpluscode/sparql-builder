@@ -1,5 +1,5 @@
 import ParsingClient from 'sparql-http-client/ParsingClient'
-import {ASK, CONSTRUCT, SELECT} from '../src'
+import { ASK, CONSTRUCT, SELECT } from '../src'
 
 describe('ParsingClient', () => {
   describe('ASK', () => {
