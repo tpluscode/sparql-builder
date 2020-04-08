@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/tpluscode/ts-template/compare/v0.3.1...v0.3.2) (2020-04-08)
+
+
+### Bug Fixes
+
+* skip INSERT in DELETE when empty ([5f0a734](https://github.com/tpluscode/ts-template/commit/5f0a734337480bb618c52b269bca62d64c7c8237))
+
 ### [0.3.1](https://github.com/tpluscode/ts-template/compare/v0.3.0...v0.3.1) (2020-04-01)
 
 
