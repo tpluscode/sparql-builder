@@ -36,6 +36,10 @@ export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]):
     }
   },
   _getTemplateResult() {
+    if (!this.insertPatterns) {
+      return sparql`DELETE { ${this.deletePatterns} } ${this.whereClause()}`
+    }
+
     return sparql`DELETE { ${this.deletePatterns} } ${this.insertClause()} ${this.whereClause()}`
   },
 })
