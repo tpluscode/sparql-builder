@@ -1,4 +1,4 @@
-import { owl, schema } from '@tpluscode/rdf-ns-builders'
+import { foaf, owl, schema } from '@tpluscode/rdf-ns-builders'
 import { sparqlClient } from './_mocks'
 import { DELETE } from '../src'
 
@@ -34,6 +34,15 @@ describe('DELETE', () => {
     expect(query).toMatchQuery(expected)
   })
 
+  it('skips empty INSERT clause', () => {
+    // when
+    const query = DELETE`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+      .build()
+
+    // then
+    expect(query).not.toContain('INSERT')
+  })
+
   it('has a WHERE method', () => {
     // given
     const expected = `PREFIX schema: <http://schema.org/> 
@@ -47,6 +56,29 @@ describe('DELETE', () => {
     // when
     const query = DELETE`?s ?p ?o .`
       .WHERE`?s a ${schema.Person} ; ?p ?o`
+      .build()
+
+    // then
+    expect(query).toMatchQuery(expected)
+  })
+
+  it('complete DELETE/INSERT/WHERE', () => {
+    // given
+    const expected = `PREFIX schema: <http://schema.org/> 
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+    
+    DELETE {
+      ?s a foaf:Person .
+    } INSERT {
+      ?s a schema:Person . 
+    } WHERE {
+      ?s a foaf:Person .
+    }`
+
+    // when
+    const query = DELETE`?s a ${foaf.Person}`
+      .INSERT`?s a ${schema.Person}`
+      .WHERE`?s a ${foaf.Person}`
       .build()
 
     // then

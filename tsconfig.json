@@ -21,8 +21,8 @@
   "files": [
     "src/index.ts"
   ],
+  "include": ["tests/*.ts", "docs"],
   "typedocOptions": {
-    "inputFiles": ["src/"],
-    "exclude": "tests/**/*.ts"
+    "inputFiles": ["src/"]
   }
 }
