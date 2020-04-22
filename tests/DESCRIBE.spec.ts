@@ -1,5 +1,5 @@
 import namespace from '@rdfjs/namespace'
-import { namedNode, variable } from '@rdfjs/data-model'
+import RDF from '@rdfjs/data-model'
 import { sparqlClient } from './_mocks'
 import { DESCRIBE } from '../src'
 
@@ -20,7 +20,7 @@ describe('DESCRIBE', () => {
     const expected = 'DESCRIBE <urn:foo:bar>'
 
     // when
-    const actual = DESCRIBE`${namedNode('urn:foo:bar')}`.build()
+    const actual = DESCRIBE`${RDF.namedNode('urn:foo:bar')}`.build()
 
     // then
     expect(actual).toMatchQuery(expected)
@@ -31,7 +31,7 @@ describe('DESCRIBE', () => {
     const expected = 'DESCRIBE ?foo LIMIT 100 OFFSET 200'
 
     // when
-    const actual = DESCRIBE`${variable('foo')}`.LIMIT(100).OFFSET(200).build()
+    const actual = DESCRIBE`${RDF.variable('foo')}`.LIMIT(100).OFFSET(200).build()
 
     // then
     expect(actual).toMatchQuery(expected)

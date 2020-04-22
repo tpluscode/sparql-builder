@@ -1,5 +1,5 @@
 import namespace from '@rdfjs/namespace'
-import { defaultGraph, namedNode, variable } from '@rdfjs/data-model'
+import RDF from '@rdfjs/data-model'
 import { SELECT } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -45,7 +45,7 @@ describe('SELECT', () => {
     const expected = 'SELECT * FROM <urn:foo:bar> WHERE { ?s ?p ?o }'
 
     // when
-    const actual = SELECT`*`.FROM(namedNode('urn:foo:bar')).WHERE`?s ?p ?o`.build()
+    const actual = SELECT`*`.FROM(RDF.namedNode('urn:foo:bar')).WHERE`?s ?p ?o`.build()
 
     // then
     expect(actual).toMatchQuery(expected)
@@ -56,7 +56,7 @@ describe('SELECT', () => {
     const expected = 'SELECT * WHERE { ?s ?p ?o }'
 
     // when
-    const actual = SELECT`*`.FROM(defaultGraph()).WHERE`?s ?p ?o`.build()
+    const actual = SELECT`*`.FROM(RDF.defaultGraph()).WHERE`?s ?p ?o`.build()
 
     // then
     expect(actual).toMatchQuery(expected)
@@ -102,7 +102,7 @@ describe('SELECT', () => {
     const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY ?s'
 
     // when
-    const s = variable('s')
+    const s = RDF.variable('s')
     const actual = SELECT`${s} ?p ?o`
       .WHERE`${s} ?p ?o`
       .ORDER().BY(s)
@@ -117,7 +117,7 @@ describe('SELECT', () => {
     const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY ?s LIMIT 20'
 
     // when
-    const s = variable('s')
+    const s = RDF.variable('s')
     const actual = SELECT`${s} ?p ?o`
       .WHERE`${s} ?p ?o`
       .LIMIT(20)

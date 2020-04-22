@@ -1,6 +1,6 @@
 import namespace from '@rdfjs/namespace'
 import { dbo, foaf, schema } from '@tpluscode/rdf-ns-builders'
-import { variable } from '@rdfjs/data-model'
+import RDF from '@rdfjs/data-model'
 import { CONSTRUCT, SELECT } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -61,7 +61,7 @@ describe('CONSTRUCT', () => {
 
   it('can be combined with another query to create a subquery', () => {
     // given
-    const person = variable('person')
+    const person = RDF.variable('person')
     const selectPeopleBornInBerlin = SELECT`${person}`
       .WHERE`${person} ${dbo.birthPlace} <http://dbpedia.org/resource/Berlin>`
       .LIMIT(100)
