@@ -5,6 +5,7 @@
   "main": "main.js",
   "module": "index.js",
   "types": "index.d.ts",
+  "sideEffects": false,
   "files": [
     "lib",
     "*.js",
