@@ -112,6 +112,21 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('can be ordered by desc(?variable)', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY desc(?s)'
+
+    // when
+    const s = RDF.variable('s')
+    const actual = SELECT`${s} ?p ?o`
+      .WHERE`${s} ?p ?o`
+      .ORDER().BY(s, true)
+      .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('can be ordered and limited, when calls are reversed', () => {
     // given
     const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY ?s LIMIT 20'

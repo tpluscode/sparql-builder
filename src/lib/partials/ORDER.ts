@@ -36,6 +36,10 @@ export default <T extends SparqlQuery & OrderBuilder<T>>(): OrderBuilder<T> => (
   orderClause() {
     if (this.orderConditions.some(Boolean)) {
       return this.orderConditions.reduce((result, condition) => {
+        if (condition.desc) {
+          return sparql`${result} desc(${condition.variable})`
+        }
+
         return sparql`${result} ${condition.variable}`
       },
       sparql`ORDER BY`)
