@@ -7,8 +7,12 @@ interface OrderCondition {
   desc: boolean
 }
 
+interface ThenOrderByBuilder<T> {
+  THEN: OrderByBuilder<T>
+}
+
 interface OrderByBuilder<T> {
-  BY(variable: Variable, desc?: boolean): T
+  BY(variable: Variable, desc?: boolean): T & ThenOrderByBuilder<T>
 }
 
 export interface OrderBuilder<T> {
@@ -17,20 +21,31 @@ export interface OrderBuilder<T> {
   ORDER(): OrderByBuilder<T>
 }
 
+function addOrder<T extends SparqlQuery & OrderBuilder<T>>(builder: OrderBuilder<T>) {
+  return (variable: Variable, desc: boolean): T & ThenOrderByBuilder<T> => {
+    const thenBuilder = {
+      ...builder,
+      orderConditions: [
+        ...builder.orderConditions, {
+          variable,
+          desc,
+        }],
+    }
+
+    return {
+      ...thenBuilder,
+      THEN: {
+        BY: addOrder(thenBuilder),
+      },
+    } as T & ThenOrderByBuilder<T>
+  }
+}
+
 export default <T extends SparqlQuery & OrderBuilder<T>>(): OrderBuilder<T> => ({
   orderConditions: [],
   ORDER(): OrderByBuilder<T> {
     return {
-      BY: (variable, desc = false) => {
-        return {
-          ...this,
-          orderConditions: [
-            ...this.orderConditions, {
-              variable,
-              desc,
-            }],
-        } as T
-      },
+      BY: addOrder(this),
     }
   },
   orderClause() {

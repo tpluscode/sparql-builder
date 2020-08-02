@@ -127,6 +127,22 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('can be ordered by multiple variables', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY desc(?s) ?o'
+
+    // when
+    const s = RDF.variable('s')
+    const o = RDF.variable('o')
+    const actual = SELECT`${s} ?p ${o}`
+      .WHERE`${s} ?p ${o}`
+      .ORDER().BY(s, true).THEN.BY(o)
+      .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('can be ordered and limited, when calls are reversed', () => {
     // given
     const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o } ORDER BY ?s LIMIT 20'
