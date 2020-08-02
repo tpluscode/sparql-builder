@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/tpluscode/ts-template/compare/v0.3.6...v0.3.7) (2020-08-02)
+
+
+### Features
+
+* **select:** added SELECT * shorthand ([ae9fdf4](https://github.com/tpluscode/ts-template/commit/ae9fdf418e204c9bea5849bf5083710bdc8f2df8))
+
+
+### Bug Fixes
+
+* **select:** added more intuitive API for multiple ORDER BY ([02a31d1](https://github.com/tpluscode/ts-template/commit/02a31d1ebcf6afd0a930749e3e0231aaa5203032))
+* **select:** ordering descending was not implemented ([4537ca8](https://github.com/tpluscode/ts-template/commit/4537ca8242cf9c726f3edd0f6934c62db9b72864))
+
 ### [0.3.6](https://github.com/tpluscode/ts-template/compare/v0.3.5...v0.3.6) (2020-07-01)
 
 ### [0.3.5](https://github.com/tpluscode/ts-template/compare/v0.3.4...v0.3.5) (2020-06-08)
