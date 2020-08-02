@@ -20,7 +20,14 @@ type SelectQuery = SparqlQuery
   FROM(defaultGraph: NamedNode | DefaultGraph): SelectQuery
 }
 
-export const SELECT = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+interface Select {
+  (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery
+  DISTINCT: (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]) => SelectQuery
+  REDUCED: (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]) => SelectQuery
+  ALL: SelectQuery
+}
+
+const SelectBuilder = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
   ...Builder(),
   ...select,
   ...WHERE<SelectQuery>({
@@ -50,12 +57,20 @@ ${this.limitOffsetClause()}`
   },
 })
 
-SELECT.DISTINCT = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
-  ...SELECT(strings, ...values),
+SelectBuilder.DISTINCT = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+  ...SelectBuilder(strings, ...values),
   distinct: true,
 })
 
-SELECT.REDUCED = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
-  ...SELECT(strings, ...values),
+SelectBuilder.REDUCED = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
+  ...SelectBuilder(strings, ...values),
   reduced: true,
 })
+
+Object.defineProperty(SelectBuilder, 'ALL', {
+  get() {
+    return SelectBuilder`*`
+  },
+})
+
+export const SELECT = SelectBuilder as Select
