@@ -159,6 +159,21 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  describe('ALL', () => {
+    it('is alias for SELECT *', () => {
+      // given
+      const expected = 'SELECT * WHERE { ?s ?p ?o } '
+
+      // when
+      const actual = SELECT.ALL
+        .WHERE`?s ?p ?o`
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+  })
+
   describe('DISTINCT', () => {
     it('creates correct SPARQL', () => {
       // given
