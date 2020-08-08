@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/tpluscode/ts-template/compare/v0.3.7...v0.3.8) (2020-08-08)
+
+
+### Features
+
+* add FROM (NAMED) to Construct queries ([4a3d662](https://github.com/tpluscode/ts-template/commit/4a3d662974deb3b331160afb013351ddf605a189))
+* add FROM NAMED clause builder ([2451561](https://github.com/tpluscode/ts-template/commit/2451561fbb02557dff6219078dd001518abd8186))
+
 ### [0.3.7](https://github.com/tpluscode/ts-template/compare/v0.3.6...v0.3.7) (2020-08-02)
 
 
