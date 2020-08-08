@@ -127,6 +127,23 @@ WHERE {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('supports multiple FROM', () => {
+    // given
+    const expected = `CONSTRUCT { ?s ?p ?o }
+      FROM <urn:foo:bar>
+      FROM <urn:foo:baz>
+      WHERE { ?s ?p ?o }`
+
+    // when
+    const actual = CONSTRUCT`?s ?p ?o`
+      .FROM(RDF.namedNode('urn:foo:bar'))
+      .FROM(RDF.namedNode('urn:foo:baz'))
+      .WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('allows mixing FROM and FROM NAMED', () => {
     // given
     const expected = `CONSTRUCT { ?s ?p ?o }
