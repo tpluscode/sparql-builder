@@ -51,17 +51,17 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
-  it('supports multiple FROM NAMED', () => {
+  it('supports multiple FROM', () => {
     // given
     const expected = `SELECT * 
-      FROM NAMED <urn:foo:bar>
-      FROM NAMED <urn:foo:baz>
+      FROM <urn:foo:bar>
+      FROM <urn:foo:baz>
       WHERE { ?s ?p ?o }`
 
     // when
     const actual = SELECT`*`
-      .FROM().NAMED(RDF.namedNode('urn:foo:bar'))
-      .FROM().NAMED(RDF.namedNode('urn:foo:baz'))
+      .FROM(RDF.namedNode('urn:foo:bar'))
+      .FROM(RDF.namedNode('urn:foo:baz'))
       .WHERE`?s ?p ?o`.build()
 
     // then
@@ -91,6 +91,20 @@ describe('SELECT', () => {
 
     // when
     const actual = SELECT`*`.FROM(RDF.defaultGraph()).WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('resets default grahp when FROM default is called', () => {
+    // given
+    const expected = 'SELECT * WHERE { ?s ?p ?o }'
+
+    // when
+    const actual = SELECT`*`
+      .FROM(RDF.namedNode('urn:foo:bar'))
+      .FROM(RDF.defaultGraph())
+      .WHERE`?s ?p ?o`.build()
 
     // then
     expect(actual).toMatchQuery(expected)

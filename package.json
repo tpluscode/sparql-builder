@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@rdfjs/data-model": "^1.1.2",
+    "@rdfjs/term-set": "^1.0.1",
     "@tpluscode/rdf-ns-builders": "^0.3.6",
     "@tpluscode/rdf-string": "^0.2.16",
     "debug": "^4.1.1"
@@ -45,6 +46,7 @@
     "@types/rdf-js": "^3.0.1",
     "@types/rdfjs__fetch-lite": "^2.0.0",
     "@types/rdfjs__namespace": "^1.1.1",
+    "@types/rdfjs__term-set": "^1.0.1",
     "@types/sparql-http-client": "^2.2.0",
     "@types/sparqljs": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.19.0",

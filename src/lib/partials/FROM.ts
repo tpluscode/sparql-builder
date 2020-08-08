@@ -1,5 +1,5 @@
 import { DefaultGraph, NamedNode } from 'rdf-js'
-import RDF, { defaultGraphInstance } from '@rdfjs/data-model'
+import TermSet from '@rdfjs/term-set'
 import { SparqlQuery } from '../index'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 
@@ -8,8 +8,8 @@ interface FromNamed<T> {
 }
 
 export interface FromBuilder<T> {
-  readonly defaultGraph: NamedNode | DefaultGraph
-  readonly fromNamed: NamedNode[]
+  readonly defaultGraph: Set<NamedNode>
+  readonly fromNamed: Set<NamedNode>
   FROM(defaultGraph: NamedNode | DefaultGraph): T
   FROM(): FromNamed<T>
   fromClause(): SparqlTemplateResult
@@ -17,12 +17,12 @@ export interface FromBuilder<T> {
 
 export default function <T extends SparqlQuery & FromBuilder<T>> (): FromBuilder<T> {
   const builder = {
-    defaultGraph: RDF.defaultGraph(),
-    fromNamed: [],
+    defaultGraph: new TermSet<NamedNode>(),
+    fromNamed: new TermSet<NamedNode>(),
     fromClause(): SparqlTemplateResult {
-      const clause = !this.defaultGraph.equals(defaultGraphInstance) ? sparql`FROM ${this.defaultGraph}` : sparql``
+      const clause = [...this.defaultGraph.values()].reduce((current, graph) => sparql`${current}\nFROM ${graph}`, sparql``)
 
-      return this.fromNamed.reduce((current, graph) => sparql`${current}\nFROM NAMED ${graph}`, clause)
+      return [...this.fromNamed.values()].reduce((current, graph) => sparql`${current}\nFROM NAMED ${graph}`, clause)
     },
   }
 
@@ -31,17 +31,19 @@ export default function <T extends SparqlQuery & FromBuilder<T>> (): FromBuilder
     FROM(defaultGraph?: NamedNode | DefaultGraph): any {
       if (!defaultGraph) {
         return {
-          NAMED: (graph: NamedNode) => ({
-            ...this,
-            fromNamed: [...this.fromNamed, graph],
-          }),
+          NAMED: (graph: NamedNode) => {
+            this.fromNamed.add(graph)
+            return this
+          },
         }
       }
 
-      return {
-        ...this,
-        defaultGraph,
+      if (defaultGraph.termType === 'DefaultGraph') {
+        this.defaultGraph.clear()
+      } else {
+        this.defaultGraph.add(defaultGraph)
       }
+      return this
     },
   }
 }
