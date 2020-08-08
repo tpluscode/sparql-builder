@@ -43,3 +43,23 @@ SELECT.REDUCED`?person`.WHERE`?person a ${schema.Person}`.build()
 ```
 
 </run-kit>
+
+## `FROM (NAMED)`
+
+<run-kit>
+
+```js
+const { SELECT } = require('@tpluscode/sparql-builder')
+const { schema } = require('@tpluscode/rdf-ns-builders')
+const { namedNode } = require('@rdfjs/data-model')
+
+SELECT`?person`
+    .FROM(namedNode('urn:graph:default'))
+    .FROM().NAMED(namedNode('urn:graph:john'))
+    .FROM().NAMED(namedNode('urn:graph:jane'))
+    .WHERE`GRAPH ?g {
+        ?person a ${schema.Person}
+    }`.build()
+```
+
+</run-kit>
