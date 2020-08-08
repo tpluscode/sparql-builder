@@ -98,4 +98,49 @@ WHERE {
     // then
     expect(construct).toMatchQuery(expected)
   })
+
+  it('adds FROM when default graph set', () => {
+    // given
+    const expected = 'CONSTRUCT { ?s ?p ?o } FROM <urn:foo:bar> WHERE { ?s ?p ?o }'
+
+    // when
+    const actual = CONSTRUCT`?s ?p ?o`.FROM(RDF.namedNode('urn:foo:bar')).WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('supports multiple FROM NAMED', () => {
+    // given
+    const expected = `CONSTRUCT { ?s ?p ?o }
+      FROM NAMED <urn:foo:bar>
+      FROM NAMED <urn:foo:baz>
+      WHERE { ?s ?p ?o }`
+
+    // when
+    const actual = CONSTRUCT`?s ?p ?o`
+      .FROM().NAMED(RDF.namedNode('urn:foo:bar'))
+      .FROM().NAMED(RDF.namedNode('urn:foo:baz'))
+      .WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('allows mixing FROM and FROM NAMED', () => {
+    // given
+    const expected = `CONSTRUCT { ?s ?p ?o }
+      FROM <urn:foo:bar>
+      FROM NAMED <urn:foo:baz>
+      WHERE { ?s ?p ?o }`
+
+    // when
+    const actual = CONSTRUCT`?s ?p ?o`
+      .FROM(RDF.namedNode('urn:foo:bar'))
+      .FROM().NAMED(RDF.namedNode('urn:foo:baz'))
+      .WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
 })
