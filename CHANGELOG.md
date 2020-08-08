@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.9](https://github.com/tpluscode/ts-template/compare/v0.3.8...v0.3.9) (2020-08-08)
+
+
+### Features
+
+* multiple FROM statements ([5fa4f39](https://github.com/tpluscode/ts-template/commit/5fa4f39c1e2e8ff3f986087853b2fa5b73b2f4e0))
+
 ### [0.3.8](https://github.com/tpluscode/ts-template/compare/v0.3.7...v0.3.8) (2020-08-08)
 
 
