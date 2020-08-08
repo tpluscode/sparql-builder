@@ -51,6 +51,40 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('supports multiple FROM NAMED', () => {
+    // given
+    const expected = `SELECT * 
+      FROM NAMED <urn:foo:bar>
+      FROM NAMED <urn:foo:baz>
+      WHERE { ?s ?p ?o }`
+
+    // when
+    const actual = SELECT`*`
+      .FROM().NAMED(RDF.namedNode('urn:foo:bar'))
+      .FROM().NAMED(RDF.namedNode('urn:foo:baz'))
+      .WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('allows mixing FROM and FROM NAMED', () => {
+    // given
+    const expected = `SELECT * 
+      FROM <urn:foo:bar>
+      FROM NAMED <urn:foo:baz>
+      WHERE { ?s ?p ?o }`
+
+    // when
+    const actual = SELECT`*`
+      .FROM(RDF.namedNode('urn:foo:bar'))
+      .FROM().NAMED(RDF.namedNode('urn:foo:baz'))
+      .WHERE`?s ?p ?o`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('does not add FROM when graph is defaultGraph', () => {
     // given
     const expected = 'SELECT * WHERE { ?s ?p ?o }'

@@ -1,23 +1,22 @@
-import { DefaultGraph, NamedNode, Variable } from 'rdf-js'
-import RDF from '@rdfjs/data-model'
+import { Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import { select } from './execute'
 import Builder, { SparqlQuery, SparqlQueryExecutable } from './index'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 import ORDER, { OrderBuilder } from './partials/ORDER'
+import FROM, { FromBuilder } from './partials/FROM'
 
 type SelectQuery = SparqlQuery
 & SparqlQueryExecutable
 & WhereBuilder<SelectQuery>
 & LimitOffsetBuilder<SelectQuery>
 & OrderBuilder<SelectQuery>
+& FromBuilder<SelectQuery>
 & {
   readonly distinct: boolean
   readonly reduced: boolean
   readonly variables: SparqlTemplateResult
-  readonly defaultGraph: NamedNode | DefaultGraph
-  FROM(defaultGraph: NamedNode | DefaultGraph): SelectQuery
 }
 
 interface Select {
@@ -35,22 +34,15 @@ const SelectBuilder = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   }),
   ...LIMIT(),
   ...ORDER(),
+  ...FROM(),
   distinct: false,
   reduced: false,
-  defaultGraph: RDF.defaultGraph(),
   variables: sparql(strings, ...values),
-  FROM(graph: NamedNode | DefaultGraph): SelectQuery {
-    return {
-      ...this,
-      defaultGraph: graph,
-    }
-  },
   _getTemplateResult() {
-    const from = RDF.defaultGraph().equals(this.defaultGraph) ? null : sparql`FROM ${this.defaultGraph}`
     const modifier = this.distinct ? 'DISTINCT ' : this.reduced ? 'REDUCED ' : ''
 
     return sparql`SELECT ${modifier}${this.variables}
-${from}
+${this.fromClause()}
 ${this.whereClause()}
 ${this.orderClause()}
 ${this.limitOffsetClause()}`
