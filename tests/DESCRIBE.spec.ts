@@ -1,5 +1,5 @@
 import namespace from '@rdfjs/namespace'
-import RDF from '@rdfjs/data-model'
+import RDF, { namedNode } from '@rdfjs/data-model'
 import { sparqlClient } from './_mocks'
 import { DESCRIBE } from '../src'
 
@@ -32,6 +32,21 @@ describe('DESCRIBE', () => {
 
     // when
     const actual = DESCRIBE`${RDF.variable('foo')}`.LIMIT(100).OFFSET(200).build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('supports FROM (NAMED)', () => {
+    // given
+    const expected = `DESCRIBE ?foo
+      FROM <http://example.com/foo>
+      FROM NAMED <http://example.com/bar>`
+
+    // when
+    const actual = DESCRIBE`${RDF.variable('foo')}`
+      .FROM(namedNode('http://example.com/foo'))
+      .FROM().NAMED(namedNode('http://example.com/bar')).build()
 
     // then
     expect(actual).toMatchQuery(expected)
