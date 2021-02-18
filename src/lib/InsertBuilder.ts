@@ -6,7 +6,7 @@ import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import InsertBuilderPartial, { InsertBuilder } from './partials/INSERT'
 
-type InsertQuery = SparqlQuery
+export type InsertQuery = SparqlQuery
 & SparqlUpdateExecutable
 & InsertBuilder<InsertQuery>
 & WhereBuilder<InsertQuery> & {

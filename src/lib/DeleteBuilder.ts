@@ -8,7 +8,7 @@ import WHERE, { WhereBuilder } from './partials/WHERE'
 import INSERT, { InsertBuilder } from './partials/INSERT'
 import { concat } from './TemplateResult'
 
-type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery>
+export type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery>
 & WhereBuilder<DeleteInsertQuery>
 & SparqlQuery
 & SparqlUpdateExecutable & {
