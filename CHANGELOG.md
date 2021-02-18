@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.11](https://github.com/tpluscode/ts-template/compare/v0.3.10...v0.3.11) (2021-02-18)
+
+
+### Features
+
+* added WITH clause ([b36a0b2](https://github.com/tpluscode/ts-template/commit/b36a0b22e2de2c59a5fbe4f92a226464118a226d))
+
 ### [0.3.10](https://github.com/tpluscode/ts-template/compare/v0.3.9...v0.3.10) (2020-11-10)
 
 
