@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;lib/AskBuilder&quot; | @tpluscode/sparql-builder</title>
+	<title>&quot;lib/WithBuilder&quot; | @tpluscode/sparql-builder</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_lib_askbuilder_.html">&quot;lib/AskBuilder&quot;</a>
+					<a href="_lib_withbuilder_.html">&quot;lib/WithBuilder&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;lib/AskBuilder&quot;</h1>
+			<h1>Module &quot;lib/WithBuilder&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,13 +73,13 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_lib_askbuilder_.html#askquery" class="tsd-kind-icon">Ask<wbr>Query</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported"><a href="_lib_withbuilder_.html#withquery" class="tsd-kind-icon">With<wbr>Query</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_askbuilder_.html#ask" class="tsd-kind-icon">ASK</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_withbuilder_.html#with" class="tsd-kind-icon">WITH</a></li>
 							</ul>
 						</section>
 					</div>
@@ -88,12 +88,12 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-					<a name="askquery" class="tsd-anchor"></a>
-					<h3>Ask<wbr>Query</h3>
-					<div class="tsd-signature tsd-kind-icon">Ask<wbr>Query<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_lib_index_.sparqlaskexecutable.html" class="tsd-signature-type">SparqlAskExecutable</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_lib_partials_from_.frombuilder.html" class="tsd-signature-type">FromBuilder</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_askbuilder_.html#askquery" class="tsd-signature-type">AskQuery</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_lib_partials_limit_.limitoffsetbuilder.html" class="tsd-signature-type">LimitOffsetBuilder</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_askbuilder_.html#askquery" class="tsd-signature-type">AskQuery</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>patterns<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SparqlTemplateResult</span><span class="tsd-signature-symbol"> }</span></div>
+					<a name="withquery" class="tsd-anchor"></a>
+					<h3>With<wbr>Query</h3>
+					<div class="tsd-signature tsd-kind-icon">With<wbr>Query<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_index_.sparqlupdateexecutable.html" class="tsd-signature-type">SparqlUpdateExecutable</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_lib_index_.sparqlquery.html" class="tsd-signature-type">SparqlQuery</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/7c83229/src/lib/AskBuilder.ts#L7">lib/AskBuilder.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/7c83229/src/lib/WithBuilder.ts#L9">lib/WithBuilder.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -101,28 +101,28 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="ask" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> ASK</h3>
+					<a name="with" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> WITH</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">ASK<span class="tsd-signature-symbol">(</span>strings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SparqlValue</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_askbuilder_.html#askquery" class="tsd-signature-type">AskQuery</a></li>
+						<li class="tsd-signature tsd-kind-icon">WITH<span class="tsd-signature-symbol">(</span>graph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NamedNode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, query<span class="tsd-signature-symbol">: </span><a href="_lib_deletebuilder_.html#deleteinsertquery" class="tsd-signature-type">DeleteInsertQuery</a><span class="tsd-signature-symbol"> | </span><a href="_lib_insertbuilder_.html#insertquery" class="tsd-signature-type">InsertQuery</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_withbuilder_.html#withquery" class="tsd-signature-type">WithQuery</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/7c83229/src/lib/AskBuilder.ts#L14">lib/AskBuilder.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/7c83229/src/lib/WithBuilder.ts#L11">lib/WithBuilder.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>strings: <span class="tsd-signature-type">TemplateStringsArray</span></h5>
+									<h5>graph: <span class="tsd-signature-type">NamedNode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>values: <span class="tsd-signature-type">SparqlValue</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>query: <a href="_lib_deletebuilder_.html#deleteinsertquery" class="tsd-signature-type">DeleteInsertQuery</a><span class="tsd-signature-symbol"> | </span><a href="_lib_insertbuilder_.html#insertquery" class="tsd-signature-type">InsertQuery</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_lib_askbuilder_.html#askquery" class="tsd-signature-type">AskQuery</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_lib_withbuilder_.html#withquery" class="tsd-signature-type">WithQuery</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -137,7 +137,7 @@
 					<li class=" tsd-kind-module">
 						<a href="_index_.html">&quot;index&quot;</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="_lib_askbuilder_.html">&quot;lib/<wbr>Ask<wbr>Builder&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -158,7 +158,7 @@
 					<li class=" tsd-kind-module">
 						<a href="_lib_templateresult_.html">&quot;lib/<wbr>Template<wbr>Result&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="_lib_withbuilder_.html">&quot;lib/<wbr>With<wbr>Builder&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -190,10 +190,10 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_lib_askbuilder_.html#askquery" class="tsd-kind-icon">Ask<wbr>Query</a>
+						<a href="_lib_withbuilder_.html#withquery" class="tsd-kind-icon">With<wbr>Query</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_lib_askbuilder_.html#ask" class="tsd-kind-icon">ASK</a>
+						<a href="_lib_withbuilder_.html#with" class="tsd-kind-icon">WITH</a>
 					</li>
 				</ul>
 			</nav>
