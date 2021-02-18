@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.10](https://github.com/tpluscode/ts-template/compare/v0.3.9...v0.3.10) (2020-11-10)
+
+
+### Features
+
+* add FROM to ASK and DESCRIBE builders ([63ccaea](https://github.com/tpluscode/ts-template/commit/63ccaea068243e14b9a2fff9e4ebc8b6eabd07f6))
+
 ### [0.3.9](https://github.com/tpluscode/ts-template/compare/v0.3.8...v0.3.9) (2020-08-08)
 
 

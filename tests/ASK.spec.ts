@@ -1,6 +1,7 @@
 import namespace from '@rdfjs/namespace'
 import { sparqlClient } from './_mocks'
 import { ASK } from '../src'
+import { namedNode } from '@rdfjs/data-model'
 
 describe('ASK', () => {
   it('creates expected query', () => {
@@ -36,6 +37,25 @@ describe('ASK', () => {
 
     // when
     const query = ASK`?s ?p ?o .`.LIMIT(10).OFFSET(20).build()
+
+    // then
+    expect(query).toMatchQuery(expected)
+  })
+
+  it('supports FROM (NAMED)', () => {
+    // given
+    const expected = `ASK 
+      FROM <http://example.com/foo>
+      FROM NAMED <http://example.com/bar>
+      {
+        ?s ?p ?o .
+      }`
+
+    // when
+    const query = ASK`?s ?p ?o .`
+      .FROM(namedNode('http://example.com/foo'))
+      .FROM().NAMED(namedNode('http://example.com/bar'))
+      .build()
 
     // then
     expect(query).toMatchQuery(expected)

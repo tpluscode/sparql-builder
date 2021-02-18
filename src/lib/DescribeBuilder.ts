@@ -4,10 +4,12 @@ import Builder, { SparqlGraphQueryExecutable, SparqlQuery } from './index'
 import { graph } from './execute'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
+import FROM, { FromBuilder } from './partials/FROM'
 
 type DescribeQuery = SparqlQuery
 & SparqlGraphQueryExecutable
 & WhereBuilder<DescribeQuery>
+& FromBuilder<DescribeQuery>
 & LimitOffsetBuilder<DescribeQuery> & {
   readonly described: SparqlTemplateResult
 }
@@ -19,9 +21,11 @@ export const DESCRIBE = (strings: TemplateStringsArray, ...values: SparqlValue<V
     required: false,
   }),
   ...LIMIT(),
+  ...FROM(),
   described: sparql(strings, ...values),
   _getTemplateResult() {
     return sparql`DESCRIBE ${this.described}
+${this.fromClause()}
 ${this.whereClause()}
 ${this.limitOffsetClause()}`
   },
