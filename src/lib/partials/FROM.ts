@@ -1,5 +1,5 @@
 import { DefaultGraph, NamedNode } from 'rdf-js'
-import TermSet from '@rdfjs/term-set'
+import TermSet from '@rdf-esm/term-set'
 import { SparqlQuery } from '../index'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 

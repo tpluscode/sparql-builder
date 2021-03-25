@@ -19,12 +19,13 @@
     "build": "run-p build:*",
     "build:cjs": "tsc -p tsconfig.json",
     "build:esm": "BABEL_ENV=modules babel src --out-dir . --extensions .ts --out-file-extension .mjs",
-    "docs": "docsify serve docs"
+    "docs": "docsify serve docs",
+    "release": "changeset publish"
   },
   "dependencies": {
-    "@rdfjs/data-model": "^1.1.2",
-    "@rdfjs/term-set": "^1.0.1",
-    "@tpluscode/rdf-ns-builders": "^0.3.6",
+    "@rdf-esm/data-model": "^0.5.4",
+    "@rdf-esm/term-set": "^0.5.0",
+    "@tpluscode/rdf-ns-builders": "^0.4",
     "@tpluscode/rdf-string": "^0.2.16",
     "debug": "^4.1.1"
   },
@@ -35,8 +36,7 @@
     "@babel/cli": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-typescript": "^7.10.1",
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@changesets/cli": "^2.14.1",
     "@rdfjs/dataset": "^1.0.1",
     "@rdfjs/namespace": "^1.1.0",
     "@tpluscode/eslint-config": "0.0.4",
@@ -53,7 +53,6 @@
     "@typescript-eslint/parser": "^2.19.0",
     "@zazuko/rdf-vocabularies": "^2020.2.11",
     "babel-plugin-add-import-extension": "github:tpluscode/babel-plugin-add-import-extension#type-only-export",
-    "cz-conventional-changelog": "^3.0.2",
     "docsify-cli": "^4.4.0",
     "eslint-plugin-jest": "^23.1.1",
     "husky": "^3.1.0",
@@ -83,7 +82,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged && tsc --noEmit"
     }
   },
@@ -93,11 +91,6 @@
       "git add"
     ]
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "jest": {
     "roots": [
       "<rootDir>"
@@ -105,9 +98,9 @@
     "testRegex": "tests/.+\\.spec\\.ts$",
     "setupFilesAfterEnv": [
       "./tests/jestSetup.ts"
-    ]
-  },
-  "esm": {
-    "await": true
+    ],
+    "moduleNameMapper": {
+      "@rdf-esm/(.*)": "@rdfjs/$1"
+    }
   }
 }
