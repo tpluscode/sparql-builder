@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.13
+
+### Patch Changes
+
+- fbf2e33: Re-export `sparql` string template tag function from [@tpluscode/rdf-string](https://npm.im/@tpluscode/rdf-string)
+
 ## 0.3.12
 
 ### Patch Changes
