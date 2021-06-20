@@ -1,4 +1,4 @@
-export { sparql } from '@tpluscode/rdf-string'
+export { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 export { DELETE } from './lib/DeleteBuilder'
 export { INSERT } from './lib/InsertBuilder'
 export { ASK } from './lib/AskBuilder'
