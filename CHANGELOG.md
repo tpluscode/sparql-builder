@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.14
+
+### Patch Changes
+
+- d9a173b: Re-export SPARQL template from `@tpluscode/rdf-string`
+- 51c985a: Update @tpluscode/rdf-ns-builders and rdf-js types
+
 ## 0.3.13
 
 ### Patch Changes
