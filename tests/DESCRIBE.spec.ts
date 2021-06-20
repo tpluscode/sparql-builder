@@ -1,7 +1,7 @@
 import namespace from '@rdfjs/namespace'
-import RDF, { namedNode } from '@rdfjs/data-model'
-import { sparqlClient } from './_mocks'
+import * as RDF from '@rdfjs/data-model'
 import { DESCRIBE } from '../src'
+import { sparqlClient } from './_mocks'
 
 describe('DESCRIBE', () => {
   it('executes a construct', async () => {
@@ -45,8 +45,8 @@ describe('DESCRIBE', () => {
 
     // when
     const actual = DESCRIBE`${RDF.variable('foo')}`
-      .FROM(namedNode('http://example.com/foo'))
-      .FROM().NAMED(namedNode('http://example.com/bar')).build()
+      .FROM(RDF.namedNode('http://example.com/foo'))
+      .FROM().NAMED(RDF.namedNode('http://example.com/bar')).build()
 
     // then
     expect(actual).toMatchQuery(expected)

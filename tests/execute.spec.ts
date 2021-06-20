@@ -1,8 +1,8 @@
 import { Term } from 'rdf-js'
 import { SelectQuery, AskQuery, ConstructQuery, UpdateQuery } from 'sparql-http-client'
 import { ask, graph, select, update } from '../src/lib/execute'
-import { sparqlClient } from './_mocks'
 import { SparqlQuery } from '../src/lib'
+import { sparqlClient } from './_mocks'
 
 const builder: Omit<SparqlQuery, '_getTemplateResult'> = {
   build(): string {

@@ -1,7 +1,7 @@
 import namespace from '@rdfjs/namespace'
-import { sparqlClient } from './_mocks'
-import { ASK } from '../src'
 import { namedNode } from '@rdfjs/data-model'
+import { ASK } from '../src'
+import { sparqlClient } from './_mocks'
 
 describe('ASK', () => {
   it('creates expected query', () => {

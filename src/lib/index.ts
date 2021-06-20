@@ -28,9 +28,10 @@ export interface SparqlAskExecutable {
   execute<TQuery extends AskQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['ask']>
 }
 
-type Builder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
+type TBuilder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
 
-export default function Builder<T extends SparqlQuery>(): Builder {
+// eslint-disable-next-line no-unused-vars
+export default function Builder<T extends SparqlQuery>(): TBuilder {
   return {
     build(this: SparqlQuery, { base }: SparqlBuildOptions = {}): string {
       return this._getTemplateResult().toString({

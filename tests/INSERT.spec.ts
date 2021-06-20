@@ -1,6 +1,6 @@
 import { owl, schema } from '@tpluscode/rdf-ns-builders'
-import { sparqlClient } from './_mocks'
 import { INSERT } from '../src'
+import { sparqlClient } from './_mocks'
 
 describe('INSERT', () => {
   it('adds an empty WHERE if no pattern provided', () => {

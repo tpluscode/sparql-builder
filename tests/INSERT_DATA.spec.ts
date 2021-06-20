@@ -1,5 +1,5 @@
-import { INSERT } from '../src'
 import { owl } from '@tpluscode/rdf-ns-builders'
+import { INSERT } from '../src'
 import { sparqlClient } from './_mocks'
 
 describe('INSERT DATA', () => {

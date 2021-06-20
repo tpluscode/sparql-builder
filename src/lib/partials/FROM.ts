@@ -1,7 +1,7 @@
 import { DefaultGraph, NamedNode } from 'rdf-js'
 import TermSet from '@rdf-esm/term-set'
-import { SparqlQuery } from '../index'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
+import { SparqlQuery } from '../index'
 
 interface FromNamed<T> {
   NAMED(graph: NamedNode): T

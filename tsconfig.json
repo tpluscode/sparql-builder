@@ -23,6 +23,7 @@
   ],
   "include": ["tests/*.ts", "docs"],
   "typedocOptions": {
-    "inputFiles": ["src/"]
+    "name": "@tpluscode/sparql-builder",
+    "out": "docs/api"
   }
 }

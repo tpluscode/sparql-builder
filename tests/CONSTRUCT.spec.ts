@@ -1,6 +1,6 @@
 import namespace from '@rdfjs/namespace'
 import { dbo, foaf, schema } from '@tpluscode/rdf-ns-builders'
-import RDF from '@rdfjs/data-model'
+import * as RDF from '@rdfjs/data-model'
 import { CONSTRUCT, SELECT } from '../src'
 import { sparqlClient } from './_mocks'
 
