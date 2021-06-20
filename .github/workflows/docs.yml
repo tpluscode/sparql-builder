@@ -13,10 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: npm ci
-    - run: npx typedoc --out docs/api
+    - run: npx typedoc
     - name: GH Pages deploy
       uses: Cecilapp/GitHub-Pages-deploy@2.0.0
       env:
         EMAIL: tomasz@t-code.pl
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BUILD_DIR: docs/ 
+        BUILD_DIR: docs/
