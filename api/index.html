@@ -4,16 +4,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@tpluscode/sparql-builder</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @tpluscode/sparql-builder">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,11 +50,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>@tpluscode/sparql-builder</h1>
 		</div>
 	</div>
@@ -65,7 +59,7 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<blockquote>
-					<a href="#tpluscodesparql-builder-img-srchttpsgithubcomtpluscodesparql-builderworkflowstestbadgesvg-alttest-a-hrefhttpscodecovioghtpluscodesparql-builderimg-srchttpscodecovioghtpluscodesparql-builderbranchmastergraphbadgesvg-altcodecova-a-hrefhttpsbadgefuryiojs40tpluscode2fsparql-builderimg-srchttpsbadgefuryiojs40tpluscode2fsparql-buildersvg-altnpm-versiona" id="tpluscodesparql-builder-img-srchttpsgithubcomtpluscodesparql-builderworkflowstestbadgesvg-alttest-a-hrefhttpscodecovioghtpluscodesparql-builderimg-srchttpscodecovioghtpluscodesparql-builderbranchmastergraphbadgesvg-altcodecova-a-hrefhttpsbadgefuryiojs40tpluscode2fsparql-builderimg-srchttpsbadgefuryiojs40tpluscode2fsparql-buildersvg-altnpm-versiona" style="color: inherit; text-decoration: none;">
+					<a href="#tpluscodesparql-builder---" id="tpluscodesparql-builder---" style="color: inherit; text-decoration: none;">
 						<h1>@tpluscode/sparql-builder <img src="https://github.com/tpluscode/sparql-builder/workflows/Test/badge.svg" alt="Test"> <a href="https://codecov.io/gh/tpluscode/sparql-builder"><img src="https://codecov.io/gh/tpluscode/sparql-builder/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://badge.fury.io/js/%40tpluscode%2Fsparql-builder"><img src="https://badge.fury.io/js/%40tpluscode%2Fsparql-builder.svg" alt="npm version"></a></h1>
 					</a>
 				</blockquote>
@@ -83,145 +77,133 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code><span class="hljs-built_in">npm</span> i -S @tpluscode/sparql-builder</code></pre><p>To be able to execute queries against a remote endpoint install a peer
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span><span style="color: #000000"> -</span><span style="color: #0070C1">S</span><span style="color: #000000"> @</span><span style="color: #001080">tpluscode</span><span style="color: #000000">/</span><span style="color: #001080">sparql</span><span style="color: #000000">-</span><span style="color: #001080">builder</span>
+</code></pre>
+				<p>To be able to execute queries against a remote endpoint install a peer
 				dependency:</p>
-				<pre><code>npm i -S sparql-http-<span class="hljs-keyword">client</span></code></pre>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span><span style="color: #000000"> -</span><span style="color: #0070C1">S</span><span style="color: #000000"> </span><span style="color: #001080">sparql</span><span style="color: #000000">-</span><span style="color: #001080">http</span><span style="color: #000000">-</span><span style="color: #001080">client</span>
+</code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
 				<a href="#build-a-sparql-query-string" id="build-a-sparql-query-string" style="color: inherit; text-decoration: none;">
 					<h3>Build a SPARQL query string</h3>
 				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { variable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@rdfjs/data-model'</span>
-<span class="hljs-keyword">import</span> namespace <span class="hljs-keyword">from</span> <span class="hljs-string">'@rdfjs/namespace'</span>
-<span class="hljs-keyword">import</span> { prefixes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@zazuko/rdf-vocabularies'</span>
-<span class="hljs-keyword">import</span> { SELECT } <span class="hljs-keyword">from</span> <span class="hljs-string">'@tpluscode/sparql-builder'</span>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">variable</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@rdfjs/data-model&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">namespace</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@rdfjs/namespace&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">prefixes</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@zazuko/rdf-vocabularies&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">SELECT</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@tpluscode/sparql-builder&#039;</span>
 
-<span class="hljs-keyword">const</span> ex = namespace(<span class="hljs-string">'http://example.com/'</span>)
-<span class="hljs-keyword">const</span> foaf = namespace(prefixes.foaf)
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">ex</span><span style="color: #000000"> = </span><span style="color: #795E26">namespace</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;http://example.com/&#039;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">foaf</span><span style="color: #000000"> = </span><span style="color: #795E26">namespace</span><span style="color: #000000">(</span><span style="color: #001080">prefixes</span><span style="color: #000000">.</span><span style="color: #001080">foaf</span><span style="color: #000000">)</span>
 
-<span class="hljs-comment">/*
-    PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+<span style="color: #008000">/*</span>
+<span style="color: #008000">    PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;</span>
 
-    SELECT ?person ?name
-    FROM &lt;http://example.com/People&gt;
-    WHERE 
-    {
-      ?person a foaf:Person ;
-              foaf:name ?name .
-    }
-*/</span>
-<span class="hljs-keyword">const</span> person = variable(<span class="hljs-string">'person'</span>)
-<span class="hljs-keyword">const</span> query = 
-  SELECT<span class="hljs-string">`<span class="hljs-subst">${person}</span> ?name`</span>
-  .FROM(ex.People)
-  .WHERE<span class="hljs-string">`
-    <span class="hljs-subst">${person}</span> a <span class="hljs-subst">${foaf.Person}</span> ; 
-              <span class="hljs-subst">${foaf.name}</span> ?name .
-  `</span>.build()</code></pre>
+<span style="color: #008000">    SELECT ?person ?name</span>
+<span style="color: #008000">    FROM &lt;http://example.com/People&gt;</span>
+<span style="color: #008000">    WHERE </span>
+<span style="color: #008000">    {</span>
+<span style="color: #008000">      ?person a foaf:Person ;</span>
+<span style="color: #008000">              foaf:name ?name .</span>
+<span style="color: #008000">    }</span>
+<span style="color: #008000">*/</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">person</span><span style="color: #000000"> = </span><span style="color: #795E26">variable</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;person&#039;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">query</span><span style="color: #000000"> = </span>
+<span style="color: #000000">  </span><span style="color: #795E26">SELECT</span><span style="color: #A31515">`</span><span style="color: #0000FF">${</span><span style="color: #001080">person</span><span style="color: #0000FF">}</span><span style="color: #A31515"> ?name`</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">FROM</span><span style="color: #000000">(</span><span style="color: #001080">ex</span><span style="color: #000000">.</span><span style="color: #001080">People</span><span style="color: #000000">)</span>
+<span style="color: #000000">  </span><span style="color: #A31515">.</span><span style="color: #795E26">WHERE</span><span style="color: #A31515">`</span>
+<span style="color: #A31515">    </span><span style="color: #0000FF">${</span><span style="color: #001080">person</span><span style="color: #0000FF">}</span><span style="color: #A31515"> a </span><span style="color: #0000FF">${</span><span style="color: #001080">foaf</span><span style="color: #000000FF">.</span><span style="color: #001080">Person</span><span style="color: #0000FF">}</span><span style="color: #A31515"> ; </span>
+<span style="color: #A31515">              </span><span style="color: #0000FF">${</span><span style="color: #001080">foaf</span><span style="color: #000000FF">.</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #A31515"> ?name .</span>
+<span style="color: #A31515">  `</span><span style="color: #000000">.</span><span style="color: #795E26">build</span><span style="color: #000000">()</span>
+</code></pre>
 				<a href="#executing-a-query" id="executing-a-query" style="color: inherit; text-decoration: none;">
 					<h3>Executing a query</h3>
 				</a>
 				<p>Using <a href="https://github.com/zazuko/sparql-http-client"><code>sparql-http-client</code></a></p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> namespace <span class="hljs-keyword">from</span> <span class="hljs-string">'@rdfjs/namespace'</span>
-<span class="hljs-keyword">import</span> { prefixes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@zazuko/rdf-vocabularies'</span>
-<span class="hljs-keyword">import</span> SparqlHttp <span class="hljs-keyword">from</span> <span class="hljs-string">'sparql-http-client'</span>
-<span class="hljs-keyword">import</span> { ASK } <span class="hljs-keyword">from</span> <span class="hljs-string">'@tpluscode/sparql-builder'</span>
-<span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">namespace</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@rdfjs/namespace&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">prefixes</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@zazuko/rdf-vocabularies&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">SparqlHttp</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;sparql-http-client&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">ASK</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@tpluscode/sparql-builder&#039;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">fetch</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;isomorphic-fetch&#039;</span>
 
-<span class="hljs-keyword">const</span> dbo = namespace(prefixes.dbo)
-<span class="hljs-keyword">const</span> dbr = namespace(<span class="hljs-string">'http://dbpedia.org/resource/'</span>)
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dbo</span><span style="color: #000000"> = </span><span style="color: #795E26">namespace</span><span style="color: #000000">(</span><span style="color: #001080">prefixes</span><span style="color: #000000">.</span><span style="color: #001080">dbo</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dbr</span><span style="color: #000000"> = </span><span style="color: #795E26">namespace</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;http://dbpedia.org/resource/&#039;</span><span style="color: #000000">)</span>
 
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> SparqlHttp({
-  <span class="hljs-attr">endpointUrl</span>: <span class="hljs-string">'http://dbpedia.org/sparql'</span>,
-  fetch,
-})
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">SparqlHttp</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">endpointUrl:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;http://dbpedia.org/sparql&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">fetch</span><span style="color: #000000">,</span>
+<span style="color: #000000">})</span>
 
-<span class="hljs-keyword">const</span> scoobyDoo = dbr(<span class="hljs-string">'Scooby-Doo'</span>)
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">scoobyDoo</span><span style="color: #000000"> = </span><span style="color: #795E26">dbr</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Scooby-Doo&#039;</span><span style="color: #000000">)</span>
 
-<span class="hljs-comment">/*
-    PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+<span style="color: #008000">/*</span>
+<span style="color: #008000">    PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;</span>
 
-    ASK {
-        &lt;http://dbpedia.org/resource/Scooby-Doo&gt; a dbo:Person .
-    }
- */</span>
-ASK<span class="hljs-string">`<span class="hljs-subst">${scoobyDoo}</span> a <span class="hljs-subst">${dbo.Person}</span>`</span>
-  .execute(client)
-  .then(<span class="hljs-function"><span class="hljs-params">isScoobyAPerson</span> =&gt;</span> {
-    <span class="hljs-comment">// Fun fact: DBpedia seems to claim that Scooby-Doo is indeed a Person...</span>
-    <span class="hljs-keyword">return</span> isScoobyAPerson
-  })</code></pre>
+<span style="color: #008000">    ASK {</span>
+<span style="color: #008000">        &lt;http://dbpedia.org/resource/Scooby-Doo&gt; a dbo:Person .</span>
+<span style="color: #008000">    }</span>
+<span style="color: #008000"> */</span>
+<span style="color: #795E26">ASK</span><span style="color: #A31515">`</span><span style="color: #0000FF">${</span><span style="color: #001080">scoobyDoo</span><span style="color: #0000FF">}</span><span style="color: #A31515"> a </span><span style="color: #0000FF">${</span><span style="color: #001080">dbo</span><span style="color: #000000FF">.</span><span style="color: #001080">Person</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">execute</span><span style="color: #000000">(</span><span style="color: #001080">client</span><span style="color: #000000">)</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">isScoobyAPerson</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Fun fact: DBpedia seems to claim that Scooby-Doo is indeed a Person...</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">isScoobyAPerson</span>
+<span style="color: #000000">  })</span>
+</code></pre>
 				<a href="#running-examples" id="running-examples" style="color: inherit; text-decoration: none;">
 					<h2>Running examples</h2>
 				</a>
 				<p>The example in <a href="docs/examples"><code>docs/examples</code></a> can be executed locally. To do so, first replace the package import to point to the repository root.</p>
-				<pre><code class="language-diff"><span class="hljs-deletion">-const { /* */ } = require('@tpluscode/sparql-builder')</span>
-<span class="hljs-addition">+const { /* */ } = require('../..')</span></code></pre>
+				<pre><code class="language-diff"><span style="color: #A31515">-const { /* */ } = require(&#039;@tpluscode/sparql-builder&#039;)</span>
+<span style="color: #098658">+const { /* */ } = require(&#039;../..&#039;)</span>
+</code></pre>
 				<p>Then simply <code>npm run example</code>.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/delete.html">DELETE</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_askbuilder_.html">&quot;lib/<wbr>Ask<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_constructbuilder_.html">&quot;lib/<wbr>Construct<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_deletebuilder_.html">&quot;lib/<wbr>Delete<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_describebuilder_.html">&quot;lib/<wbr>Describe<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_insertbuilder_.html">&quot;lib/<wbr>Insert<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_selectbuilder_.html">&quot;lib/<wbr>Select<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_templateresult_.html">&quot;lib/<wbr>Template<wbr>Result&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_withbuilder_.html">&quot;lib/<wbr>With<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_execute_.html">&quot;lib/execute&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_index_.html">&quot;lib/index&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_partials_data_.html">&quot;lib/partials/DATA&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_partials_from_.html">&quot;lib/partials/FROM&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_partials_insert_.html">&quot;lib/partials/INSERT&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_partials_limit_.html">&quot;lib/partials/LIMIT&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_partials_order_.html">&quot;lib/partials/ORDER&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_lib_partials_where_.html">&quot;lib/partials/WHERE&quot;</a>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/insert.html">INSERT</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-type-alias tsd-is-external">
+						<a href="modules.html#sparqltemplateresult" class="tsd-kind-icon">Sparql<wbr>Template<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#delete" class="tsd-kind-icon">DELETE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#insert" class="tsd-kind-icon">INSERT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#select" class="tsd-kind-icon">SELECT</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#ask" class="tsd-kind-icon">ASK</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#construct" class="tsd-kind-icon">CONSTRUCT</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#describe" class="tsd-kind-icon">DESCRIBE</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#with" class="tsd-kind-icon">WITH</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="modules.html#sparql" class="tsd-kind-icon">sparql</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -231,17 +213,6 @@ ASK<span class="hljs-string">`<span class="hljs-subst">${scoobyDoo}</span> a <sp
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-			</ul>
 		</div>
 	</div>
 </footer>
@@ -250,6 +221,5 @@ ASK<span class="hljs-string">`<span class="hljs-subst">${scoobyDoo}</span> a <sp
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
