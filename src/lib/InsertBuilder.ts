@@ -1,10 +1,10 @@
 import { BlankNode, Literal, NamedNode } from 'rdf-js'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
-import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 import { update } from './execute'
 import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import InsertBuilderPartial, { InsertBuilder } from './partials/INSERT'
+import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 
 export type InsertQuery = SparqlQuery
 & SparqlUpdateExecutable

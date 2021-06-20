@@ -38,6 +38,7 @@
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
     "@changesets/cli": "^2.16.0",
+    "@rdfjs/data-model": "^1.1",
     "@rdfjs/dataset": "^1.0.1",
     "@rdfjs/namespace": "^1.1.0",
     "@tpluscode/eslint-config": "^0.3.0",

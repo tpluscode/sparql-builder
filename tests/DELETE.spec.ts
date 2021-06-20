@@ -1,6 +1,6 @@
 import { foaf, owl, schema } from '@tpluscode/rdf-ns-builders'
-import { sparqlClient } from './_mocks'
 import { DELETE } from '../src'
+import { sparqlClient } from './_mocks'
 
 describe('DELETE', () => {
   it('adds an empty WHERE if no pattern provided', () => {

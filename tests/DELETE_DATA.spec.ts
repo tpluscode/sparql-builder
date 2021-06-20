@@ -1,5 +1,5 @@
-import { DELETE } from '../src'
 import { owl } from '@tpluscode/rdf-ns-builders'
+import { DELETE } from '../src'
 import { sparqlClient } from './_mocks'
 
 describe('DELETE DATA', () => {

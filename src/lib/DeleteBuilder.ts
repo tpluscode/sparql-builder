@@ -2,11 +2,11 @@ import { Literal, NamedNode } from 'rdf-js'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
 import { update } from './execute'
-import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 import DATA, { QuadDataBuilder } from './partials/DATA'
 import WHERE, { WhereBuilder } from './partials/WHERE'
 import INSERT, { InsertBuilder } from './partials/INSERT'
 import { concat } from './TemplateResult'
+import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 
 export type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery>
 & WhereBuilder<DeleteInsertQuery>

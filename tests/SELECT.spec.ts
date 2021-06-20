@@ -1,5 +1,5 @@
 import namespace from '@rdfjs/namespace'
-import RDF from '@rdfjs/data-model'
+import * as RDF from '@rdfjs/data-model'
 import { SELECT } from '../src'
 import { sparqlClient } from './_mocks'
 

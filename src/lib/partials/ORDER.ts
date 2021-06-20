@@ -1,6 +1,6 @@
-import { SparqlQuery } from '../index'
 import { Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
+import { SparqlQuery } from '../index'
 
 interface OrderCondition {
   variable: Variable
@@ -8,6 +8,7 @@ interface OrderCondition {
 }
 
 interface ThenOrderByBuilder<T> {
+  // eslint-disable-next-line no-use-before-define
   THEN: OrderByBuilder<T>
 }
 

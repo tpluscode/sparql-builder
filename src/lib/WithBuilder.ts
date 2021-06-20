@@ -3,8 +3,8 @@ import { sparql } from '@tpluscode/rdf-string'
 import { namedNode } from '@rdf-esm/data-model'
 import { InsertQuery } from './InsertBuilder'
 import { DeleteInsertQuery } from './DeleteBuilder'
-import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 import { update } from './execute'
+import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 
 type WithQuery = SparqlUpdateExecutable & SparqlQuery
 
