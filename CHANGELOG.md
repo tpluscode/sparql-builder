@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.15
+
+### Patch Changes
+
+- 795ff8a: Export SparqlTemplateResult as type
+
 ## 0.3.14
 
 ### Patch Changes
