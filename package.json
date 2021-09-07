@@ -13,6 +13,16 @@
     "*.d.ts",
     "*.d.ts.map"
   ],
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs"
+    },
+    "./expressions": {
+      "require": "./expressions.js",
+      "import": "./expressions.mjs"
+    }
+  },
   "scripts": {
     "test": "jest --coverage",
     "prepack": "npm run build",

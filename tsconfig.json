@@ -19,13 +19,15 @@
     "declarationMap": true
   },
   "files": [
-    "src/index.ts"
+    "src/index.ts",
+    "src/expressions.ts"
   ],
   "include": ["tests/*.ts", "docs"],
   "typedocOptions": {
     "name": "@tpluscode/sparql-builder",
     "entryPoints": [
-      "src/index.ts"
+      "src/index.ts",
+      "src/expressions.ts"
     ],
     "out": "docs/api"
   }
