@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.16
+
+### Patch Changes
+
+- 3e72cd3: Export a function to create `IN` function
+- 4afbddb: Builder function for `VALUES` (closes #4)
+
 ## 0.3.15
 
 ### Patch Changes
