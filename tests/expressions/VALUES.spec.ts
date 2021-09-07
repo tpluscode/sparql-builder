@@ -1,3 +1,4 @@
+import { literal } from '@rdf-esm/data-model'
 import { VALUES } from '../../src/expressions'
 
 describe('VALUES', () => {
@@ -40,6 +41,24 @@ describe('VALUES', () => {
 ( "foo" )
 ( UNDEF )
 ( UNDEF )
+}`)
+  })
+
+  it('handles various values', () => {
+    // given
+    const foo = { val: 11.6 }
+    const bar = { val: true }
+    const baz = { val: literal('baz', 'de') }
+
+    // when
+    const expr = VALUES(foo, bar, baz).toString()
+
+    // then
+    expect(expr).toBe(`VALUES ( ?val )
+{
+( 11.6 )
+( true )
+( "baz"@de )
 }`)
   })
 })
