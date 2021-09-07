@@ -25,3 +25,32 @@ SELECT.ALL.WHERE`
 ```
 
 </run-kit>
+
+## `VALUES`
+
+Reference: https://www.w3.org/TR/sparql11-query/#inline-data
+
+<run-kit>
+
+```js
+const { SELECT } = require('@tpluscode/sparql-builder')
+const { VALUES } = require('@tpluscode/sparql-builder/expressions')
+const { schema, dcterms } = require('@tpluscode/rdf-ns-builders')
+const { namedNode } = require('@rdf-esm/data-model')
+
+// null or undefined values
+// will serialize as UNDEF
+const values = [
+    { book: null, title: 'SPARQL Tutorial' },
+    { book: namedNode('http://example.org/book') }
+]
+
+SELECT.ALL.WHERE`
+    ${VALUES(...values)}
+
+    ?book ${dcterms.title} ?title ;
+          ${schema.price} ?price .
+`.build()
+```
+
+</run-kit>
