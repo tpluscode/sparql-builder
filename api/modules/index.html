@@ -76,10 +76,14 @@
 								<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="index.insert.html" class="tsd-kind-icon">INSERT</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-external">
+						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#ask" class="tsd-kind-icon">Ask</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#construct" class="tsd-kind-icon">Construct</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#select" class="tsd-kind-icon">Select</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-is-external"><a href="index.html#sparqltemplateresult" class="tsd-kind-icon">Sparql<wbr>Template<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#update" class="tsd-kind-icon">Update</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -87,14 +91,14 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="index.html#delete-1" class="tsd-kind-icon">DELETE</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="index.html#insert-1" class="tsd-kind-icon">INSERT</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="index.html#select" class="tsd-kind-icon">SELECT</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="index.html#select-1" class="tsd-kind-icon">SELECT</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#ask" class="tsd-kind-icon">ASK</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#construct" class="tsd-kind-icon">CONSTRUCT</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#ask-1" class="tsd-kind-icon">ASK</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#construct-1" class="tsd-kind-icon">CONSTRUCT</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#describe" class="tsd-kind-icon">DESCRIBE</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#with" class="tsd-kind-icon">WITH</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-external"><a href="index.html#sparql" class="tsd-kind-icon">sparql</a></li>
@@ -103,8 +107,38 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="ask" class="tsd-anchor"></a>
+					<h3>Ask</h3>
+					<div class="tsd-signature tsd-kind-icon">Ask<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lib.SparqlAskExecutable</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Lib.SparqlQuery</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/index.ts#L16">src/index.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="construct" class="tsd-anchor"></a>
+					<h3>Construct</h3>
+					<div class="tsd-signature tsd-kind-icon">Construct<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lib.SparqlGraphQueryExecutable</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Lib.SparqlQuery</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/index.ts#L14">src/index.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="select" class="tsd-anchor"></a>
+					<h3>Select</h3>
+					<div class="tsd-signature tsd-kind-icon">Select<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lib.SparqlQueryExecutable</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Lib.SparqlQuery</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/index.ts#L13">src/index.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-is-external">
 					<a name="sparqltemplateresult" class="tsd-anchor"></a>
 					<h3>Sparql<wbr>Template<wbr>Result</h3>
@@ -112,6 +146,16 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in node_modules/@tpluscode/rdf-string/lib/sparql.d.ts:9</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>Update</h3>
+					<div class="tsd-signature tsd-kind-icon">Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lib.SparqlUpdateExecutable</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Lib.SparqlQuery</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/index.ts#L15">src/index.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -124,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">DELETE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>DATA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/DeleteBuilder.ts#L24">src/lib/DeleteBuilder.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/DeleteBuilder.ts#L24">src/lib/DeleteBuilder.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -158,7 +202,7 @@
 									<li class="tsd-description">
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/DeleteBuilder.ts#L45">src/lib/DeleteBuilder.ts:45</a></li>
+												<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/DeleteBuilder.ts#L45">src/lib/DeleteBuilder.ts:45</a></li>
 											</ul>
 										</aside>
 										<h4 class="tsd-parameters-title">Parameters</h4>
@@ -183,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">INSERT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>DATA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/InsertBuilder.ts#L20">src/lib/InsertBuilder.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/InsertBuilder.ts#L20">src/lib/InsertBuilder.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -217,7 +261,7 @@
 									<li class="tsd-description">
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/InsertBuilder.ts#L30">src/lib/InsertBuilder.ts:30</a></li>
+												<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/InsertBuilder.ts#L30">src/lib/InsertBuilder.ts:30</a></li>
 											</ul>
 										</aside>
 										<h4 class="tsd-parameters-title">Parameters</h4>
@@ -237,12 +281,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
-					<a name="select" class="tsd-anchor"></a>
+					<a name="select-1" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> SELECT</h3>
 					<div class="tsd-signature tsd-kind-icon">SELECT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Select</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/SelectBuilder.ts#L68">src/lib/SelectBuilder.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/SelectBuilder.ts#L68">src/lib/SelectBuilder.ts:68</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -250,7 +294,7 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="ask" class="tsd-anchor"></a>
+					<a name="ask-1" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> ASK</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
 						<li class="tsd-signature tsd-kind-icon">ASK<span class="tsd-signature-symbol">(</span>strings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Value</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#sparqltemplateresult" class="tsd-signature-type" data-tsd-kind="Type alias">SparqlTemplateResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Term</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AskQuery</span></li>
@@ -259,7 +303,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/AskBuilder.ts#L14">src/lib/AskBuilder.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/AskBuilder.ts#L14">src/lib/AskBuilder.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -276,7 +320,7 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="construct" class="tsd-anchor"></a>
+					<a name="construct-1" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> CONSTRUCT</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
 						<li class="tsd-signature tsd-kind-icon">CONSTRUCT<span class="tsd-signature-symbol">(</span>strings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Value</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#sparqltemplateresult" class="tsd-signature-type" data-tsd-kind="Type alias">SparqlTemplateResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Term</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConstructQuery</span></li>
@@ -285,7 +329,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/ConstructBuilder.ts#L16">src/lib/ConstructBuilder.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/ConstructBuilder.ts#L16">src/lib/ConstructBuilder.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -311,7 +355,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/DescribeBuilder.ts#L17">src/lib/DescribeBuilder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/DescribeBuilder.ts#L17">src/lib/DescribeBuilder.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -337,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/92a1759/src/lib/WithBuilder.ts#L11">src/lib/WithBuilder.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/ede2fb5/src/lib/WithBuilder.ts#L11">src/lib/WithBuilder.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -397,8 +441,20 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="index.html#ask" class="tsd-kind-icon">Ask</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="index.html#construct" class="tsd-kind-icon">Construct</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="index.html#select" class="tsd-kind-icon">Select</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-external">
 						<a href="index.html#sparqltemplateresult" class="tsd-kind-icon">Sparql<wbr>Template<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="index.html#update" class="tsd-kind-icon">Update</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="index.html#delete-1" class="tsd-kind-icon">DELETE</a>
@@ -407,13 +463,13 @@
 						<a href="index.html#insert-1" class="tsd-kind-icon">INSERT</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="index.html#select" class="tsd-kind-icon">SELECT</a>
+						<a href="index.html#select-1" class="tsd-kind-icon">SELECT</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="index.html#ask" class="tsd-kind-icon">ASK</a>
+						<a href="index.html#ask-1" class="tsd-kind-icon">ASK</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="index.html#construct" class="tsd-kind-icon">CONSTRUCT</a>
+						<a href="index.html#construct-1" class="tsd-kind-icon">CONSTRUCT</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="index.html#describe" class="tsd-kind-icon">DESCRIBE</a>
@@ -438,6 +494,7 @@
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 		</div>
 	</div>
