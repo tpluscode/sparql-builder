@@ -1,11 +1,20 @@
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 
-export function concat(current: SparqlTemplateResult | null | undefined, strings: TemplateStringsArray, values: SparqlValue[]): SparqlTemplateResult {
+export function concat(
+  current: SparqlTemplateResult | null | undefined,
+  strings: TemplateStringsArray,
+  values: SparqlValue[],
+  wrapTemplate = false): SparqlTemplateResult {
+  let next = sparql(strings, ...values)
+  if (wrapTemplate) {
+    next = sparql`( ${next} )`
+  }
+
   if (!current) {
-    return sparql(strings, ...values)
+    return next
   }
 
   return sparql`${current}
   
-${sparql(strings, ...values)}`
+${next}`
 }

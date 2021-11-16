@@ -5,6 +5,8 @@ import WHERE, { WhereBuilder } from './partials/WHERE'
 import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 import ORDER, { OrderBuilder } from './partials/ORDER'
 import FROM, { FromBuilder } from './partials/FROM'
+import GROUP, { GroupBuilder } from './partials/GROUP'
+import HAVING, { HavingBuilder } from './partials/HAVING'
 import Builder, { SparqlQuery, SparqlQueryExecutable } from './index'
 
 type SelectQuery = SparqlQuery
@@ -12,6 +14,8 @@ type SelectQuery = SparqlQuery
 & WhereBuilder<SelectQuery>
 & LimitOffsetBuilder<SelectQuery>
 & OrderBuilder<SelectQuery>
+& GroupBuilder<SelectQuery>
+& HavingBuilder<SelectQuery>
 & FromBuilder<SelectQuery>
 & {
   readonly distinct: boolean
@@ -34,6 +38,8 @@ const SelectBuilder = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   }),
   ...LIMIT(),
   ...ORDER(),
+  ...GROUP(),
+  ...HAVING(),
   ...FROM(),
   distinct: false,
   reduced: false,
@@ -45,6 +51,8 @@ const SelectBuilder = (strings: TemplateStringsArray, ...values: SparqlValue<Var
 ${this.fromClause()}
 ${this.whereClause()}
 ${this.orderClause()}
+${this.groupByClause()}
+${this.havingClause()}
 ${this.limitOffsetClause()}`
   },
 })
