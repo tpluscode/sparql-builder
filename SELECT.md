@@ -63,3 +63,50 @@ SELECT`?person`
 ```
 
 </run-kit>
+
+## `GROUP BY/HAVING`
+
+Simple grouping. Argument to `BY` can be a RDF/JS variable or string
+
+<run-kit>
+
+```js
+const { SELECT } = require('@tpluscode/sparql-builder')
+const { schema } = require('@tpluscode/rdf-ns-builders')
+
+SELECT`?person (AVG(?age) as ?avg)`
+    .WHERE`GRAPH ?g {
+        ?person a ${schema.Person} ;
+                ${schema.parent} ?parent . 
+        ?parent ${schema.age} ?age
+    }`
+    .GROUP().BY('person')
+    .HAVING`AVG(?age) < 20`
+    .build()
+```
+
+</run-kit>
+
+Grouping can be done by expression and using binding keyword.
+Similarly, argument to `AS` can be a RDF/JS variable or string
+
+<run-kit>
+
+```js
+const { SELECT } = require('@tpluscode/sparql-builder')
+const { schema } = require('@tpluscode/rdf-ns-builders')
+
+SELECT`?name (AVG(?age) as ?avg)`
+    .WHERE`GRAPH ?g {
+        ?person a ${schema.Person} ;
+                ${schema.parent} ?parent . 
+        ?parent ${schema.age} ?age
+    }`
+    .GROUP()
+        .BY`REPLACE(STR(?person), "^(.+)/[^/]$", "")`
+        .AS('name')
+    .HAVING`AVG(?age) < 20`
+    .build()
+```
+
+</run-kit>
