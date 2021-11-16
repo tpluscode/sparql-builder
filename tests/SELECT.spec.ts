@@ -247,4 +247,101 @@ describe('SELECT', () => {
       expect(actual).toMatchQuery(expected)
     })
   })
+
+  describe('GROUP BY', () => {
+    it('can be grouped by variable', () => {
+      // given
+      const expected = 'SELECT (SUM(?s) as ?sum) WHERE { ?s ?p ?o } GROUP BY (?s)'
+
+      // when
+      const s = RDF.variable('s')
+      const actual = SELECT`(SUM(${s}) as ?sum)`
+        .WHERE`${s} ?p ?o`
+        .GROUP().BY(s)
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+
+    it('can be grouped by variable name (string)', () => {
+      // given
+      const expected = 'SELECT (SUM(?s) as ?sum) WHERE { ?s ?p ?o } GROUP BY (?s)'
+
+      // when
+      const s = RDF.variable('s')
+      const actual = SELECT`(SUM(${s}) as ?sum)`
+        .WHERE`${s} ?p ?o`
+        .GROUP().BY('s')
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+
+    it('can be grouped by variable with binding keyword as variable name', () => {
+      // given
+      const expected = 'SELECT (SUM(?x) as ?sum) WHERE { ?s ?p ?o } GROUP BY (?s as ?x)'
+
+      // when
+      const s = RDF.variable('s')
+      const actual = SELECT`(SUM(?x) as ?sum)`
+        .WHERE`${s} ?p ?o`
+        .GROUP().BY(s).AS('x')
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+
+    it('can be grouped by expression with binding keyword as variable', () => {
+      // given
+      const expected = 'SELECT (SUM(?x) as ?sum) WHERE { ?s ?p ?o } GROUP BY (?s + ?p as ?x)'
+
+      // when
+      const s = RDF.variable('s')
+      const x = RDF.variable('x')
+      const actual = SELECT`(SUM(${x}) as ?sum)`
+        .WHERE`${s} ?p ?o`
+        .GROUP().BY`${s} + ?p`.AS(x)
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+
+    it('can be grouped multiple times', () => {
+      // given
+      const expected = 'SELECT (SUM(?s) as ?sum) WHERE { ?s ?p ?o } GROUP BY (?s) (?x as ?z)'
+
+      // when
+      const s = RDF.variable('s')
+      const x = RDF.variable('x')
+      const actual = SELECT`(SUM(${s}) as ?sum)`
+        .WHERE`${s} ?p ?o`
+        .GROUP().BY(s).THEN.BY(x).AS('z')
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+  })
+
+  describe('HAVING', () => {
+    it('can build multiple HAVING clauses', () => {
+      // given
+      const expected = 'SELECT * WHERE { ?s ?p ?o } HAVING (AVG(?s) > 10) (SUM(?p) = 0)'
+
+      // when
+      const s = RDF.variable('s')
+      const actual = SELECT.ALL
+        .WHERE`?s ?p ?o`
+        .HAVING`AVG(${s}) > 10`
+        .HAVING`SUM(?p) = 0`
+        .build()
+
+      // then
+      expect(actual).toMatchQuery(expected)
+    })
+  })
 })
