@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.17
+
+### Patch Changes
+
+- ede2fb5: Export types representing queries which can be executed and built
+- 837447c: Support for `GROUP BY` and `HAVING` clauses in `SELECT` (closes #57)
+
 ## 0.3.16
 
 ### Patch Changes
