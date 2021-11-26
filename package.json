@@ -83,14 +83,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tpluscode/ts-template.git"
+    "url": "git+https://github.com/tpluscode/sparql-builder.git"
   },
   "author": "Tomasz Pluskiewicz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tpluscode/ts-template/issues"
+    "url": "https://github.com/tpluscode/sparql-builder/issues"
   },
-  "homepage": "https://github.com/tpluscode/ts-template#readme",
+  "homepage": "https://github.com/tpluscode/sparql-builder#readme",
   "publishConfig": {
     "access": "public"
   },
