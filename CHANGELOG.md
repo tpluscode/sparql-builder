@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.18
+
+### Patch Changes
+
+- 0e045af: Wrong URLs in package meta
+
 ## 0.3.17
 
 ### Patch Changes
