@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>INSERT | @tpluscode/sparql-builder</title>
+	<title>DELETE | @tpluscode/sparql-builder</title>
 	<meta name="description" content="Documentation for @tpluscode/sparql-builder">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -58,10 +58,10 @@
 					<a href="index.html">index</a>
 				</li>
 				<li>
-					<a href="index.insert.html">INSERT</a>
+					<a href="index.DELETE.html">DELETE</a>
 				</li>
 			</ul>
-			<h1>Namespace INSERT</h1>
+			<h1>Namespace DELETE</h1>
 		</div>
 	</div>
 </header>
@@ -75,7 +75,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="index.insert.html#data" class="tsd-kind-icon">DATA</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="index.DELETE.html#DATA" class="tsd-kind-icon">DATA</a></li>
 							</ul>
 						</section>
 					</div>
@@ -84,16 +84,16 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-namespace">
-					<a name="data" class="tsd-anchor"></a>
+					<a name="DATA" class="tsd-anchor"></a>
 					<h3>DATA</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-namespace">
-						<li class="tsd-signature tsd-kind-icon">DATA<span class="tsd-signature-symbol">(</span>strings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Value</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#sparqltemplateresult" class="tsd-signature-type" data-tsd-kind="Type alias">SparqlTemplateResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">BlankNode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Literal</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">NamedNode</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">InsertData</span></li>
+						<li class="tsd-signature tsd-kind-icon">DATA<span class="tsd-signature-symbol">(</span>strings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">Literal</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">NamedNode</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DeleteData</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/e633963/src/lib/InsertBuilder.ts#L30">src/lib/InsertBuilder.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/tpluscode/sparql-builder/blob/8ca3c48/src/lib/DeleteBuilder.ts#L47">src/lib/DeleteBuilder.ts:47</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -102,10 +102,10 @@
 									<h5>strings: <span class="tsd-signature-type">TemplateStringsArray</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>values: <span class="tsd-signature-type">Value</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#sparqltemplateresult" class="tsd-signature-type" data-tsd-kind="Type alias">SparqlTemplateResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">BlankNode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Literal</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">NamedNode</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>values: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">Literal</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">NamedNode</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">InsertData</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DeleteData</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -122,7 +122,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-namespace">
-						<a href="index.insert.html#data" class="tsd-kind-icon">DATA</a>
+						<a href="index.DELETE.html#DATA" class="tsd-kind-icon">DATA</a>
 					</li>
 				</ul>
 			</nav>
