@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.19
+
+### Patch Changes
+
+- a4dea43: `DESCRIBE` query function should support `ORDER BY` clause
+
 ## 0.3.18
 
 ### Patch Changes
