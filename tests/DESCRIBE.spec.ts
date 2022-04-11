@@ -37,6 +37,24 @@ describe('DESCRIBE', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('supports ORDER BY', () => {
+    // given
+    const expected = 'DESCRIBE ?foo WHERE { ?foo a ?bar } ORDER BY ?bar LIMIT 100 OFFSET 200'
+    const foo = RDF.variable('foo')
+    const bar = RDF.variable('bar')
+
+    // when
+    const actual = DESCRIBE`${foo}`
+      .WHERE`${foo} a ${bar}`
+      .ORDER().BY(bar)
+      .LIMIT(100)
+      .OFFSET(200)
+      .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('supports FROM (NAMED)', () => {
     // given
     const expected = `DESCRIBE ?foo
