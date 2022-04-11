@@ -22,7 +22,7 @@ jobs:
           node-version: 13
 
       - name: Install Dependencies
-        run: npm i --ci
+        run: yarn install --frozen-lockfile
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

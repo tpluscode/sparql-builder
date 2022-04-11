@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: npm ci
+    - run: yarn install
     - run: npx typedoc
     - name: GH Pages deploy
       uses: Cecilapp/GitHub-Pages-deploy@2.0.0
