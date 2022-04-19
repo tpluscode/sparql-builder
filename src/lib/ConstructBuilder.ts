@@ -30,9 +30,16 @@ const builder = (strings: TemplateStringsArray, ...values: SparqlValue[]): Const
   shorthand: false,
   constructTemplate: sparql(strings, ...values),
   _getTemplateResult(): SparqlTemplateResult {
-    return sparql`CONSTRUCT ${this.shorthand ? 'WHERE' : ''} { ${this.constructTemplate} }
+    if (this.shorthand) {
+      return sparql`CONSTRUCT
 ${this.fromClause()}
-${this.shorthand ? '' : this.whereClause()}
+WHERE { ${this.constructTemplate} }
+${this.limitOffsetClause()}`
+    }
+
+    return sparql`CONSTRUCT { ${this.constructTemplate} }
+${this.fromClause()}
+${this.whereClause()}
 ${this.limitOffsetClause()}`
   },
 })

@@ -40,6 +40,19 @@ describe('CONSTRUCT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('support FROM in shorthand syntax', () => {
+    // given
+    const expected = `PREFIX schema: <http://schema.org/>
+    CONSTRUCT FROM <http://example.com/graph> WHERE { ?person a schema:Person }`
+
+    // when
+    const actual = CONSTRUCT.WHERE`?person a ${schema.Person}`
+      .FROM(RDF.namedNode('http://example.com/graph')).build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('supports LIMIT/OFFSET', () => {
     // given
     const expected = `PREFIX schema: <http://schema.org/>
