@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.20
+
+### Patch Changes
+
+- 6200b56: Add shorthand form `CONSTRUCT WHERE`
+
 ## 0.3.19
 
 ### Patch Changes
