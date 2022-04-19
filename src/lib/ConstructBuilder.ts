@@ -11,9 +11,15 @@ type ConstructQuery = SparqlQuery
 & FromBuilder<ConstructQuery>
 & LimitOffsetBuilder<ConstructQuery> & {
   readonly constructTemplate: SparqlTemplateResult
+  readonly shorthand: boolean
 }
 
-export const CONSTRUCT = (strings: TemplateStringsArray, ...values: SparqlValue[]): ConstructQuery => ({
+interface ConstructBuilder {
+  (strings: TemplateStringsArray, ...values: SparqlValue[]): ConstructQuery
+  WHERE(strings: TemplateStringsArray, ...values: SparqlValue[]): ConstructQuery
+}
+
+const builder = (strings: TemplateStringsArray, ...values: SparqlValue[]): ConstructQuery => ({
   ...Builder(),
   ...graph,
   ...WHERE<ConstructQuery>({
@@ -21,11 +27,19 @@ export const CONSTRUCT = (strings: TemplateStringsArray, ...values: SparqlValue[
   }),
   ...LIMIT(),
   ...FROM(),
+  shorthand: false,
   constructTemplate: sparql(strings, ...values),
   _getTemplateResult(): SparqlTemplateResult {
-    return sparql`CONSTRUCT { ${this.constructTemplate} }
+    return sparql`CONSTRUCT ${this.shorthand ? 'WHERE' : ''} { ${this.constructTemplate} }
 ${this.fromClause()}
-${this.whereClause()}
+${this.shorthand ? '' : this.whereClause()}
 ${this.limitOffsetClause()}`
   },
 })
+
+builder.WHERE = (strings: TemplateStringsArray, ...values: SparqlValue[]) => ({
+  ...builder(strings, values),
+  shorthand: true,
+})
+
+export const CONSTRUCT = builder as ConstructBuilder
