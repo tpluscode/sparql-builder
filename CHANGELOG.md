@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.21
+
+### Patch Changes
+
+- 3231508: Correct syntax for `FROM` in shorthand `CONSTRUCT`
+
 ## 0.3.20
 
 ### Patch Changes
