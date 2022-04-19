@@ -28,6 +28,18 @@ describe('CONSTRUCT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('support shorthand syntax', () => {
+    // given
+    const expected = `PREFIX schema: <http://schema.org/>
+    CONSTRUCT WHERE { ?person a schema:Person }`
+
+    // when
+    const actual = CONSTRUCT.WHERE`?person a ${schema.Person}`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   it('supports LIMIT/OFFSET', () => {
     // given
     const expected = `PREFIX schema: <http://schema.org/>
