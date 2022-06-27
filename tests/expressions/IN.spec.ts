@@ -1,4 +1,4 @@
-import { xsd } from '@tpluscode/rdf-ns-builders/strict'
+import { xsd } from '@tpluscode/rdf-ns-builders'
 import { literal, variable } from '@rdf-esm/data-model'
 import { IN } from '../../src/expressions'
 
