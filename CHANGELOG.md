@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.23
+
+### Patch Changes
+
+- 329c89e: Shorthand `CONSTRUCT` syntax would interpolate templates incorrectly, producing invalid SPARQL
+
 ## 0.3.22
 
 ### Patch Changes
