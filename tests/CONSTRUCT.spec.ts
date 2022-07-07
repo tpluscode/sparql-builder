@@ -1,5 +1,5 @@
 import namespace from '@rdfjs/namespace'
-import { dbo, foaf, schema } from '@tpluscode/rdf-ns-builders'
+import { dbo, foaf, schema, skos } from '@tpluscode/rdf-ns-builders'
 import * as RDF from '@rdfjs/data-model'
 import { CONSTRUCT, SELECT } from '../src'
 import { sparqlClient } from './_mocks'
@@ -35,6 +35,25 @@ describe('CONSTRUCT', () => {
 
     // when
     const actual = CONSTRUCT.WHERE`?person a ${schema.Person}`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('correctly interpolate shorthand syntax', () => {
+    // given
+    const root = RDF.namedNode('https://example.com/')
+    const expected = `PREFIX skos: <${skos().value}>
+    CONSTRUCT WHERE { 
+      <https://example.com/> skos:narrower ?narrower .
+      ?narrower skos:prefLabel ?label . 
+    }`
+
+    // when
+    const actual = CONSTRUCT.WHERE`
+      ${root} ${skos.narrower} ?narrower .
+      ?narrower ${skos.prefLabel} ?label .
+    `.build()
 
     // then
     expect(actual).toMatchQuery(expected)

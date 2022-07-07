@@ -45,7 +45,7 @@ ${this.limitOffsetClause()}`
 })
 
 builder.WHERE = (strings: TemplateStringsArray, ...values: SparqlValue[]) => ({
-  ...builder(strings, values),
+  ...builder(strings, ...values),
   shorthand: true,
 })
 
