@@ -1,4 +1,5 @@
 import { owl, schema } from '@tpluscode/rdf-ns-builders'
+import { namedNode } from '@rdfjs/data-model'
 import { INSERT } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -32,6 +33,20 @@ describe('INSERT', () => {
 
     // then
     expect(query).toMatchQuery(expected)
+  })
+
+  it('can have additional prologue', () => {
+    // given
+    const base = namedNode('http://foo.bar/baz')
+
+    // when
+    const query = INSERT`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+      .prologue`#pragma join.hash off`
+      .prologue`BASE ${base}`
+      .build()
+
+    // then
+    expect(query).toMatchSnapshot()
   })
 
   it('has a WHERE method', () => {

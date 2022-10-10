@@ -26,6 +26,21 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('can have additional prologue', () => {
+    // given
+    const base = RDF.namedNode('http://foo.bar/baz')
+
+    // when
+    const actual = SELECT`?s ?p ?o`
+      .WHERE`?s ?p ?o`
+      .prologue`#pragma join.hash off`
+      .prologue`BASE ${base}`
+      .build()
+
+    // then
+    expect(actual).toMatchSnapshot()
+  })
+
   it('combines multiple WHERE clauses', () => {
     // given
     const expected = 'SELECT * WHERE { ?s ?p ?o. ?a ?b ?c }'

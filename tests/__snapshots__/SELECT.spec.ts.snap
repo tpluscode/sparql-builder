@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SELECT can have additional prologue 1`] = `
+"#pragma join.hash off
+BASE <http://foo.bar/baz>
+
+SELECT ?s ?p ?o
+
+WHERE {
+?s ?p ?o
+}
+
+
+
+"
+`;

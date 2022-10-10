@@ -29,6 +29,20 @@ describe('ASK', () => {
     expect(client.ask).toHaveBeenCalled()
   })
 
+  it('can have additional prologue', () => {
+    // given
+    const base = namedNode('http://foo.bar/baz')
+
+    // when
+    const query = ASK`?s ?p ?o .`
+      .prologue`#pragma join.hash off`
+      .prologue`BASE ${base}`
+      .build()
+
+    // then
+    expect(query).toMatchSnapshot()
+  })
+
   it('supports LIMIT/OFFSET', () => {
     // given
     const expected = `ASK {

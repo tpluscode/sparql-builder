@@ -1,4 +1,5 @@
 import { owl } from '@tpluscode/rdf-ns-builders'
+import { namedNode } from '@rdfjs/data-model'
 import { DELETE } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -24,6 +25,20 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
 
     // then
     expect(client.update).toHaveBeenCalled()
+  })
+
+  it('can have additional prologue', () => {
+    // given
+    const base = namedNode('http://foo.bar/baz')
+
+    // when
+    const query = DELETE.DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+      .prologue`#pragma join.hash off`
+      .prologue`BASE ${base}`
+      .build()
+
+    // then
+    expect(query).toMatchSnapshot()
   })
 
   it('can chain multiple quad data calls', () => {

@@ -1,5 +1,6 @@
 import { AskQuery, ConstructQuery, QueryOptions, SelectQuery, UpdateQuery } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
+import prologue, { PrologueBuilder } from './partials/prologue'
 
 interface SparqlBuildOptions {
   base?: string
@@ -7,7 +8,7 @@ interface SparqlBuildOptions {
 
 export type SparqlExecuteOptions = QueryOptions & SparqlBuildOptions
 
-export interface SparqlQuery {
+export interface SparqlQuery extends PrologueBuilder {
   build(options?: SparqlBuildOptions): string
   _getTemplateResult(): SparqlTemplateResult
 }
@@ -31,15 +32,22 @@ export interface SparqlAskExecutable {
 type TBuilder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPartialString'>
 
 // eslint-disable-next-line no-unused-vars
-export default function Builder<T extends SparqlQuery>(): TBuilder {
+export default function Builder<T extends SparqlQuery>(): TBuilder & T {
   return {
+    ...prologue(),
     build(this: SparqlQuery, { base }: SparqlBuildOptions = {}): string {
-      return this._getTemplateResult().toString({
+      const queryResult = this._getTemplateResult().toString({
         base,
       })
+
+      if (this.prologueResult) {
+        return `${this.prologueResult}\n\n${queryResult}`
+      }
+
+      return queryResult
     },
     _toPartialString(this: SparqlQuery, options: any) {
       return this._getTemplateResult()._toPartialString(options)
     },
-  }
+  } as any
 }
