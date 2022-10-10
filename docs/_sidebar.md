@@ -13,6 +13,7 @@
     * [DELETE](DELETE.md)
     * [INSERT DATA](INSERT-DATA.md)
     * [DELETE DATA](DELETE-DATA.md)
+  * [Query prologue](prologue.md)
   * [Executing a query](execute.md)
 * [Expressions and operators](expressions.md)
 * References
