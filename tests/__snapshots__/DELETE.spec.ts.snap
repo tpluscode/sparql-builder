@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DELETE can have additional prologue 1`] = `
+"#pragma join.hash off
+BASE <http://foo.bar/baz>
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE { <http://example.com/bar> owl:sameAs <http://example.org/bar> . } WHERE {}"
+`;

@@ -20,7 +20,7 @@ export default <T extends SparqlQuery & HavingBuilder<T>>(): HavingBuilder<T> =>
   HAVING(strings: TemplateStringsArray, ...values: SparqlValue[]): T {
     return {
       ...this,
-      havings: concat(this.havings, strings, values, true),
+      havings: concat(this.havings, strings, values, { wrapTemplate: true }),
     } as T
   },
 })

@@ -1,5 +1,6 @@
 import namespace from '@rdfjs/namespace'
 import * as RDF from '@rdfjs/data-model'
+import { namedNode } from '@rdfjs/data-model'
 import { DESCRIBE } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -24,6 +25,21 @@ describe('DESCRIBE', () => {
 
     // then
     expect(actual).toMatchQuery(expected)
+  })
+
+  it('can have additional prologue', () => {
+    // given
+    const base = namedNode('http://foo.bar/baz')
+
+    // when
+    const query = DESCRIBE`?foo`
+      .prologue`#pragma join.hash off`
+      .prologue`BASE ${base}`
+      .WHERE`?foo a ?bar`
+      .build()
+
+    // then
+    expect(query).toMatchSnapshot()
   })
 
   it('supports LIMIT/OFFSET', () => {

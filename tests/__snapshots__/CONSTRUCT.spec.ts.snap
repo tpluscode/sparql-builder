@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CONSTRUCT can have additional prologue 1`] = `
+"#pragma join.hash off
+BASE <http://foo.bar/baz>
+
+CONSTRUCT { ?s ?p ?o . }
+
+WHERE {}
+"
+`;

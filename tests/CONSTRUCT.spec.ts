@@ -1,6 +1,7 @@
 import namespace from '@rdfjs/namespace'
 import { dbo, foaf, schema, skos } from '@tpluscode/rdf-ns-builders'
 import * as RDF from '@rdfjs/data-model'
+import { namedNode } from '@rdfjs/data-model'
 import { CONSTRUCT, SELECT } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -14,6 +15,20 @@ describe('CONSTRUCT', () => {
 
     // then
     expect(client.construct).toHaveBeenCalled()
+  })
+
+  it('can have additional prologue', () => {
+    // given
+    const base = namedNode('http://foo.bar/baz')
+
+    // when
+    const query = CONSTRUCT`?s ?p ?o .`
+      .prologue`#pragma join.hash off`
+      .prologue`BASE ${base}`
+      .build()
+
+    // then
+    expect(query).toMatchSnapshot()
   })
 
   it('generates empty WHERE clause by default', () => {
