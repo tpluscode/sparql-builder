@@ -1,6 +1,6 @@
 {
   "name": "@tpluscode/sparql-builder",
-  "version": "0.3.24",
+  "version": "0.3.25",
   "description": "Simple JS library to build SPARQL queries",
   "main": "index.js",
   "module": "index.mjs",

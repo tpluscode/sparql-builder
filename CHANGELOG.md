@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.25
+
+### Patch Changes
+
+- 9f681a2: Type declaration prevented `DELETE.DATA` where the interpolated value was quad array
+
 ## 0.3.24
 
 ### Patch Changes
