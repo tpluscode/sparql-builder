@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DELETE DATA can delete dataset 1`] = `
+"PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE DATA {
+  
+
+<http://example.com/bar> owl:sameAs <http://example.com/bar> .
+}"
+`;
+
+exports[`DELETE DATA can delete quads 1`] = `
+"PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE DATA {
+  GRAPH <http://example.com/G> { <http://example.com/bar> owl:sameAs <http://example.com/bar> . }
+}"
+`;
+
+exports[`DELETE DATA can delete triples 1`] = `
+"PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE DATA {
+  <http://example.com/bar> owl:sameAs <http://example.com/bar> .
+}"
+`;
+
 exports[`DELETE DATA can have additional prologue 1`] = `
 "#pragma join.hash off
 BASE <http://foo.bar/baz>

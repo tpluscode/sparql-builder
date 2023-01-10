@@ -1749,6 +1749,13 @@
     "@types/rdf-dataset-indexed" "*"
     rdf-js "^4.0.2"
 
+"@types/rdfjs__dataset@^1":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@types/rdfjs__dataset/-/rdfjs__dataset-1.0.5.tgz#2338ed702e5b2a7fd04690d6a76affa80f049cf6"
+  integrity sha512-8OBC9Kr/ZSgNoUTe5mHTDPHaPt8Xen4XbYfqcbYv56d+4WdKliHXaFmFc0L4I5vsynE5JGu21Hvg2zWgX1Az6Q==
+  dependencies:
+    rdf-js "^4.0.2"
+
 "@types/rdfjs__fetch-lite@^2.0.3":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/rdfjs__fetch-lite/-/rdfjs__fetch-lite-2.0.4.tgz#a19f75bc3f7fd11257d8d13da139199eec092ec4"

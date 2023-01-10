@@ -1,5 +1,6 @@
 import { owl } from '@tpluscode/rdf-ns-builders'
-import { namedNode } from '@rdfjs/data-model'
+import { namedNode, quad } from '@rdfjs/data-model'
+import { dataset } from '@rdfjs/dataset'
 import { DELETE } from '../src'
 import { sparqlClient } from './_mocks'
 
@@ -36,6 +37,52 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
       .prologue`#pragma join.hash off`
       .prologue`BASE ${base}`
       .build()
+
+    // then
+    expect(query).toMatchSnapshot()
+  })
+
+  it('can delete triples', () => {
+    // given
+    const data = quad(
+      namedNode('http://example.com/bar'),
+      owl.sameAs,
+      namedNode('http://example.com/bar'),
+    )
+
+    // when
+    const query = DELETE.DATA`${data}`.build()
+
+    // then
+    expect(query).toMatchSnapshot()
+  })
+
+  it('can delete quads', () => {
+    // given
+    const data = quad(
+      namedNode('http://example.com/bar'),
+      owl.sameAs,
+      namedNode('http://example.com/bar'),
+      namedNode('http://example.com/G'),
+    )
+
+    // when
+    const query = DELETE.DATA`${data}`.build()
+
+    // then
+    expect(query).toMatchSnapshot()
+  })
+
+  it('can delete dataset', () => {
+    // given
+    const data = dataset([quad(
+      namedNode('http://example.com/bar'),
+      owl.sameAs,
+      namedNode('http://example.com/bar'),
+    )])
+
+    // when
+    const query = DELETE.DATA`${data}`.build()
 
     // then
     expect(query).toMatchSnapshot()

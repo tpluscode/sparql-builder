@@ -44,7 +44,7 @@ export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]):
   },
 })
 
-DELETE.DATA = (strings: TemplateStringsArray, ...values: (NamedNode | Literal)[]): DeleteData => ({
+DELETE.DATA = (strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteData => ({
   ...Builder(),
   ...update,
   ...DATA<DeleteData, NamedNode | Literal>(strings, values),
