@@ -8,6 +8,7 @@ export { DESCRIBE } from './lib/DescribeBuilder'
 export { CONSTRUCT } from './lib/ConstructBuilder'
 export { SELECT } from './lib/SelectBuilder'
 export { WITH } from './lib/WithBuilder'
+export { prefixes } from '@tpluscode/rdf-string'
 export type { SparqlTemplateResult } from '@tpluscode/rdf-string'
 
 export type Select = Lib.SparqlQueryExecutable & Lib.SparqlQuery

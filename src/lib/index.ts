@@ -1,9 +1,11 @@
 import { AskQuery, ConstructQuery, QueryOptions, SelectQuery, UpdateQuery } from 'sparql-http-client'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string'
+import type { NamespaceBuilder } from '@rdfjs/namespace'
 import prologue, { PrologueBuilder } from './partials/prologue'
 
 interface SparqlBuildOptions {
   base?: string
+  prefixes?: Record<string, string | NamespaceBuilder>
 }
 
 export type SparqlExecuteOptions = QueryOptions & SparqlBuildOptions
@@ -35,9 +37,10 @@ type TBuilder = Pick<SparqlQuery, 'build'> & Pick<SparqlTemplateResult, '_toPart
 export default function Builder<T extends SparqlQuery>(): TBuilder & T {
   return {
     ...prologue(),
-    build(this: SparqlQuery, { base }: SparqlBuildOptions = {}): string {
+    build(this: SparqlQuery, { base, prefixes }: SparqlBuildOptions = {}): string {
       const queryResult = this._getTemplateResult().toString({
         base,
+        prefixes,
       })
 
       if (this.prologueResult) {
