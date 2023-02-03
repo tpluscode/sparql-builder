@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.27
+
+### Patch Changes
+
+- ec05a22: Added direct dependency on `@types/sparql-http-client`
+
 ## 0.3.26
 
 ### Patch Changes
