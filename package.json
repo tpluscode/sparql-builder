@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@rdfjs/types": "*",
+    "@types/sparql-http-client": "^2",
     "@rdf-esm/data-model": "^0.5.4",
     "@rdf-esm/term-set": "^0.5.0",
     "@tpluscode/rdf-ns-builders": "^2.0.0",
@@ -59,7 +60,6 @@
     "@types/rdfjs__fetch-lite": "^2.0.3",
     "@types/rdfjs__namespace": "^1.1.4",
     "@types/rdfjs__term-set": "^1.0.3",
-    "@types/sparql-http-client": "^2.2.6",
     "@types/sparqljs": "^3.1.2",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",

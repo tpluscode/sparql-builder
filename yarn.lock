@@ -1805,7 +1805,7 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.2.3.tgz#5798ecf1bec94eaa64db39ee52808ec0693315aa"
   integrity sha512-KQf+QAMWKMrtBMsB8/24w53tEsxllMj6TuA80TT/5igJalLI/zm0L3oXRbIAl4Ohfc85gyHX/jhMwsVkmhLU4A==
 
-"@types/sparql-http-client@^2.2.6":
+"@types/sparql-http-client@^2":
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/@types/sparql-http-client/-/sparql-http-client-2.2.8.tgz#c7b12eea9dbda1f539d0b415ea67532ecbe3ec6a"
   integrity sha512-l6kcSp57s0K4kGEWqjGR/LEe/Fya11Kd5S9Ta8gfIiRyESmvvA8JePPaTnq4r0MT6FKvNMJ7/KS15B85Fxm5ng==
