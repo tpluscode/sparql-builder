@@ -54,3 +54,23 @@ SELECT.ALL.WHERE`
 ```
 
 </run-kit>
+
+
+## `UNION`
+
+<run-kit>
+
+```js
+const { sparql, SELECT } = require('@tpluscode/sparql-builder')
+const { UNION } = require('@tpluscode/sparql-builder/expressions')
+const { schema, foaf } = require('@tpluscode/rdf-ns-builders')
+
+const schemaName = sparql`?resource ${schema.name} ?name`
+const foafName = sparql`?resource ${foaf.name} ?name`
+
+SELECT`?name`.WHERE`
+  ${UNION(schemaName, foafName)}
+`.build()
+```
+
+</run-kit>
