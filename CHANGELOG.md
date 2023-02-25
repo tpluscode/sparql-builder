@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.29
+
+### Patch Changes
+
+- 66cb644: Allow `string` as parameter of `UNION`
+
 ## 0.3.28
 
 ### Patch Changes
