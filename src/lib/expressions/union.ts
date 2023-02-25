@@ -1,11 +1,11 @@
 import { SparqlTemplateResult, sparql } from '@tpluscode/rdf-string'
 
-export function UNION(...[first, ...rest]: SparqlTemplateResult[]): SparqlTemplateResult {
+export function UNION(...[first, ...rest]: Array<string | SparqlTemplateResult>): SparqlTemplateResult {
   if (rest.length === 0) {
-    return first || ''
+    return sparql`${first}` || ''
   }
 
-  return rest.reduce((previousValue, currentValue) => {
+  return rest.reduce<SparqlTemplateResult>((previousValue, currentValue) => {
     return sparql`${previousValue} UNION {
       ${currentValue}
     }`

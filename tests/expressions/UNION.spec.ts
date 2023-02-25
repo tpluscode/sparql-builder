@@ -41,4 +41,25 @@ describe('UNION', () => {
       <X> <Y> <Z> .
     }`)
   })
+
+  it('combines multiple strings in UNION', () => {
+    // given
+    const patterns = [
+      '<foo> <bar> <baz> .',
+      '<A> <B> <C> .',
+      '<X> <Y> <Z> .',
+    ]
+
+    // when
+    const union = UNION(...patterns).toString()
+
+    // then
+    expect(union).toBe(`{ 
+    <foo> <bar> <baz> . 
+  } UNION {
+      <A> <B> <C> .
+    } UNION {
+      <X> <Y> <Z> .
+    }`)
+  })
 })
