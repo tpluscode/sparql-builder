@@ -18,6 +18,8 @@ export type SelectQuery = SparqlQuery
 & HavingBuilder<SelectQuery>
 & FromBuilder<SelectQuery>
 & {
+  DISTINCT(): SelectQuery
+  AND(strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery
   readonly distinct: boolean
   readonly reduced: boolean
   readonly variables: SparqlTemplateResult
@@ -41,6 +43,18 @@ const SelectBuilder = (strings: TemplateStringsArray, ...values: SparqlValue<Var
   ...GROUP(),
   ...HAVING(),
   ...FROM(),
+  DISTINCT() {
+    return {
+      ...this,
+      distinct: true,
+    }
+  },
+  AND(strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]) {
+    return {
+      ...this,
+      variables: sparql`${this.variables}${sparql(strings, ...values)}`,
+    }
+  },
   distinct: false,
   reduced: false,
   variables: sparql(strings, ...values),

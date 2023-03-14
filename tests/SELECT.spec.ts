@@ -111,7 +111,7 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
-  it('resets default grahp when FROM default is called', () => {
+  it('resets default graph when FROM default is called', () => {
     // given
     const expected = 'SELECT * WHERE { ?s ?p ?o }'
 
@@ -217,6 +217,28 @@ describe('SELECT', () => {
       .LIMIT(20)
       .ORDER().BY(s)
       .build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('can be made distinct at any time', () => {
+    // given
+    const expected = 'SELECT DISTINCT ?s WHERE { ?s ?p ?o }'
+
+    // when
+    const actual = SELECT`?s`.WHERE`?s ?p ?o`.DISTINCT().build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
+  it('can add more variables', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { ?s ?p ?o }'
+
+    // when
+    const actual = SELECT`?s`.AND`?p`.AND`?o`.WHERE`?s ?p ?o`.build()
 
     // then
     expect(actual).toMatchQuery(expected)
