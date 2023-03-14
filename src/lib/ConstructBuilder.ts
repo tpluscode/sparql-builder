@@ -5,7 +5,7 @@ import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 import FROM, { FromBuilder } from './partials/FROM'
 import Builder, { SparqlGraphQueryExecutable, SparqlQuery } from './index'
 
-type ConstructQuery = SparqlQuery
+export type ConstructQuery = SparqlQuery
 & SparqlGraphQueryExecutable
 & WhereBuilder<ConstructQuery>
 & FromBuilder<ConstructQuery>

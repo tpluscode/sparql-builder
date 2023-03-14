@@ -4,7 +4,7 @@ import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
 import FROM, { FromBuilder } from './partials/FROM'
 import Builder, { SparqlQuery, SparqlAskExecutable } from './index'
 
-type AskQuery = SparqlQuery
+export type AskQuery = SparqlQuery
 & SparqlAskExecutable
 & FromBuilder<AskQuery>
 & LimitOffsetBuilder<AskQuery> & {

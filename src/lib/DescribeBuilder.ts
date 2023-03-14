@@ -7,7 +7,7 @@ import FROM, { FromBuilder } from './partials/FROM'
 import ORDER, { OrderBuilder } from './partials/ORDER'
 import Builder, { SparqlGraphQueryExecutable, SparqlQuery } from './index'
 
-type DescribeQuery = SparqlQuery
+export type DescribeQuery = SparqlQuery
 & SparqlGraphQueryExecutable
 & WhereBuilder<DescribeQuery>
 & OrderBuilder<DescribeQuery>

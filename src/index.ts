@@ -1,17 +1,10 @@
-import type * as Lib from './lib'
-
 export { sparql } from '@tpluscode/rdf-string'
-export { DELETE } from './lib/DeleteBuilder'
-export { INSERT } from './lib/InsertBuilder'
-export { ASK } from './lib/AskBuilder'
-export { DESCRIBE } from './lib/DescribeBuilder'
-export { CONSTRUCT } from './lib/ConstructBuilder'
-export { SELECT } from './lib/SelectBuilder'
+export { DELETE, DeleteInsertQuery as DeleteInsert, DeleteData } from './lib/DeleteBuilder'
+export { INSERT, InsertQuery as Insert, InsertData } from './lib/InsertBuilder'
+export { ASK, AskQuery as Ask } from './lib/AskBuilder'
+export { DESCRIBE, DescribeQuery as Describe } from './lib/DescribeBuilder'
+export { CONSTRUCT, ConstructQuery as Construct } from './lib/ConstructBuilder'
+export { SELECT, SelectQuery as Select } from './lib/SelectBuilder'
 export { WITH } from './lib/WithBuilder'
 export { prefixes } from '@tpluscode/rdf-string'
 export type { SparqlTemplateResult } from '@tpluscode/rdf-string'
-
-export type Select = Lib.SparqlQueryExecutable & Lib.SparqlQuery
-export type Construct = Lib.SparqlGraphQueryExecutable & Lib.SparqlQuery
-export type Update = Lib.SparqlUpdateExecutable & Lib.SparqlQuery
-export type Ask = Lib.SparqlAskExecutable & Lib.SparqlQuery

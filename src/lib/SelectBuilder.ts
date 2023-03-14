@@ -9,7 +9,7 @@ import GROUP, { GroupBuilder } from './partials/GROUP'
 import HAVING, { HavingBuilder } from './partials/HAVING'
 import Builder, { SparqlQuery, SparqlQueryExecutable } from './index'
 
-type SelectQuery = SparqlQuery
+export type SelectQuery = SparqlQuery
 & SparqlQueryExecutable
 & WhereBuilder<SelectQuery>
 & LimitOffsetBuilder<SelectQuery>

@@ -15,7 +15,7 @@ export type InsertQuery = SparqlQuery
   readonly usingNamed?: NamedNode[]
 }
 
-type InsertData = SparqlQuery & SparqlUpdateExecutable & QuadDataBuilder<InsertData, NamedNode | Literal | BlankNode>
+export type InsertData = SparqlQuery & SparqlUpdateExecutable & QuadDataBuilder<InsertData, NamedNode | Literal | BlankNode>
 
 export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]): InsertQuery => ({
   ...Builder(),
