@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.30
+
+### Patch Changes
+
+- d00f737: Export full builder types of query forms
+- 0f5f895: Added `DISTINCT` and `AND` which allow modifying the query after it has been initialised
+
 ## 0.3.29
 
 ### Patch Changes
