@@ -149,9 +149,7 @@ WHERE {
         VALUES ?p { ${dbo.birthDate} ${dbo.deathDate} ${foaf.name} }
         ${person} ?p ?o .
 
-        {
-          ${selectPeopleBornInBerlin}
-        }
+        ${selectPeopleBornInBerlin}
     `.build()
 
     // then

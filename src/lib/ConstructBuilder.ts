@@ -20,7 +20,7 @@ interface ConstructBuilder {
 }
 
 const builder = (strings: TemplateStringsArray, ...values: SparqlValue[]): ConstructQuery => ({
-  ...Builder(),
+  ...Builder('CONSTRUCT'),
   ...graph,
   ...WHERE<ConstructQuery>({
     required: true,

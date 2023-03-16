@@ -9,7 +9,7 @@ import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
 type WithQuery = SparqlUpdateExecutable & SparqlQuery
 
 export const WITH = (graph: NamedNode | string, query: DeleteInsertQuery | InsertQuery): WithQuery => ({
-  ...Builder(),
+  ...Builder('UPDATE'),
   ...update,
   _getTemplateResult() {
     const graphNode = typeof graph === 'string' ? namedNode(graph) : graph
