@@ -18,7 +18,7 @@ export type InsertQuery = SparqlQuery
 export type InsertData = SparqlQuery & SparqlUpdateExecutable & QuadDataBuilder<InsertData, NamedNode | Literal | BlankNode>
 
 export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]): InsertQuery => ({
-  ...Builder(),
+  ...Builder('UPDATE'),
   ...update,
   ...WHERE<InsertQuery>({
     required: true,
@@ -30,7 +30,7 @@ export const INSERT = (strings: TemplateStringsArray, ...values: SparqlValue[]):
 })
 
 INSERT.DATA = (strings: TemplateStringsArray, ...values: SparqlValue<NamedNode | Literal | BlankNode>[]): InsertData => ({
-  ...Builder(),
+  ...Builder('UPDATE'),
   ...update,
   ...DATA<InsertData, NamedNode | Literal | BlankNode>(strings, values),
   _getTemplateResult() {

@@ -17,7 +17,7 @@ export type DescribeQuery = SparqlQuery
 }
 
 export const DESCRIBE = (strings: TemplateStringsArray, ...values: SparqlValue<Variable | NamedNode>[]): DescribeQuery => ({
-  ...Builder(),
+  ...Builder('CONSTRUCT'),
   ...graph,
   ...WHERE<DescribeQuery>({
     required: false,

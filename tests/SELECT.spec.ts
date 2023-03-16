@@ -244,6 +244,18 @@ describe('SELECT', () => {
     expect(actual).toMatchQuery(expected)
   })
 
+  it('wraps when interpolated in a template', () => {
+    // given
+    const expected = 'SELECT ?s ?p ?o WHERE { { SELECT ?s ?p ?o WHERE { ?s ?p ?o } } }'
+
+    // when
+    const subquery = SELECT`?s ?p ?o`.WHERE`?s ?p ?o`
+    const actual = SELECT`?s ?p ?o`.WHERE`${subquery}`.build()
+
+    // then
+    expect(actual).toMatchQuery(expected)
+  })
+
   describe('ALL', () => {
     it('is alias for SELECT *', () => {
       // given

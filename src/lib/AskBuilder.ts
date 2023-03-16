@@ -12,7 +12,7 @@ export type AskQuery = SparqlQuery
 }
 
 export const ASK = (strings: TemplateStringsArray, ...values: SparqlValue[]): AskQuery => ({
-  ...Builder(),
+  ...Builder('ASK'),
   ...ask,
   ...LIMIT(),
   ...FROM(),

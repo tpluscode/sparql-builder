@@ -22,7 +22,7 @@ export type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery>
 export type DeleteData = SparqlQuery & SparqlUpdateExecutable & QuadDataBuilder<DeleteData, NamedNode | Literal>
 
 export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteInsertQuery => ({
-  ...Builder(),
+  ...Builder('UPDATE'),
   ...update,
   ...WHERE({
     required: true,
@@ -45,7 +45,7 @@ export const DELETE = (strings: TemplateStringsArray, ...values: SparqlValue[]):
 })
 
 DELETE.DATA = (strings: TemplateStringsArray, ...values: SparqlValue[]): DeleteData => ({
-  ...Builder(),
+  ...Builder('UPDATE'),
   ...update,
   ...DATA<DeleteData, NamedNode | Literal>(strings, values),
   _getTemplateResult() {

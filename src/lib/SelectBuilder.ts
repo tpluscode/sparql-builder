@@ -33,7 +33,7 @@ interface Select {
 }
 
 const SelectBuilder = (strings: TemplateStringsArray, ...values: SparqlValue<Variable>[]): SelectQuery => ({
-  ...Builder(),
+  ...Builder('SELECT'),
   ...select,
   ...WHERE<SelectQuery>({
     required: true,
