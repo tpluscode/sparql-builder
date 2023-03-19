@@ -2,4 +2,4 @@
 "@tpluscode/sparql-builder": major
 ---
 
-Package is no ESM-only
+Package is now ESM-only
