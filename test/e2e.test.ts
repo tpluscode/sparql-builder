@@ -3,7 +3,9 @@ import { expect } from 'chai'
 import { ASK, CONSTRUCT, SELECT } from '../src/index.js'
 import './sparql.js'
 
-describe('ParsingClient', () => {
+describe('ParsingClient', function () {
+  this.timeout(10000)
+
   describe('ASK', () => {
     it('returns result', async () => {
       // given
