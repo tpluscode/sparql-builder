@@ -16,6 +16,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: yarn install --frozen-lockfile
       - run: yarn test
+      - run: npx typedoc
       - name: Codecov
         uses: codecov/codecov-action@v3
         with:
