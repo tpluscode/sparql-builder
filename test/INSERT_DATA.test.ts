@@ -1,7 +1,9 @@
 import { owl } from '@tpluscode/rdf-ns-builders'
-import { namedNode } from '@rdfjs/data-model'
-import { INSERT } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { INSERT } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
 describe('INSERT DATA', () => {
   it('builds correct query', () => {
@@ -13,7 +15,7 @@ INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const actual = INSERT.DATA`<http://example.com> ${owl.sameAs} <http://example.org>`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('executes as update', async () => {
@@ -24,12 +26,12 @@ INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     await INSERT.DATA`<http://example.com> owl:sameAs <http://example.org>`.execute(client)
 
     // then
-    expect(client.update).toHaveBeenCalled()
+    expect(client.update).to.have.been.called
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
-    const base = namedNode('http://foo.bar/baz')
+    const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
     const query = INSERT.DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
@@ -38,7 +40,7 @@ INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
       .build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
   it('can chain multiple quad data calls', () => {
@@ -56,6 +58,6 @@ INSERT DATA {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 })

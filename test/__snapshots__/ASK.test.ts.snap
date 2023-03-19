@@ -1,0 +1,2 @@
+exports["ASK can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nASK  { ?s ?p ?o . }\n";
+

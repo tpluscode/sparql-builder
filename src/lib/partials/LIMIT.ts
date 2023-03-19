@@ -1,4 +1,4 @@
-import { SparqlQuery } from '../index'
+import { SparqlQuery } from '../index.js'
 
 export interface LimitOffsetBuilder<T> {
   offset: number | null

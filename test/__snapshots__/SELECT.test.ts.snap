@@ -1,0 +1,2 @@
+exports["SELECT can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nSELECT ?s ?p ?o\n\nWHERE {\n?s ?p ?o\n}\n\n\n\n";
+

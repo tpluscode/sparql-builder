@@ -1,10 +1,12 @@
 import { Term } from 'rdf-js'
 import { SelectQuery, AskQuery, ConstructQuery, UpdateQuery } from 'sparql-http-client'
-import { ask, graph, select, update } from '../src/lib/execute'
+import { expect } from 'chai'
+import { ask, graph, select, update } from '../src/lib/execute.js'
 import { SparqlQuery } from '../src/lib'
-import { sparqlClient } from './_mocks'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
-const builder: Omit<SparqlQuery, '_getTemplateResult'> = {
+const builder: Pick<SparqlQuery, 'build'> = {
   build(): string {
     return ''
   },
@@ -30,7 +32,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.select).toHaveBeenCalledWith('', {
+      expect(client.select).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -56,7 +58,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.construct).toHaveBeenCalledWith('', {
+      expect(client.construct).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -82,7 +84,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.update).toHaveBeenCalledWith('', {
+      expect(client.update).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -109,7 +111,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.ask).toHaveBeenCalledWith('', {
+      expect(client.ask).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },

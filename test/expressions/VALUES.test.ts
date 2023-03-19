@@ -1,5 +1,6 @@
-import { literal } from '@rdf-esm/data-model'
-import { VALUES } from '../../src/expressions'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { VALUES } from '../../src/expressions.js'
 
 describe('VALUES', () => {
   it('returns empty for empty array', () => {
@@ -7,7 +8,7 @@ describe('VALUES', () => {
     const expr = VALUES().toString()
 
     // then
-    expect(expr).toBe('')
+    expect(expr).to.eq('')
   })
 
   it('builds values clause', () => {
@@ -19,7 +20,7 @@ describe('VALUES', () => {
     const expr = VALUES(bar, baz).toString()
 
     // then
-    expect(expr).toBe(`VALUES ( ?foo )
+    expect(expr).to.eq(`VALUES ( ?foo )
 {
 ( "bar" )
 ( "baz" )
@@ -36,7 +37,7 @@ describe('VALUES', () => {
     const expr = VALUES(foo, bar, baz).toString()
 
     // then
-    expect(expr).toBe(`VALUES ( ?val )
+    expect(expr).to.eq(`VALUES ( ?val )
 {
 ( "foo" )
 ( UNDEF )
@@ -48,13 +49,13 @@ describe('VALUES', () => {
     // given
     const foo = { val: 11.6 }
     const bar = { val: true }
-    const baz = { val: literal('baz', 'de') }
+    const baz = { val: RDF.literal('baz', 'de') }
 
     // when
     const expr = VALUES(foo, bar, baz).toString()
 
     // then
-    expect(expr).toBe(`VALUES ( ?val )
+    expect(expr).to.eq(`VALUES ( ?val )
 {
 ( 11.6 )
 ( true )

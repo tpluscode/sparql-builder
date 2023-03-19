@@ -1,7 +1,9 @@
 import namespace from '@rdfjs/namespace'
-import { namedNode } from '@rdfjs/data-model'
-import { ASK } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { ASK } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
 describe('ASK', () => {
   it('creates expected query', () => {
@@ -15,7 +17,7 @@ describe('ASK', () => {
     const query = ASK`?s ?p ?o . ?x ?y ?z .`.build()
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 
   it('executes as ask', async () => {
@@ -26,12 +28,12 @@ describe('ASK', () => {
     await ASK``.execute(client)
 
     // then
-    expect(client.ask).toHaveBeenCalled()
+    expect(client.ask).to.have.been.called
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
-    const base = namedNode('http://foo.bar/baz')
+    const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
     const query = ASK`?s ?p ?o .`
@@ -40,7 +42,7 @@ describe('ASK', () => {
       .build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
   it('supports LIMIT/OFFSET', () => {
@@ -53,7 +55,7 @@ describe('ASK', () => {
     const query = ASK`?s ?p ?o .`.LIMIT(10).OFFSET(20).build()
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 
   it('supports FROM (NAMED)', () => {
@@ -67,12 +69,12 @@ describe('ASK', () => {
 
     // when
     const query = ASK`?s ?p ?o .`
-      .FROM(namedNode('http://example.com/foo'))
-      .FROM().NAMED(namedNode('http://example.com/bar'))
+      .FROM(RDF.namedNode('http://example.com/foo'))
+      .FROM().NAMED(RDF.namedNode('http://example.com/bar'))
       .build()
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 
   it('can be constructed with a base', () => {
@@ -90,6 +92,6 @@ describe('ASK', () => {
     })
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 })

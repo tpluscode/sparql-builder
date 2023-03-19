@@ -1,6 +1,6 @@
 import { SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlQuery } from '..'
-import { concat } from '../TemplateResult'
+import { concat } from '../TemplateResult.js'
 
 export interface PrologueBuilder {
   readonly prologueResult: SparqlTemplateResult | null

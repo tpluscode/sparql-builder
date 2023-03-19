@@ -1,4 +1,6 @@
-import { DELETE, INSERT, WITH } from '../src'
+import { expect } from 'chai'
+import { DELETE, INSERT, WITH } from '../src/index.js'
+import './sparql.js'
 
 describe('WITH', () => {
   it('prepends WITH clause given as string', () => {
@@ -9,7 +11,7 @@ describe('WITH', () => {
     const actual = WITH('http://test.graph/', DELETE`?s ?p ?o`.WHERE`?s ?p ?o`).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
   it('prepends WITH clause given as string', () => {
     // given
@@ -19,6 +21,6 @@ describe('WITH', () => {
     const actual = WITH('http://test.graph/', INSERT`?s ?p ?o`.WHERE`?s ?p ?o`).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 })

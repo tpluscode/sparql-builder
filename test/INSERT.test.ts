@@ -1,7 +1,9 @@
 import { owl, schema } from '@tpluscode/rdf-ns-builders'
-import { namedNode } from '@rdfjs/data-model'
-import { INSERT } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { INSERT } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
 describe('INSERT', () => {
   it('adds an empty WHERE if no pattern provided', () => {
@@ -14,7 +16,7 @@ describe('INSERT', () => {
     const query = INSERT`?s ?p ?o .`.build()
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 
   it('combines multiple INSERT calls', () => {
@@ -32,12 +34,12 @@ describe('INSERT', () => {
       .build()
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
-    const base = namedNode('http://foo.bar/baz')
+    const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
     const query = INSERT`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
@@ -46,7 +48,7 @@ describe('INSERT', () => {
       .build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
   it('has a WHERE method', () => {
@@ -65,7 +67,7 @@ describe('INSERT', () => {
       .build()
 
     // then
-    expect(query).toMatchQuery(expected)
+    expect(query).to.be.query(expected)
   })
 
   it('executes as update', async () => {
@@ -76,6 +78,6 @@ describe('INSERT', () => {
     await INSERT``.execute(client)
 
     // then
-    expect(client.update).toHaveBeenCalled()
+    expect(client.update).to.have.been.called
   })
 })

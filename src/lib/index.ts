@@ -1,7 +1,7 @@
 import { AskQuery, ConstructQuery, QueryOptions, SelectQuery, UpdateQuery } from 'sparql-http-client'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import type { NamespaceBuilder } from '@rdfjs/namespace'
-import prologue, { PrologueBuilder } from './partials/prologue'
+import prologue, { PrologueBuilder } from './partials/prologue.js'
 
 interface SparqlBuildOptions {
   base?: string

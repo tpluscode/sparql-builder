@@ -1,0 +1,8 @@
+exports["DELETE DATA can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\n\nDELETE DATA {\n  <http://example.com/bar> owl:sameAs <http://example.org/bar> .\n}";
+
+exports["DELETE DATA can delete triples"] = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n\nDELETE DATA {\n  <http://example.com/bar> owl:sameAs <http://example.com/bar> .\n}";
+
+exports["DELETE DATA can delete quads"] = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n\nDELETE DATA {\n  GRAPH <http://example.com/G> { <http://example.com/bar> owl:sameAs <http://example.com/bar> . }\n}";
+
+exports["DELETE DATA can delete dataset"] = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n\nDELETE DATA {\n  \n\n<http://example.com/bar> owl:sameAs <http://example.com/bar> .\n}";
+

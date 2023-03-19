@@ -1,5 +1,5 @@
 import { SparqlTemplateResult, SparqlValue, sparql } from '@tpluscode/rdf-string'
-import { variable, literal } from '@rdf-esm/data-model'
+import RDF from '@rdfjs/data-model'
 
 type ValueMap<Variables extends string> = Record<Variables, SparqlValue>
 
@@ -12,7 +12,7 @@ export function VALUES<Variables extends string>(...values: Partial<ValueMap<Var
     return ''
   }
 
-  const variables = [...new Set(values.map(Object.keys).flat())].map(variable)
+  const variables = [...new Set(values.map(Object.keys).flat())].map(RDF.variable)
 
   const vectors = values.reduce((previous, current: any) => {
     const vector = variables.map((variable) => {
@@ -21,7 +21,7 @@ export function VALUES<Variables extends string>(...values: Partial<ValueMap<Var
         return 'UNDEF'
       }
       if (typeof value === 'string') {
-        return literal(value)
+        return RDF.literal(value)
       }
       return value
     })

@@ -1,9 +1,11 @@
 import namespace from '@rdfjs/namespace'
 import { dbo, foaf, schema, skos } from '@tpluscode/rdf-ns-builders'
-import * as RDF from '@rdfjs/data-model'
-import { namedNode } from '@rdfjs/data-model'
-import { CONSTRUCT, SELECT } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { CONSTRUCT, SELECT } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+
+import './sparql.js'
 
 describe('CONSTRUCT', () => {
   it('executes as construct', () => {
@@ -14,12 +16,12 @@ describe('CONSTRUCT', () => {
     CONSTRUCT``.execute(client)
 
     // then
-    expect(client.construct).toHaveBeenCalled()
+    expect(client.construct).to.have.been.called
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
-    const base = namedNode('http://foo.bar/baz')
+    const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
     const query = CONSTRUCT`?s ?p ?o .`
@@ -28,7 +30,7 @@ describe('CONSTRUCT', () => {
       .build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
   it('generates empty WHERE clause by default', () => {
@@ -40,7 +42,7 @@ describe('CONSTRUCT', () => {
     const actual = CONSTRUCT`<http://example.com/me> a ${schema.Person}`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('support shorthand syntax', () => {
@@ -52,7 +54,7 @@ describe('CONSTRUCT', () => {
     const actual = CONSTRUCT.WHERE`?person a ${schema.Person}`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('correctly interpolate shorthand syntax', () => {
@@ -71,7 +73,7 @@ describe('CONSTRUCT', () => {
     `.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('support FROM in shorthand syntax', () => {
@@ -84,7 +86,7 @@ describe('CONSTRUCT', () => {
       .FROM(RDF.namedNode('http://example.com/graph')).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports LIMIT/OFFSET', () => {
@@ -97,7 +99,7 @@ describe('CONSTRUCT', () => {
     const actual = CONSTRUCT`<http://example.com/me> a ${schema.Person}`.LIMIT(5).OFFSET(305).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be constructed with a base', () => {
@@ -115,7 +117,7 @@ describe('CONSTRUCT', () => {
     })
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be combined with another query to create a subquery', () => {
@@ -153,7 +155,7 @@ WHERE {
     `.build()
 
     // then
-    expect(construct).toMatchQuery(expected)
+    expect(construct).to.be.query(expected)
   })
 
   it('adds FROM when default graph set', () => {
@@ -164,7 +166,7 @@ WHERE {
     const actual = CONSTRUCT`?s ?p ?o`.FROM(RDF.namedNode('urn:foo:bar')).WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports multiple FROM NAMED', () => {
@@ -181,7 +183,7 @@ WHERE {
       .WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports multiple FROM', () => {
@@ -198,7 +200,7 @@ WHERE {
       .WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('allows mixing FROM and FROM NAMED', () => {
@@ -215,6 +217,6 @@ WHERE {
       .WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 })

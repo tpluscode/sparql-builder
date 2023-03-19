@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES2018",
+    "module": "ES2020",
+    "target": "ES2020",
     "outDir": ".",
     "lib": [
-      "es6",
-      "esnext",
-      "webworker"
+      "ES2020",
+      "DOM"
     ],
     "strictNullChecks": true,
     "strict": true,
@@ -22,7 +21,6 @@
     "src/index.ts",
     "src/expressions.ts"
   ],
-  "include": ["tests/*.ts", "docs"],
   "typedocOptions": {
     "name": "@tpluscode/sparql-builder",
     "entryPoints": [

@@ -1,8 +1,8 @@
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
-import { ask } from './execute'
-import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
-import FROM, { FromBuilder } from './partials/FROM'
-import Builder, { SparqlQuery, SparqlAskExecutable } from './index'
+import { ask } from './execute.js'
+import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT.js'
+import FROM, { FromBuilder } from './partials/FROM.js'
+import Builder, { SparqlQuery, SparqlAskExecutable } from './index.js'
 
 export type AskQuery = SparqlQuery
 & SparqlAskExecutable

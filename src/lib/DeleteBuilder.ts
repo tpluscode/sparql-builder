@@ -1,12 +1,12 @@
 import { Literal, NamedNode } from 'rdf-js'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
-import { update } from './execute'
-import DATA, { QuadDataBuilder } from './partials/DATA'
-import WHERE, { WhereBuilder } from './partials/WHERE'
-import INSERT, { InsertBuilder } from './partials/INSERT'
-import { concat } from './TemplateResult'
-import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
+import { update } from './execute.js'
+import DATA, { QuadDataBuilder } from './partials/DATA.js'
+import WHERE, { WhereBuilder } from './partials/WHERE.js'
+import INSERT, { InsertBuilder } from './partials/INSERT.js'
+import { concat } from './TemplateResult.js'
+import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index.js'
 
 export type DeleteInsertQuery = InsertBuilder<DeleteInsertQuery>
 & WhereBuilder<DeleteInsertQuery>

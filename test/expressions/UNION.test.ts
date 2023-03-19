@@ -1,5 +1,6 @@
 import { sparql } from '@tpluscode/rdf-string'
-import { UNION } from '../../src/expressions'
+import { expect } from 'chai'
+import { UNION } from '../../src/expressions.js'
 
 describe('UNION', () => {
   it('returns empty for empty arg list', () => {
@@ -7,7 +8,7 @@ describe('UNION', () => {
     const union = UNION().toString()
 
     // then
-    expect(union).toBe('')
+    expect(union).to.eq('')
   })
 
   it('returns a single argument without wrapping in BGP', () => {
@@ -18,7 +19,7 @@ describe('UNION', () => {
     const union = UNION(patterns).toString()
 
     // then
-    expect(union).toBe('<foo> <bar> <baz> .')
+    expect(union).to.eq('<foo> <bar> <baz> .')
   })
 
   it('combines multiple args in UNION', () => {
@@ -33,7 +34,7 @@ describe('UNION', () => {
     const union = UNION(...patterns).toString()
 
     // then
-    expect(union).toBe(`{ 
+    expect(union).to.eq(`{ 
     <foo> <bar> <baz> . 
   } UNION {
       <A> <B> <C> .
@@ -54,7 +55,7 @@ describe('UNION', () => {
     const union = UNION(...patterns).toString()
 
     // then
-    expect(union).toBe(`{ 
+    expect(union).to.eq(`{ 
     <foo> <bar> <baz> . 
   } UNION {
       <A> <B> <C> .
