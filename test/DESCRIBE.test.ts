@@ -1,8 +1,9 @@
 import namespace from '@rdfjs/namespace'
-import * as RDF from '@rdfjs/data-model'
-import { namedNode } from '@rdfjs/data-model'
-import { DESCRIBE } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { DESCRIBE } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
 describe('DESCRIBE', () => {
   it('executes a construct', async () => {
@@ -13,7 +14,7 @@ describe('DESCRIBE', () => {
     await DESCRIBE``.execute(client)
 
     // then
-    expect(client.construct).toHaveBeenCalled()
+    expect(client.construct).to.have.been.called
   })
 
   it('builds a DESCRIBE without WHERE', () => {
@@ -24,12 +25,12 @@ describe('DESCRIBE', () => {
     const actual = DESCRIBE`${RDF.namedNode('urn:foo:bar')}`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
-    const base = namedNode('http://foo.bar/baz')
+    const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
     const query = DESCRIBE`?foo`
@@ -39,7 +40,7 @@ describe('DESCRIBE', () => {
       .build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
   it('supports LIMIT/OFFSET', () => {
@@ -50,7 +51,7 @@ describe('DESCRIBE', () => {
     const actual = DESCRIBE`${RDF.variable('foo')}`.LIMIT(100).OFFSET(200).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports ORDER BY', () => {
@@ -68,7 +69,7 @@ describe('DESCRIBE', () => {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports FROM (NAMED)', () => {
@@ -83,7 +84,7 @@ describe('DESCRIBE', () => {
       .FROM().NAMED(RDF.namedNode('http://example.com/bar')).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be constructed with a base', () => {
@@ -99,6 +100,6 @@ describe('DESCRIBE', () => {
     })
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 })

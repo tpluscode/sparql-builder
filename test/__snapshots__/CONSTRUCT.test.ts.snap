@@ -1,0 +1,2 @@
+exports["CONSTRUCT can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nCONSTRUCT { ?s ?p ?o . }\n\nWHERE {}\n";
+

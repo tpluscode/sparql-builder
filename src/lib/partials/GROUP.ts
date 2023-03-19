@@ -1,7 +1,7 @@
 import { Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
-import * as RDF from '@rdf-esm/data-model'
-import { SparqlQuery } from '../index'
+import RDF from '@rdfjs/data-model'
+import { SparqlQuery } from '../index.js'
 
 interface Grouping {
   by: SparqlTemplateResult

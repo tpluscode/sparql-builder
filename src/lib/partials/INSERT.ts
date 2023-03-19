@@ -1,7 +1,7 @@
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
-import { SparqlQuery } from '../index'
-import { concat } from '../TemplateResult'
+import { SparqlQuery } from '../index.js'
+import { concat } from '../TemplateResult.js'
 
 export interface InsertBuilder<T> {
   readonly insertPatterns: SparqlTemplateResult | null

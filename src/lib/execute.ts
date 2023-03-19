@@ -7,7 +7,7 @@ import {
   SparqlQuery,
   SparqlQueryExecutable,
   SparqlUpdateExecutable,
-} from './index'
+} from './index.js'
 
 const logQuery = debug('SPARQL')
 const logQueryError = logQuery.extend('error')

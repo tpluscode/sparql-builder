@@ -1,8 +1,9 @@
 import { owl } from '@tpluscode/rdf-ns-builders'
-import { namedNode, quad } from '@rdfjs/data-model'
-import { dataset } from '@rdfjs/dataset'
-import { DELETE } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from 'rdf-ext'
+import { expect } from 'chai'
+import { DELETE } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
 describe('DELETE DATA', () => {
   it('builds correct query', () => {
@@ -14,7 +15,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const actual = DELETE.DATA`<http://example.com> ${owl.sameAs} <http://example.org>`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('executes as update', async () => {
@@ -25,12 +26,12 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     await DELETE.DATA`<http://example.com> owl:sameAs <http://example.org>`.execute(client)
 
     // then
-    expect(client.update).toHaveBeenCalled()
+    expect(client.update).to.have.been.called
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
-    const base = namedNode('http://foo.bar/baz')
+    const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
     const query = DELETE.DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
@@ -39,53 +40,53 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
       .build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
-  it('can delete triples', () => {
+  it('can delete triples', function () {
     // given
-    const data = quad(
-      namedNode('http://example.com/bar'),
+    const data = RDF.quad(
+      RDF.namedNode('http://example.com/bar'),
       owl.sameAs,
-      namedNode('http://example.com/bar'),
+      RDF.namedNode('http://example.com/bar'),
     )
 
     // when
     const query = DELETE.DATA`${data}`.build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
-  it('can delete quads', () => {
+  it('can delete quads', function () {
     // given
-    const data = quad(
-      namedNode('http://example.com/bar'),
+    const data = RDF.quad(
+      RDF.namedNode('http://example.com/bar'),
       owl.sameAs,
-      namedNode('http://example.com/bar'),
-      namedNode('http://example.com/G'),
+      RDF.namedNode('http://example.com/bar'),
+      RDF.namedNode('http://example.com/G'),
     )
 
     // when
     const query = DELETE.DATA`${data}`.build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
-  it('can delete dataset', () => {
+  it('can delete dataset', function () {
     // given
-    const data = dataset([quad(
-      namedNode('http://example.com/bar'),
+    const data = RDF.dataset([RDF.quad(
+      RDF.namedNode('http://example.com/bar'),
       owl.sameAs,
-      namedNode('http://example.com/bar'),
+      RDF.namedNode('http://example.com/bar'),
     )])
 
     // when
     const query = DELETE.DATA`${data}`.build()
 
     // then
-    expect(query).toMatchSnapshot()
+    expect(query).to.matchSnapshot(this)
   })
 
   it('can chain multiple quad data calls', () => {
@@ -103,6 +104,6 @@ DELETE DATA {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 })

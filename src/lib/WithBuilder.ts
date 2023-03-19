@@ -1,10 +1,10 @@
 import { NamedNode } from 'rdf-js'
 import { sparql } from '@tpluscode/rdf-string'
-import { namedNode } from '@rdf-esm/data-model'
-import { InsertQuery } from './InsertBuilder'
-import { DeleteInsertQuery } from './DeleteBuilder'
-import { update } from './execute'
-import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index'
+import RDF from '@rdfjs/data-model'
+import { InsertQuery } from './InsertBuilder.js'
+import { DeleteInsertQuery } from './DeleteBuilder.js'
+import { update } from './execute.js'
+import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index.js'
 
 type WithQuery = SparqlUpdateExecutable & SparqlQuery
 
@@ -12,7 +12,7 @@ export const WITH = (graph: NamedNode | string, query: DeleteInsertQuery | Inser
   ...Builder('UPDATE'),
   ...update,
   _getTemplateResult() {
-    const graphNode = typeof graph === 'string' ? namedNode(graph) : graph
+    const graphNode = typeof graph === 'string' ? RDF.namedNode(graph) : graph
 
     return sparql`WITH ${graphNode}\n${query._getTemplateResult()}`
   },

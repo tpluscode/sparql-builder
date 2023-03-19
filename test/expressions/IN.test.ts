@@ -1,6 +1,7 @@
 import { xsd } from '@tpluscode/rdf-ns-builders'
-import { literal, variable } from '@rdf-esm/data-model'
-import { IN } from '../../src/expressions'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { IN } from '../../src/expressions.js'
 
 describe('IN', () => {
   it('returns empty IN clause for empty array', () => {
@@ -8,15 +9,15 @@ describe('IN', () => {
     const expr = IN().toString()
 
     // then
-    expect(expr).toBe('IN (  )')
+    expect(expr).to.eq('IN (  )')
   })
 
   it('combines items in comma-separated list', () => {
     // given
     const items = [
-      literal('foo', xsd.normalizedString),
+      RDF.literal('foo', xsd.normalizedString),
       xsd.anyType,
-      variable('foo'),
+      RDF.variable('foo'),
       10.6,
     ]
 
@@ -24,6 +25,6 @@ describe('IN', () => {
     const expr = IN(...items)._toPartialString({ prologue: false }).value
 
     // then
-    expect(expr).toBe('IN ( "foo"^^xsd:normalizedString, xsd:anyType, ?foo, 10.6 )')
+    expect(expr).to.eq('IN ( "foo"^^xsd:normalizedString, xsd:anyType, ?foo, 10.6 )')
   })
 })

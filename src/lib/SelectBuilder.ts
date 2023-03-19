@@ -1,13 +1,13 @@
 import { Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
-import { select } from './execute'
-import WHERE, { WhereBuilder } from './partials/WHERE'
-import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
-import ORDER, { OrderBuilder } from './partials/ORDER'
-import FROM, { FromBuilder } from './partials/FROM'
-import GROUP, { GroupBuilder } from './partials/GROUP'
-import HAVING, { HavingBuilder } from './partials/HAVING'
-import Builder, { SparqlQuery, SparqlQueryExecutable } from './index'
+import { select } from './execute.js'
+import WHERE, { WhereBuilder } from './partials/WHERE.js'
+import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT.js'
+import ORDER, { OrderBuilder } from './partials/ORDER.js'
+import FROM, { FromBuilder } from './partials/FROM.js'
+import GROUP, { GroupBuilder } from './partials/GROUP.js'
+import HAVING, { HavingBuilder } from './partials/HAVING.js'
+import Builder, { SparqlQuery, SparqlQueryExecutable } from './index.js'
 
 export type SelectQuery = SparqlQuery
 & SparqlQueryExecutable

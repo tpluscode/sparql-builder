@@ -1,7 +1,9 @@
 import namespace from '@rdfjs/namespace'
-import * as RDF from '@rdfjs/data-model'
-import { SELECT } from '../src'
-import { sparqlClient } from './_mocks'
+import RDF from '@rdfjs/data-model'
+import { expect } from 'chai'
+import { SELECT } from '../src/index.js'
+import { sparqlClient } from './_mocks.js'
+import './sparql.js'
 
 describe('SELECT', () => {
   it('executes as select', () => {
@@ -12,7 +14,7 @@ describe('SELECT', () => {
     SELECT``.execute(client)
 
     // then
-    expect(client.select).toHaveBeenCalled()
+    expect(client.select).to.have.been.called
   })
 
   it('creates a simple select/where', () => {
@@ -23,10 +25,10 @@ describe('SELECT', () => {
     const actual = SELECT`?s ?p ?o`.WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
-  it('can have additional prologue', () => {
+  it('can have additional prologue', function () {
     // given
     const base = RDF.namedNode('http://foo.bar/baz')
 
@@ -38,7 +40,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).toMatchSnapshot()
+    expect(actual).to.matchSnapshot(this)
   })
 
   it('combines multiple WHERE clauses', () => {
@@ -52,7 +54,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('adds FROM when default graph set', () => {
@@ -63,7 +65,7 @@ describe('SELECT', () => {
     const actual = SELECT`*`.FROM(RDF.namedNode('urn:foo:bar')).WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports multiple FROM', () => {
@@ -80,7 +82,7 @@ describe('SELECT', () => {
       .WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('allows mixing FROM and FROM NAMED', () => {
@@ -97,7 +99,7 @@ describe('SELECT', () => {
       .WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('does not add FROM when graph is defaultGraph', () => {
@@ -108,7 +110,7 @@ describe('SELECT', () => {
     const actual = SELECT`*`.FROM(RDF.defaultGraph()).WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('resets default graph when FROM default is called', () => {
@@ -122,7 +124,7 @@ describe('SELECT', () => {
       .WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('supports LIMIT/OFFSET', () => {
@@ -133,7 +135,7 @@ describe('SELECT', () => {
     const actual = SELECT`?s ?p ?o`.WHERE`?s ?p ?o`.LIMIT(15).OFFSET(40).build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be constructed with a base', () => {
@@ -157,7 +159,7 @@ describe('SELECT', () => {
       })
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be ordered by variable', () => {
@@ -172,7 +174,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be ordered by desc(?variable)', () => {
@@ -187,7 +189,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be ordered by multiple variables', () => {
@@ -203,7 +205,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be ordered and limited, when calls are reversed', () => {
@@ -219,7 +221,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can be made distinct at any time', () => {
@@ -230,7 +232,7 @@ describe('SELECT', () => {
     const actual = SELECT`?s`.WHERE`?s ?p ?o`.DISTINCT().build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('can add more variables', () => {
@@ -241,7 +243,7 @@ describe('SELECT', () => {
     const actual = SELECT`?s`.AND`?p`.AND`?o`.WHERE`?s ?p ?o`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   it('wraps when interpolated in a template', () => {
@@ -253,7 +255,7 @@ describe('SELECT', () => {
     const actual = SELECT`?s ?p ?o`.WHERE`${subquery}`.build()
 
     // then
-    expect(actual).toMatchQuery(expected)
+    expect(actual).to.be.query(expected)
   })
 
   describe('ALL', () => {
@@ -267,7 +269,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
   })
 
@@ -280,7 +282,7 @@ describe('SELECT', () => {
       const actual = SELECT.DISTINCT`*`.WHERE`?s ?p ?o`.build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
   })
 
@@ -293,7 +295,7 @@ describe('SELECT', () => {
       const actual = SELECT.REDUCED`*`.WHERE`?s ?p ?o`.build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
   })
 
@@ -310,7 +312,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
 
     it('can be grouped by variable name (string)', () => {
@@ -325,7 +327,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
 
     it('can be grouped by variable with binding keyword as variable name', () => {
@@ -340,7 +342,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
 
     it('can be grouped by expression with binding keyword as variable', () => {
@@ -356,7 +358,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
 
     it('can be grouped multiple times', () => {
@@ -372,7 +374,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
   })
 
@@ -390,7 +392,7 @@ describe('SELECT', () => {
         .build()
 
       // then
-      expect(actual).toMatchQuery(expected)
+      expect(actual).to.be.query(expected)
     })
   })
 })

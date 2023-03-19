@@ -1,6 +1,6 @@
 import { Variable } from 'rdf-js'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
-import { SparqlQuery } from '../index'
+import { SparqlQuery } from '../index.js'
 
 interface OrderCondition {
   variable: Variable

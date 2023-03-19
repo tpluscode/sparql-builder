@@ -1,7 +1,11 @@
-import ParsingClient from 'sparql-http-client/ParsingClient'
-import { ASK, CONSTRUCT, SELECT } from '../src'
+import ParsingClient from 'sparql-http-client/ParsingClient.js'
+import { expect } from 'chai'
+import { ASK, CONSTRUCT, SELECT } from '../src/index.js'
+import './sparql.js'
 
-describe('ParsingClient', () => {
+describe('ParsingClient', function () {
+  this.timeout(10000)
+
   describe('ASK', () => {
     it('returns result', async () => {
       // given
@@ -13,7 +17,7 @@ describe('ParsingClient', () => {
       const result = await ASK`?s ?p ?o`.execute(client.query)
 
       // then
-      expect(result).toBeDefined()
+      expect(result).to.be.ok
     })
   })
 
@@ -30,7 +34,7 @@ describe('ParsingClient', () => {
         .LIMIT(1).execute(client.query)
 
       // then
-      expect(result.length).toEqual(1)
+      expect(result.length).to.eq(1)
     })
   })
 
@@ -47,7 +51,7 @@ describe('ParsingClient', () => {
         .LIMIT(1).execute(client.query)
 
       // then
-      expect(result.length).toEqual(1)
+      expect(result.length).to.eq(1)
     })
   })
 })

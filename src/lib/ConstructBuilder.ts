@@ -1,9 +1,9 @@
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
-import { graph } from './execute'
-import WHERE, { WhereBuilder } from './partials/WHERE'
-import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT'
-import FROM, { FromBuilder } from './partials/FROM'
-import Builder, { SparqlGraphQueryExecutable, SparqlQuery } from './index'
+import { graph } from './execute.js'
+import WHERE, { WhereBuilder } from './partials/WHERE.js'
+import LIMIT, { LimitOffsetBuilder } from './partials/LIMIT.js'
+import FROM, { FromBuilder } from './partials/FROM.js'
+import Builder, { SparqlGraphQueryExecutable, SparqlQuery } from './index.js'
 
 export type ConstructQuery = SparqlQuery
 & SparqlGraphQueryExecutable

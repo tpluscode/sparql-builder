@@ -1,0 +1,2 @@
+exports["DESCRIBE can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nDESCRIBE ?foo\n\nWHERE {\n?foo a ?bar\n}\n\n";
+

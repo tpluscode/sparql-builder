@@ -1,12 +1,9 @@
 {
   "extends": [ "@tpluscode" ],
   "env": {
-    "jest/globals": true,
+    "mocha": true,
     "browser": true
   },
-  "plugins": [
-    "jest"
-  ],
   "parserOptions": {
     "project": "./tsconfig.eslint.json"
   },
@@ -15,12 +12,6 @@
       "files": ["docs/examples/**"],
       "rules": {
         "@typescript-eslint/no-var-requires": "off"
-      }
-    },
-    {
-      "files": ["tests/**"],
-      "rules": {
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
       }
     }
   ]
