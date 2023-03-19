@@ -10,7 +10,6 @@
   "files": [
     "lib",
     "*.js",
-    "*.mjs",
     "*.d.ts",
     "*.d.ts.map"
   ],
