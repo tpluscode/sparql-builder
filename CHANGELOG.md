@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0
+
+### Major Changes
+
+- 5b1a043: Package is now ESM-only
+
 ## 0.4.0
 
 ### Minor Changes
