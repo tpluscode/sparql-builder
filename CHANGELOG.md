@@ -6,6 +6,12 @@
 
 - 5b1a043: Package is now ESM-only
 
+## 0.4.1
+
+### Patch Changes
+
+- 9812437: ESM exported types which failed in runtime
+
 ## 0.4.0
 
 ### Minor Changes
