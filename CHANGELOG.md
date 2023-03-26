@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+### Patch Changes
+
+- 1ad0905: Update `@tpluscode/rdf-string` - improves inference of return types
+
 ## 1.0.0
 
 ### Major Changes
