@@ -587,10 +587,10 @@
     commander "^7.2.0"
     fs-extra "^10.0.0"
 
-"@tpluscode/rdf-string@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@tpluscode/rdf-string/-/rdf-string-1.0.1.tgz#001a93a4494d6c71d02a0714fc3b4017f0e4e690"
-  integrity sha512-2MRfzzAbKfykZO3ynN65mgSYtI0f7V48fJojYl4mf5eietsZvAXRMwijrvxnxlzzZoFVhh5ZR2AUCUkkgo/9eQ==
+"@tpluscode/rdf-string@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@tpluscode/rdf-string/-/rdf-string-1.0.2.tgz#9ba5e7b8b255c425ba968ed1e2910a12382f624e"
+  integrity sha512-5tJg0inbOYIeV4EIyX8thc9ssVRi60IMhO3kW678I1qPE2WRrH1fcsaVzobACeK9aFTJSRayuQClogGjHvY7QA==
   dependencies:
     "@rdfjs/data-model" "^2"
     "@rdfjs/namespace" "^2.0.0"

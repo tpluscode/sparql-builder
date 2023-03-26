@@ -31,7 +31,7 @@
     "@rdfjs/term-set": "^2",
     "@rdfjs/types": "*",
     "@tpluscode/rdf-ns-builders": "^3.0.2",
-    "@tpluscode/rdf-string": "^1.0.1",
+    "@tpluscode/rdf-string": "^1.0.2",
     "@types/sparql-http-client": "^2",
     "debug": "^4.1.1"
   },
