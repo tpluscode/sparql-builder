@@ -33,7 +33,7 @@
     "@tpluscode/rdf-ns-builders": ">=3.0.2",
     "@tpluscode/rdf-string": "^1.0.3",
     "@types/sparql-http-client": "^2",
-    "debug": "^4.1.1"
+    "anylogger": "^1.0.11"
   },
   "peerDependencies": {
     "sparql-http-client": "^2.2.0"
@@ -46,7 +46,6 @@
     "@types/chai": "^4.3.4",
     "@types/chai-as-promised": "^7.1.5",
     "@types/chai-snapshot-matcher": "^1.0.1",
-    "@types/debug": "^4.1.5",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.3",
     "@types/rdf-ext": "^2.0.1",
@@ -60,6 +59,7 @@
     "@types/sparqljs": "^3.1.2",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
+    "anylogger-debug": "^1.0.3",
     "c8": "^7.13.0",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",

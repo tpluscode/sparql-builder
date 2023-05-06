@@ -1,5 +1,5 @@
 import { QueryOptions, ConstructQuery, SelectQuery, UpdateQuery, AskQuery } from 'sparql-http-client'
-import debug from 'debug'
+import debug from 'anylogger'
 import {
   SparqlAskExecutable,
   SparqlExecuteOptions,
@@ -10,7 +10,7 @@ import {
 } from './index.js'
 
 const logQuery = debug('SPARQL')
-const logQueryError = logQuery.extend('error')
+const logQueryError = debug('SPARQL:error')
 
 function buildAndRun<TResult>(builder: SparqlQuery, clientExecute: (query: string, options?: QueryOptions) => TResult, requestInit: SparqlExecuteOptions): TResult {
   const query = builder.build(requestInit)
