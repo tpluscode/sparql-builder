@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- 127f72f: No longer depends on `debug`. Use `anylogger-*` adapters to receive logs
+
+### Patch Changes
+
+- 5bdc6b0: Relax dependency on `@tpluscode/rdf-ns-builders`
+
 ## 1.0.1
 
 ### Patch Changes
