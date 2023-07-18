@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.31
+
+### Patch Changes
+
+- c7cea63: Main module incorrectly exported types as JS
+
 ## 0.3.30
 
 ### Patch Changes
