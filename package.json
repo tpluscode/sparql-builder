@@ -7,6 +7,7 @@
   "types": "index.d.ts",
   "sideEffects": false,
   "files": [
+    "CHANGELOG.md",
     "lib",
     "*.js",
     "*.mjs",
