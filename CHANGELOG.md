@@ -34,6 +34,12 @@
 
 - beaf9e1: When interpolating `SELECT` inside another template, it will automatically be wrapped in a graph pattern
 
+## 0.3.31
+
+### Patch Changes
+
+- c7cea63: Main module incorrectly exported types as JS
+
 ## 0.3.30
 
 ### Patch Changes
