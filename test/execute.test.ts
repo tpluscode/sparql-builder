@@ -1,8 +1,8 @@
-import { Term } from 'rdf-js'
+import { Term } from '@rdfjs/types'
 import type { Client } from 'sparql-http-client'
 import { expect } from 'chai'
 import { ask, graph, select, update } from '../src/lib/execute.js'
-import { SparqlQuery } from '../src/lib'
+import { SparqlQuery } from '../src/lib/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
 

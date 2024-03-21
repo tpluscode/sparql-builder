@@ -1,4 +1,4 @@
-import { BlankNode, Literal, NamedNode } from 'rdf-js'
+import { BlankNode, Literal, NamedNode } from '@rdfjs/types'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { update } from './execute.js'
 import DATA, { QuadDataBuilder } from './partials/DATA.js'
