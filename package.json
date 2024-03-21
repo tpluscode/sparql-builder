@@ -19,7 +19,7 @@
     "./expressions": "./expressions.js"
   },
   "scripts": {
-    "prepare": "patch-package",
+    "prepare": "husky",
     "lint": "eslint . --ext .ts --quiet --ignore-path .gitignore --ignore-path .eslintignore",
     "test": "c8 --reporter=lcov mocha test/**/*.test.ts test/*.test.ts",
     "prepack": "npm run build",
@@ -41,54 +41,35 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
-    "@rdfjs/dataset": "^2",
-    "@rdfjs/namespace": "^2",
-    "@tpluscode/eslint-config": "^0.4.2",
+    "@tpluscode/eslint-config": "^0.4.5",
     "@types/chai": "^4.3.4",
     "@types/chai-as-promised": "^7.1.5",
     "@types/chai-snapshot-matcher": "^1.0.1",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.3",
-    "@types/rdf-ext": "^2.0.1",
-    "@types/rdfjs__dataset": "^2",
-    "@types/rdfjs__environment": "^0.1.2",
-    "@types/rdfjs__fetch-lite": "^3",
-    "@types/rdfjs__namespace": "^2.0.3",
-    "@types/rdfjs__term-set": "^2",
     "@types/sinon": "^10.0.13",
     "@types/sinon-chai": "^3.2.9",
     "@types/sparqljs": "^3.1.2",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "@zazuko/env": "^2.0.6",
     "anylogger-debug": "^1.0.3",
     "c8": "^7.13.0",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
     "chai-snapshot-matcher": "^2.0.3",
     "docsify-cli": "^4.4.3",
-    "eslint": "^8",
-    "eslint-config-standard": "^17.0.0",
     "eslint-import-resolver-typescript": "^3.5.3",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^24.3.6",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-require-extensions": "^0.1.2",
-    "husky": "^3.1.0",
+    "husky": "^9.0.11",
     "get-stream": "^9.0.1",
     "isomorphic-fetch": "^3.0.0",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "^15.2.2",
     "mocha": "^10.2.0",
     "npm-run-all": "^4.1.5",
-    "patch-package": "^6.5.1",
-    "postinstall-postinstall": "^2.1.0",
-    "rdf-ext": "^2.2.0",
-    "sinon": "^15.0.2",
+    "sinon": "^17.0.1",
     "sinon-chai": "^3.7.0",
     "sparql-http-client": "^3.0.0",
     "sparqljs": "^3.0.1",
-    "standard": "^17.0.0",
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.27",
     "typescript": "^5.0.2"
@@ -106,15 +87,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && tsc --noEmit"
-    }
-  },
   "lint-staged": {
     "*.{js,ts}": [
-      "eslint --fix --quiet",
-      "git add"
+      "eslint --fix --quiet"
     ]
   },
   "mocha": {

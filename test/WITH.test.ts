@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import RDF from 'rdf-ext'
+import RDF from '@zazuko/env'
 import { DELETE, INSERT, WITH } from '../src/index.js'
 import './sparql.js'
 
