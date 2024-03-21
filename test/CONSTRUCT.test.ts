@@ -16,7 +16,7 @@ describe('CONSTRUCT', () => {
     CONSTRUCT``.execute(client)
 
     // then
-    expect(client.construct).to.have.been.called
+    expect(client.query.construct).to.have.been.called
   })
 
   it('can have additional prologue', function () {

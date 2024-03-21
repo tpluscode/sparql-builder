@@ -14,7 +14,7 @@ describe('DESCRIBE', () => {
     await DESCRIBE``.execute(client)
 
     // then
-    expect(client.construct).to.have.been.called
+    expect(client.query.construct).to.have.been.called
   })
 
   it('builds a DESCRIBE without WHERE', () => {

@@ -33,11 +33,11 @@
     "@rdfjs/types": "*",
     "@tpluscode/rdf-ns-builders": ">=3.0.2",
     "@tpluscode/rdf-string": "^1.0.3",
-    "@types/sparql-http-client": "^2",
+    "@types/sparql-http-client": "^3.0.0",
     "anylogger": "^1.0.11"
   },
   "peerDependencies": {
-    "sparql-http-client": "^2.2.0"
+    "sparql-http-client": "^3.0.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
@@ -76,6 +76,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-require-extensions": "^0.1.2",
     "husky": "^3.1.0",
+    "get-stream": "^9.0.1",
     "isomorphic-fetch": "^3.0.0",
     "lint-staged": "^9.5.0",
     "mocha": "^10.2.0",
@@ -85,7 +86,7 @@
     "rdf-ext": "^2.2.0",
     "sinon": "^15.0.2",
     "sinon-chai": "^3.7.0",
-    "sparql-http-client": "^2.4.2",
+    "sparql-http-client": "^3.0.0",
     "sparqljs": "^3.0.1",
     "standard": "^17.0.0",
     "ts-node": "^10.9.1",
@@ -117,7 +118,7 @@
     ]
   },
   "mocha": {
-    "loader": "ts-node/esm",
+    "loader": "ts-node/esm/transpile-only",
     "require": [
       "test/mochaSetup.cjs"
     ]

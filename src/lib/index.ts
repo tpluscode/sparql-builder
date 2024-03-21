@@ -1,4 +1,4 @@
-import { AskQuery, ConstructQuery, QueryOptions, SelectQuery, UpdateQuery } from 'sparql-http-client'
+import { QueryOptions, Client } from 'sparql-http-client'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import type { NamespaceBuilder } from '@rdfjs/namespace'
 import prologue, { PrologueBuilder } from './partials/prologue.js'
@@ -17,19 +17,19 @@ export interface SparqlQuery extends PrologueBuilder {
 }
 
 export interface SparqlQueryExecutable {
-  execute<TQuery extends SelectQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['select']>
+  execute<TClient extends Client>(client: TClient, requestInit?: SparqlExecuteOptions): ReturnType<TClient['query']['select']>
 }
 
 export interface SparqlGraphQueryExecutable {
-  execute<TQuery extends ConstructQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['construct']>
+  execute<TClient extends Client>(client: TClient, requestInit?: SparqlExecuteOptions): ReturnType<TClient['query']['construct']>
 }
 
 export interface SparqlUpdateExecutable {
-  execute<TQuery extends UpdateQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['update']>
+  execute<TClient extends Client>(client: TClient, requestInit?: SparqlExecuteOptions): ReturnType<TClient['query']['update']>
 }
 
 export interface SparqlAskExecutable {
-  execute<TQuery extends AskQuery<any>>(client: TQuery, requestInit?: SparqlExecuteOptions): ReturnType<TQuery['ask']>
+  execute<TClient extends Client>(client: TClient, requestInit?: SparqlExecuteOptions): ReturnType<TClient['query']['ask']>
 }
 
 type TBuilder = Pick<SparqlQuery, 'build' | 'type'> & Pick<SparqlTemplateResult, '_toPartialString'>
