@@ -11,7 +11,7 @@ describe('INSERT DATA', () => {
 INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
 
     // when
-    const actual = INSERT.DATA`<http://example.com> ${owl.sameAs} <http://example.org>`.build()
+    const actual = INSERT.DATA`<http://example.com> ${RDF.ns.owl.sameAs} <http://example.org>`.build()
 
     // then
     expect(actual).to.be.query(expected)
