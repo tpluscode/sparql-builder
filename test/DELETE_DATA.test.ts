@@ -26,7 +26,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     await DELETE.DATA`<http://example.com> owl:sameAs <http://example.org>`.execute(client)
 
     // then
-    expect(client.update).to.have.been.called
+    expect(client.query.update).to.have.been.called
   })
 
   it('can have additional prologue', function () {

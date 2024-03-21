@@ -28,7 +28,7 @@ describe('ASK', () => {
     await ASK``.execute(client)
 
     // then
-    expect(client.ask).to.have.been.called
+    expect(client.query.ask).to.have.been.called
   })
 
   it('can have additional prologue', function () {

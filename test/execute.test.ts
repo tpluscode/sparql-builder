@@ -1,5 +1,5 @@
 import { Term } from 'rdf-js'
-import { SelectQuery, AskQuery, ConstructQuery, UpdateQuery } from 'sparql-http-client'
+import type { Client } from 'sparql-http-client'
 import { expect } from 'chai'
 import { ask, graph, select, update } from '../src/lib/execute.js'
 import { SparqlQuery } from '../src/lib'
@@ -14,7 +14,7 @@ const builder: Pick<SparqlQuery, 'build'> = {
 
 describe('execute', () => {
   describe('select', () => {
-    let execute: (client: SelectQuery<any>, requestInit: RequestInit) => Promise<readonly Record<string, Term>[]>
+    let execute: (client: Client, requestInit: RequestInit) => Promise<readonly Record<string, Term>[]>
 
     beforeEach(() => {
       execute = select.execute.bind(builder)
@@ -32,7 +32,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.select).to.have.been.calledWith('', {
+      expect(client.query.select).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -40,7 +40,7 @@ describe('execute', () => {
     })
   })
   describe('graph', () => {
-    let execute: (client: ConstructQuery<any>, requestInit: RequestInit) => Promise<Response>
+    let execute: (client: Client, requestInit: RequestInit) => Promise<Response>
 
     beforeEach(() => {
       execute = graph.execute.bind(builder)
@@ -58,7 +58,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.construct).to.have.been.calledWith('', {
+      expect(client.query.construct).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -66,7 +66,7 @@ describe('execute', () => {
     })
   })
   describe('update', () => {
-    let execute: (client: UpdateQuery<any>, requestInit: RequestInit) => Promise<void>
+    let execute: (client: Client, requestInit: RequestInit) => Promise<void>
 
     beforeEach(() => {
       execute = update.execute.bind(builder)
@@ -84,7 +84,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.update).to.have.been.calledWith('', {
+      expect(client.query.update).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },
@@ -93,7 +93,7 @@ describe('execute', () => {
   })
 
   describe('ask', () => {
-    let execute: (client: AskQuery<any>, requestInit: RequestInit) => Promise<boolean>
+    let execute: (client: Client, requestInit: RequestInit) => Promise<boolean>
 
     beforeEach(() => {
       execute = ask.execute.bind(builder)
@@ -111,7 +111,7 @@ describe('execute', () => {
       })
 
       // then
-      expect(client.ask).to.have.been.calledWith('', {
+      expect(client.query.ask).to.have.been.calledWith('', {
         headers: {
           authentication: 'Bearer foobar',
         },

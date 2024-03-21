@@ -14,7 +14,7 @@ describe('SELECT', () => {
     SELECT``.execute(client)
 
     // then
-    expect(client.select).to.have.been.called
+    expect(client.query.select).to.have.been.called
   })
 
   it('creates a simple select/where', () => {
