@@ -8,7 +8,7 @@ Simple library to create SPARQL queries with tagged ES Template Strings
 1. Still looks like SPARQL, having a familiar structure and little glue code
 1. Has the IDE provide syntactic hints of valid SPARQL keywords
 1. Ensures correct formatting of terms (URI nodes, literals variables) via [@tpluscode/rdf-string](https://github.com/tpluscode/rdf-string)
-1. Automatically shortens URIs with [`@zazuko/rdf-vocabularies`](http://npm.im/@zazuko/rdf-vocabularies)
+1. Automatically shortens URIs with [`@zazuko/prefixes`](http://npm.im/@zazuko/prefixes)
 
 ## Installation
 
@@ -28,13 +28,11 @@ npm i -S sparql-http-client
 ### Build a SPARQL query string
 
 ```js
-import { variable } from '@rdfjs/data-model'
-import namespace from '@rdfjs/namespace'
-import { prefixes } from '@zazuko/rdf-vocabularies'
+import rdf from '@zazuko/env'
 import { SELECT } from '@tpluscode/sparql-builder'
 
-const ex = namespace('http://example.com/')
-const foaf = namespace(prefixes.foaf)
+const ex = rdf.namespace('http://example.com/')
+const { foaf } = rdf.ns
 
 /*
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -47,7 +45,7 @@ const foaf = namespace(prefixes.foaf)
               foaf:name ?name .
     }
 */
-const person = variable('person')
+const person = rdf.variable('person')
 const query = 
   SELECT`${person} ?name`
   .FROM(ex.People)
@@ -62,18 +60,16 @@ const query =
 Using [`sparql-http-client`](https://github.com/zazuko/sparql-http-client)
 
 ```js
-import namespace from '@rdfjs/namespace'
-import { prefixes } from '@zazuko/rdf-vocabularies'
+import rdf from '@zazuko/env'
 import SparqlHttp from 'sparql-http-client'
 import { ASK } from '@tpluscode/sparql-builder'
-import fetch from 'isomorphic-fetch'
 
-const dbo = namespace(prefixes.dbo)
-const dbr = namespace('http://dbpedia.org/resource/')
+const { dbo } = rdf.ns
+const dbr = rdf.namespace('http://dbpedia.org/resource/')
 
 const client = new SparqlHttp({
+  factory: rdf,
   endpointUrl: 'http://dbpedia.org/sparql',
-  fetch,
 })
 
 const scoobyDoo = dbr('Scooby-Doo')
