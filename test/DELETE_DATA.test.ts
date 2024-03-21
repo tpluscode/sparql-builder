@@ -1,5 +1,5 @@
 import { owl } from '@tpluscode/rdf-ns-builders'
-import RDF from 'rdf-ext'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { DELETE } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'

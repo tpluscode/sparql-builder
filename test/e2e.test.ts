@@ -1,7 +1,7 @@
 import ParsingClient from 'sparql-http-client/ParsingClient.js'
 import StreamClient from 'sparql-http-client/StreamClient.js'
 import { expect } from 'chai'
-import $rdf from 'rdf-ext'
+import $rdf from '@zazuko/env'
 import { getStreamAsArray } from 'get-stream'
 import { ASK, CONSTRUCT, SELECT } from '../src/index.js'
 import './sparql.js'
