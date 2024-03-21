@@ -1,5 +1,4 @@
-import namespace from '@rdfjs/namespace'
-import RDF from '@rdfjs/data-model'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { ASK } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
@@ -79,7 +78,7 @@ describe('ASK', () => {
 
   it('can be constructed with a base', () => {
     // given
-    const ns = namespace('http://example.com/')
+    const ns = RDF.namespace('http://example.com/')
     const expected = `BASE <http://example.com/>
 
     ASK {

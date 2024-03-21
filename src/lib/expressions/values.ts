@@ -14,7 +14,7 @@ export function VALUES<Variables extends string>(...values: Partial<ValueMap<Var
 
   const variables = [...new Set(values.map(Object.keys).flat())].map(RDF.variable)
 
-  const vectors = values.reduce((previous, current: any) => {
+  const vectors = values.reduce((previous, current: Record<string, unknown>) => {
     const vector = variables.map((variable) => {
       const value = current[variable.value]
       if (value === null || typeof value === 'undefined') {

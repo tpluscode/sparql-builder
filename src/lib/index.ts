@@ -1,6 +1,7 @@
 import { QueryOptions, Client } from 'sparql-http-client'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import type { NamespaceBuilder } from '@rdfjs/namespace'
+import type { SparqlOptions } from '@tpluscode/rdf-string/lib/sparql'
 import prologue, { PrologueBuilder } from './partials/prologue.js'
 
 interface SparqlBuildOptions {
@@ -51,7 +52,7 @@ export default function Builder<T extends SparqlQuery>(type: SparqlQuery['type']
 
       return queryResult
     },
-    _toPartialString(this: SparqlQuery, options: any) {
+    _toPartialString(this: SparqlQuery, options: SparqlOptions) {
       let result = this._getTemplateResult()
       if (this.type === 'SELECT') {
         result = sparql`{ ${result} }`
@@ -59,5 +60,5 @@ export default function Builder<T extends SparqlQuery>(type: SparqlQuery['type']
 
       return result._toPartialString(options)
     },
-  } as any
+  } as TBuilder & T
 }

@@ -1,5 +1,4 @@
-import { owl } from '@tpluscode/rdf-ns-builders'
-import RDF from '@rdfjs/data-model'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { INSERT } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
@@ -34,7 +33,7 @@ INSERT DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
-    const query = INSERT.DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+    const query = INSERT.DATA`<http://example.com/bar> ${RDF.ns.owl.sameAs} <http://example.org/bar> .`
       .prologue`#pragma join.hash off`
       .prologue`BASE ${base}`
       .build()
@@ -53,8 +52,8 @@ INSERT DATA {
 
     // when
     const actual = INSERT
-      .DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
-      .DATA`<http://example.com/foo> ${owl.sameAs} <http://example.org/foo> .`
+      .DATA`<http://example.com/bar> ${RDF.ns.owl.sameAs} <http://example.org/bar> .`
+      .DATA`<http://example.com/foo> ${RDF.ns.owl.sameAs} <http://example.org/foo> .`
       .build()
 
     // then

@@ -1,4 +1,3 @@
-import { owl } from '@tpluscode/rdf-ns-builders'
 import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { DELETE } from '../src/index.js'
@@ -12,7 +11,7 @@ describe('DELETE DATA', () => {
 DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
 
     // when
-    const actual = DELETE.DATA`<http://example.com> ${owl.sameAs} <http://example.org>`.build()
+    const actual = DELETE.DATA`<http://example.com> ${RDF.ns.owl.sameAs} <http://example.org>`.build()
 
     // then
     expect(actual).to.be.query(expected)
@@ -34,7 +33,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const base = RDF.namedNode('http://foo.bar/baz')
 
     // when
-    const query = DELETE.DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
+    const query = DELETE.DATA`<http://example.com/bar> ${RDF.ns.owl.sameAs} <http://example.org/bar> .`
       .prologue`#pragma join.hash off`
       .prologue`BASE ${base}`
       .build()
@@ -47,7 +46,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     // given
     const data = RDF.quad(
       RDF.namedNode('http://example.com/bar'),
-      owl.sameAs,
+      RDF.ns.owl.sameAs,
       RDF.namedNode('http://example.com/bar'),
     )
 
@@ -62,7 +61,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     // given
     const data = RDF.quad(
       RDF.namedNode('http://example.com/bar'),
-      owl.sameAs,
+      RDF.ns.owl.sameAs,
       RDF.namedNode('http://example.com/bar'),
       RDF.namedNode('http://example.com/G'),
     )
@@ -78,7 +77,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     // given
     const data = RDF.dataset([RDF.quad(
       RDF.namedNode('http://example.com/bar'),
-      owl.sameAs,
+      RDF.ns.owl.sameAs,
       RDF.namedNode('http://example.com/bar'),
     )])
 
@@ -99,8 +98,8 @@ DELETE DATA {
 
     // when
     const actual = DELETE
-      .DATA`<http://example.com/bar> ${owl.sameAs} <http://example.org/bar> .`
-      .DATA`<http://example.com/foo> ${owl.sameAs} <http://example.org/foo> .`
+      .DATA`<http://example.com/bar> ${RDF.ns.owl.sameAs} <http://example.org/bar> .`
+      .DATA`<http://example.com/foo> ${RDF.ns.owl.sameAs} <http://example.org/foo> .`
       .build()
 
     // then

@@ -1,5 +1,4 @@
-import { xsd } from '@tpluscode/rdf-ns-builders'
-import RDF from '@rdfjs/data-model'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { IN } from '../../src/expressions.js'
 
@@ -15,8 +14,8 @@ describe('IN', () => {
   it('combines items in comma-separated list', () => {
     // given
     const items = [
-      RDF.literal('foo', xsd.normalizedString),
-      xsd.anyType,
+      RDF.literal('foo', RDF.ns.xsd.normalizedString),
+      RDF.ns.xsd.anyType,
       RDF.variable('foo'),
       10.6,
     ]

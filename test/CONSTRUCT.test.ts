@@ -1,11 +1,11 @@
-import namespace from '@rdfjs/namespace'
-import { dbo, foaf, schema, skos } from '@tpluscode/rdf-ns-builders'
-import RDF from '@rdfjs/data-model'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { CONSTRUCT, SELECT } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 
 import './sparql.js'
+
+const { dbo, foaf, schema, skos } = RDF.ns
 
 describe('CONSTRUCT', () => {
   it('executes as construct', () => {
@@ -104,7 +104,7 @@ describe('CONSTRUCT', () => {
 
   it('can be constructed with a base', () => {
     // given
-    const ns = namespace('http://example.com/')
+    const ns = RDF.namespace('http://example.com/')
     const expected = `BASE <http://example.com/>
 
     CONSTRUCT {

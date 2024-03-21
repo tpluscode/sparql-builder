@@ -13,7 +13,8 @@ const logQuery = debug('SPARQL')
 const logQueryError = debug('SPARQL:error')
 
 interface QueryAction {
-  (...args: any[]): any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (...args: unknown[]): any
 }
 
 function buildAndRun<TAction extends QueryAction>(builder: SparqlQuery, clientExecute: TAction, requestInit: SparqlExecuteOptions): ReturnType<TAction> {

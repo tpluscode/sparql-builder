@@ -1,9 +1,10 @@
-import { foaf, owl, schema } from '@tpluscode/rdf-ns-builders'
-import RDF from '@rdfjs/data-model'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { DELETE } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
+
+const { foaf, owl, schema } = RDF.ns
 
 describe('DELETE', () => {
   it('adds an empty WHERE if no pattern provided', () => {

@@ -1,9 +1,10 @@
-import { owl, schema } from '@tpluscode/rdf-ns-builders'
-import RDF from '@rdfjs/data-model'
+import RDF from '@zazuko/env'
 import { expect } from 'chai'
 import { INSERT } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
+
+const { owl, schema } = RDF.ns
 
 describe('INSERT', () => {
   it('adds an empty WHERE if no pattern provided', () => {
