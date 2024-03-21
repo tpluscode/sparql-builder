@@ -1,4 +1,4 @@
-import { Literal, NamedNode } from 'rdf-js'
+import { Literal, NamedNode } from '@rdfjs/types'
 import { sparql, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
 import { update } from './execute.js'

@@ -1,4 +1,4 @@
-import { Variable } from 'rdf-js'
+import { Variable } from '@rdfjs/types'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import RDF from '@rdfjs/data-model'
 import { SparqlQuery } from '../index.js'

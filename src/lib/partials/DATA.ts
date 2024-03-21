@@ -1,4 +1,4 @@
-import { Term } from 'rdf-js'
+import { Term } from '@rdfjs/types'
 import { sparql, SparqlTemplateResult, SparqlValue } from '@tpluscode/rdf-string'
 import { SparqlQuery } from '../index.js'
 import { concat } from '../TemplateResult.js'

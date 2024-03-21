@@ -1,4 +1,4 @@
-import { NamedNode } from 'rdf-js'
+import { NamedNode } from '@rdfjs/types'
 import { sparql } from '@tpluscode/rdf-string'
 import RDF from '@rdfjs/data-model'
 import { InsertQuery } from './InsertBuilder.js'

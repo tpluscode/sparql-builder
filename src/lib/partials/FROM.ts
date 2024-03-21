@@ -1,4 +1,4 @@
-import { DefaultGraph, NamedNode } from 'rdf-js'
+import { DefaultGraph, NamedNode } from '@rdfjs/types'
 import TermSet from '@rdfjs/term-set'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import { SparqlQuery } from '../index.js'
@@ -28,6 +28,7 @@ export default function <T extends SparqlQuery & FromBuilder<T>> (): FromBuilder
 
   return {
     ...builder,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     FROM(defaultGraph?: NamedNode | DefaultGraph): any {
       if (!defaultGraph) {
         return {
