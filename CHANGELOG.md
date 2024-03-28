@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+### Patch Changes
+
+- 5e451cd: Correct imports to work with `moduleResolution = NodeNext`
+
 ## 2.0.0
 
 ### Major Changes
