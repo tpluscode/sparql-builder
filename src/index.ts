@@ -14,3 +14,6 @@ export type { SelectQuery as Select } from './lib/SelectBuilder.js'
 export { WITH } from './lib/WithBuilder.js'
 export { prefixes } from '@tpluscode/rdf-string'
 export type { SparqlTemplateResult } from '@tpluscode/rdf-string'
+export type {
+  SparqlAskExecutable, SparqlGraphQueryExecutable, SparqlQueryExecutable, SparqlUpdateExecutable,
+} from './lib/index.js'
