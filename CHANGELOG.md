@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.2
+
+### Patch Changes
+
+- c48bd28: Export the `*Executable` types
+
 ## 2.0.1
 
 ### Patch Changes
