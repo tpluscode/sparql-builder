@@ -21,7 +21,7 @@ describe('IN', () => {
     ]
 
     // when
-    const expr = IN(...items)._toPartialString({ prologue: false }).value
+    const expr = IN(...items)._toPartialString({ prologue: false, env: RDF }).value
 
     // then
     expect(expr).to.eq('IN ( "foo"^^xsd:normalizedString, xsd:anyType, ?foo, 10.6 )')

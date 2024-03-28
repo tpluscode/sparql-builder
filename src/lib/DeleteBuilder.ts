@@ -1,6 +1,5 @@
 import { Literal, NamedNode } from '@rdfjs/types'
-import { sparql, SparqlValue } from '@tpluscode/rdf-string'
-import { SparqlTemplateResult } from '@tpluscode/rdf-string/lib/sparql'
+import { sparql, SparqlValue, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import { update } from './execute.js'
 import DATA, { QuadDataBuilder } from './partials/DATA.js'
 import WHERE, { WhereBuilder } from './partials/WHERE.js'
