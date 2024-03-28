@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ES2020",
+    "module": "NodeNext",
     "target": "ES2020",
     "outDir": ".",
     "lib": [
@@ -12,7 +12,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "declaration": true,
     "declarationMap": true

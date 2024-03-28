@@ -1,7 +1,7 @@
 import { QueryOptions, Client } from 'sparql-http-client'
 import { sparql, SparqlTemplateResult } from '@tpluscode/rdf-string'
 import type { NamespaceBuilder } from '@rdfjs/namespace'
-import type { SparqlOptions } from '@tpluscode/rdf-string/lib/sparql'
+import type { SparqlOptions } from '@tpluscode/rdf-string'
 import prologue, { PrologueBuilder } from './partials/prologue.js'
 
 interface SparqlBuildOptions {
