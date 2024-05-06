@@ -6,7 +6,7 @@ import { DeleteInsertQuery } from './DeleteBuilder.js'
 import { update } from './execute.js'
 import Builder, { SparqlQuery, SparqlUpdateExecutable } from './index.js'
 
-type WithQuery = SparqlUpdateExecutable & SparqlQuery
+export type WithQuery = SparqlUpdateExecutable & SparqlQuery
 
 export const WITH = (graph: NamedNode | string, query: DeleteInsertQuery | InsertQuery): WithQuery => ({
   ...Builder('UPDATE'),
