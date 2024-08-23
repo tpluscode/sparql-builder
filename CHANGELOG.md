@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.4
+
+### Patch Changes
+
+- 463ea01: Update anylogger to 1.1-beta
+
 ## 2.0.3
 
 ### Patch Changes
