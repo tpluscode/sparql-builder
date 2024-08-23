@@ -1,2 +1,14 @@
-exports["DESCRIBE can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nDESCRIBE ?foo\n\nWHERE {\n?foo a ?bar\n}\n\n";
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DESCRIBE can have additional prologue 1`] = `
+"#pragma join.hash off
+BASE <http://foo.bar/baz>
+
+DESCRIBE ?foo
+
+WHERE {
+?foo a ?bar
+}
+
+"
+`;

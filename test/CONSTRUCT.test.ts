@@ -1,13 +1,15 @@
 import RDF from '@zazuko/env'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { jestSnapshotPlugin } from 'mocha-chai-jest-snapshot'
 import { CONSTRUCT, SELECT } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
-
 import './sparql.js'
 
 const { dbo, foaf, schema, skos } = RDF.ns
 
 describe('CONSTRUCT', () => {
+  chai.use(jestSnapshotPlugin())
+
   it('executes as construct', () => {
     // given
     const client = sparqlClient()
@@ -30,7 +32,7 @@ describe('CONSTRUCT', () => {
       .build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('generates empty WHERE clause by default', () => {

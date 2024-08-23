@@ -1,2 +1,9 @@
-exports["ASK can have additional prologue"] = "#pragma join.hash off\nBASE <http://foo.bar/baz>\n\nASK  { ?s ?p ?o . }\n";
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ASK can have additional prologue 1`] = `
+"#pragma join.hash off
+BASE <http://foo.bar/baz>
+
+ASK  { ?s ?p ?o . }
+"
+`;

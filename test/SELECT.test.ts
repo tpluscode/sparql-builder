@@ -1,10 +1,13 @@
 import RDF from '@zazuko/env'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { jestSnapshotPlugin } from 'mocha-chai-jest-snapshot'
 import { SELECT } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
 
 describe('SELECT', () => {
+  chai.use(jestSnapshotPlugin())
+
   it('executes as select', () => {
     // given
     const client = sparqlClient()
@@ -39,7 +42,7 @@ describe('SELECT', () => {
       .build()
 
     // then
-    expect(actual).to.matchSnapshot(this)
+    expect(actual).toMatchSnapshot()
   })
 
   it('combines multiple WHERE clauses', () => {
