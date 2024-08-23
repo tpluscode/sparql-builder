@@ -9,10 +9,8 @@ import {
   SparqlUpdateExecutable,
 } from './index.js'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const logQuery = (debug as any)('SPARQL')
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const logQueryError = (debug as any)('SPARQL:error')
+const logQuery = debug('SPARQL')
+const logQueryError = debug('SPARQL:error')
 
 interface QueryAction {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
