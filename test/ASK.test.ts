@@ -1,10 +1,13 @@
 import RDF from '@zazuko/env'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { jestSnapshotPlugin } from 'mocha-chai-jest-snapshot'
 import { ASK } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
 
 describe('ASK', () => {
+  chai.use(jestSnapshotPlugin())
+
   it('creates expected query', () => {
     // given
     const expected = `ASK {
@@ -41,7 +44,7 @@ describe('ASK', () => {
       .build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('supports LIMIT/OFFSET', () => {

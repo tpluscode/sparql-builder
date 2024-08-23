@@ -1,10 +1,13 @@
 import RDF from '@zazuko/env'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { jestSnapshotPlugin } from 'mocha-chai-jest-snapshot'
 import { DELETE } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
 
 describe('DELETE DATA', () => {
+  chai.use(jestSnapshotPlugin())
+
   it('builds correct query', () => {
     // given
     const expected = `PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -39,7 +42,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
       .build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('can delete triples', function () {
@@ -54,7 +57,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const query = DELETE.DATA`${data}`.build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('can delete quads', function () {
@@ -70,7 +73,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const query = DELETE.DATA`${data}`.build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('can delete dataset', function () {
@@ -85,7 +88,7 @@ DELETE DATA { <http://example.com> owl:sameAs <http://example.org> . }`
     const query = DELETE.DATA`${data}`.build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('can chain multiple quad data calls', () => {

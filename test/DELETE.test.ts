@@ -1,5 +1,6 @@
 import RDF from '@zazuko/env'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { jestSnapshotPlugin } from 'mocha-chai-jest-snapshot'
 import { DELETE } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
@@ -7,6 +8,8 @@ import './sparql.js'
 const { foaf, owl, schema } = RDF.ns
 
 describe('DELETE', () => {
+  chai.use(jestSnapshotPlugin())
+
   it('adds an empty WHERE if no pattern provided', () => {
     // given
     const expected = `DELETE {
@@ -31,7 +34,7 @@ describe('DELETE', () => {
       .build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('combines multiple DELETE calls', () => {

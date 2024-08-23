@@ -1,5 +1,6 @@
 import RDF from '@zazuko/env'
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { jestSnapshotPlugin } from 'mocha-chai-jest-snapshot'
 import { INSERT } from '../src/index.js'
 import { sparqlClient } from './_mocks.js'
 import './sparql.js'
@@ -7,6 +8,8 @@ import './sparql.js'
 const { owl, schema } = RDF.ns
 
 describe('INSERT', () => {
+  chai.use(jestSnapshotPlugin())
+
   it('adds an empty WHERE if no pattern provided', () => {
     // given
     const expected = `INSERT {
@@ -49,7 +52,7 @@ describe('INSERT', () => {
       .build()
 
     // then
-    expect(query).to.matchSnapshot(this)
+    expect(query).toMatchSnapshot()
   })
 
   it('has a WHERE method', () => {
