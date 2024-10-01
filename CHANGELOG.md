@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0
+
+### Major Changes
+
+- ae69cd7: Removed built-in logging. Use an optional parameter to `execute`. Exceptions will be reported as a custom `Error` subclass
+
 ## 2.0.4
 
 ### Patch Changes
