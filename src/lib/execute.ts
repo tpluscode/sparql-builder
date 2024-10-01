@@ -1,5 +1,5 @@
 import type { Client } from 'sparql-http-client'
-import debug from 'anylogger'
+import { QueryError } from './QueryError.js'
 import {
   SparqlAskExecutable,
   SparqlExecuteOptions,
@@ -9,23 +9,19 @@ import {
   SparqlUpdateExecutable,
 } from './index.js'
 
-const logQuery = debug('SPARQL')
-const logQueryError = debug('SPARQL:error')
-
 interface QueryAction {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (...args: unknown[]): any
 }
 
-function buildAndRun<TAction extends QueryAction>(builder: SparqlQuery, clientExecute: TAction, requestInit: SparqlExecuteOptions): ReturnType<TAction> {
+function buildAndRun<TAction extends QueryAction>(builder: SparqlQuery, clientExecute: TAction, { logQuery, ...requestInit }: SparqlExecuteOptions = {}): ReturnType<TAction> {
   const query = builder.build(requestInit)
-  logQuery(query)
+  logQuery?.(query)
 
   try {
     return clientExecute(query, requestInit)
   } catch (e) {
-    logQueryError('Failed query %s', query)
-    throw e
+    throw new QueryError(query, e)
   }
 }
 

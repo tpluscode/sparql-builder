@@ -9,7 +9,9 @@ interface SparqlBuildOptions {
   prefixes?: Record<string, string | NamespaceBuilder>
 }
 
-export type SparqlExecuteOptions = QueryOptions & SparqlBuildOptions
+export type SparqlExecuteOptions = QueryOptions & SparqlBuildOptions & {
+  logQuery?: (query: string) => void
+}
 
 export interface SparqlQuery extends PrologueBuilder {
   type: 'SELECT' | 'CONSTRUCT' | 'ASK' | 'UPDATE'
