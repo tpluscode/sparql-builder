@@ -1,6 +1,8 @@
 import { sparql } from '@tpluscode/rdf-string'
 import { expect } from 'chai'
 import { UNION } from '../../src/expressions.js'
+import { Select, SELECT } from '../../src/index.js'
+import '../sparql.js'
 
 describe('UNION', () => {
   it('returns empty for empty arg list', () => {
@@ -62,5 +64,27 @@ describe('UNION', () => {
     } UNION {
       <X> <Y> <Z> .
     }`)
+  })
+
+  it('combines multiple subqueries in UNION', () => {
+    // given
+    const patterns: Select[] = [
+      SELECT`?s ?p ?o`.WHERE`?s ?p ?o`,
+      SELECT`?a ?b ?c`.WHERE`?a ?b ?c`,
+    ]
+
+    // when
+    const union = SELECT.ALL.WHERE`${UNION(...patterns)}`.build()
+
+    // then
+    expect(union).to.be.query(`SELECT * WHERE { { 
+    SELECT ?s ?p ?o WHERE {
+      ?s ?p ?o
+    } 
+  } UNION {
+      SELECT ?a ?b ?c WHERE {
+        ?a ?b ?c
+      }
+    } }`)
   })
 })
