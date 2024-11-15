@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+
+### Patch Changes
+
+- a4736b6: `UNION` expression typing did not accept a subquery
+
 ## 3.0.0
 
 ### Major Changes
