@@ -1,7 +1,10 @@
-import { Parser } from 'sparqljs'
+import sparqljs from 'sparqljs'
 import { Assertion, AssertionError } from 'chai'
 
-const sparqlParser = new Parser()
+const sparqlParser = new sparqljs.Parser()
+const generator = new sparqljs.Generator({
+  allPrefixes: false,
+})
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -16,13 +19,13 @@ Assertion.addMethod('query', function (this: Chai.AssertionStatic, expected: str
   const received = this._obj
   let expectedQuery: any
   try {
-    expectedQuery = sparqlParser.parse(expected)
+    expectedQuery = generator.stringify(sparqlParser.parse(expected))
   } catch (e) {
     throw new AssertionError(`Failed to parse expected query:\n ${expected}`)
   }
   let actualQuery: any
   try {
-    actualQuery = sparqlParser.parse(received)
+    actualQuery = generator.stringify(sparqlParser.parse(received))
   } catch (e: any) {
     throw new AssertionError(`Failed to parse actual query. 
      ${e.message}.
@@ -32,5 +35,5 @@ Assertion.addMethod('query', function (this: Chai.AssertionStatic, expected: str
    `)
   }
 
-  new Assertion(actualQuery).to.deep.equal(expectedQuery)
+  new Assertion(actualQuery).to.equal(expectedQuery)
 })

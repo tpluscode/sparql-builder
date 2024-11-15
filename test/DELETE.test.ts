@@ -85,8 +85,9 @@ describe('DELETE', () => {
 
   it('complete DELETE/INSERT/WHERE', () => {
     // given
-    const expected = `PREFIX schema: <http://schema.org/> 
+    const expected = `
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+    PREFIX schema: <http://schema.org/> 
     
     DELETE {
       ?s a foaf:Person .

@@ -1,6 +1,6 @@
-import { SparqlTemplateResult, sparql } from '@tpluscode/rdf-string'
+import { SparqlTemplateResult, sparql, SparqlValue } from '@tpluscode/rdf-string'
 
-export function UNION(...[first, ...rest]: Array<string | SparqlTemplateResult>): SparqlTemplateResult {
+export function UNION(...[first, ...rest]: Array<SparqlValue>): SparqlTemplateResult {
   if (rest.length === 0) {
     return sparql`${first}` || ''
   }
